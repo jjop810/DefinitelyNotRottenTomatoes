@@ -19,12 +19,14 @@ public class WatchList {
 	@SequenceGenerator(name = "watchlist", sequenceName = "watchlist_seq", allocationSize = 1)
 	
 	private Integer id;
-	@ManyToOne(fetch = FetchType.EAGER)
 	private User u;
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private Shows s;
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "showId")
 	private Movie m;
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "movieId")
 	public WatchList() {
 		super();
