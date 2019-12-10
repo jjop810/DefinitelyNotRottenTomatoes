@@ -18,73 +18,67 @@ public class Movies {
 	Integer id;
 	String title;
 	Integer movieLength;
-	Integer genreId;
 	Integer rating;
 	String imgUrl;
 	
-	
-	public Movies(Integer id, String title, Integer movieLength, Integer genreId, Integer rating, String imgUrl) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.movieLength = movieLength;
-		this.genreId = genreId;
-		this.rating = rating;
-		this.imgUrl = imgUrl;
-	}
 	public Movies() {
 		super();
 		
 	}
-	
-	
-	
-	public Integer getGenreId() {
-		return genreId;
+
+	public Movies(Integer id, String title, Integer movieLength, Integer rating, String imgUrl) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.movieLength = movieLength;
+		this.rating = rating;
+		this.imgUrl = imgUrl;
 	}
-	public void setGenreId(Integer genreId) {
-		this.genreId = genreId;
-	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public Integer getMovieLength() {
 		return movieLength;
 	}
+
 	public void setMovieLength(Integer movieLength) {
 		this.movieLength = movieLength;
 	}
+
 	public Integer getRating() {
 		return rating;
 	}
+
 	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
+
 	public String getImgUrl() {
 		return imgUrl;
 	}
+
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	@Override
-	public String toString() {
-		return "Movies [id=" + id + ", title=" + title + ", movieLength=" + movieLength + ", genreId=" + genreId
-				+ ", rating=" + rating + ", imgUrl=" + imgUrl + "]";
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((genreId == null) ? 0 : genreId.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((imgUrl == null) ? 0 : imgUrl.hashCode());
 		result = prime * result + ((movieLength == null) ? 0 : movieLength.hashCode());
@@ -92,6 +86,7 @@ public class Movies {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -101,11 +96,6 @@ public class Movies {
 		if (getClass() != obj.getClass())
 			return false;
 		Movies other = (Movies) obj;
-		if (genreId == null) {
-			if (other.genreId != null)
-				return false;
-		} else if (!genreId.equals(other.genreId))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -132,6 +122,12 @@ public class Movies {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Movies [id=" + id + ", title=" + title + ", movieLength=" + movieLength + ", rating=" + rating
+				+ ", imgUrl=" + imgUrl + "]";
 	}
 	
 	
