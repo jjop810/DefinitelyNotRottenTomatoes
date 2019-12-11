@@ -1,4 +1,4 @@
-package com.revature.data;
+package com.revature.hibernate.data;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.revature.beans.Movies;
-
-
+import com.revature.data.MoviesDAO;
 import com.revature.utils.HibernateUtil;
 import com.revature.utils.LogUtil;
 
