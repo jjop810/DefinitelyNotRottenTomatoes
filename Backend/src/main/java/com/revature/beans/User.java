@@ -1,9 +1,16 @@
 package com.revature.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,9 +26,18 @@ public class User
 	private String password;
 	private String email;
 	
+	@JoinTable(
+	        name = "FRIENDS",
+	        joinColumns = @JoinColumn(name = "USERID"),
+	        inverseJoinColumns = @JoinColumn(name = "FRIENDID")
+	)
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<User> friends;
+	
 	public User() 
 	{
 		super();
+		this.friends = new ArrayList<>();
 	}
 	
 	public User(Integer id, String username, String password, String email) 
@@ -31,6 +47,7 @@ public class User
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.friends = new ArrayList<>();
 	}
 	
 	public Integer getId() 
@@ -73,6 +90,14 @@ public class User
 		this.email = email;
 	}
 	
+	public List<User> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<User> friends) {
+		this.friends = friends;
+	}
+
 	@Override
 	public int hashCode() 
 	{
