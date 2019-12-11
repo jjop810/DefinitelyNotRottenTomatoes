@@ -24,6 +24,7 @@ Servers
 *.log
 
 *.DS_Store
+*.node_modules
 # BlueJ files
 *.ctxt
 
