@@ -1,5 +1,7 @@
 package com.revature.data;
 
-public class LoginDao {
+import com.revature.beans.User;
 
+public interface UserDAO {
+	public int addUser(User user);
 }
