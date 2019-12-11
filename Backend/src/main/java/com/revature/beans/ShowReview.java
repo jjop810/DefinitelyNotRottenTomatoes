@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class ShowReview {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showReview")
 	@SequenceGenerator(name = "showReview", sequenceName = "showReview_seq", allocationSize = 1)
