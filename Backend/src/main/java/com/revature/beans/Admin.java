@@ -13,9 +13,6 @@ public class Admin extends User
 	@Column(name = "tittle")
 	private String title;
 
-	public Admin(Integer id) {
-		super(id);
-	}
 	public Admin() {
 		super();
 	}

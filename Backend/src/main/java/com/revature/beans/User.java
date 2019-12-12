@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +26,6 @@ public class User
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="login")
 	@SequenceGenerator(name="login", sequenceName="login_seq", allocationSize=1)
 	private Integer id;
-	public User(Integer id) {
-		super();
-		this.id = id;
-	}
 
 	private String username;
 	private String password;
@@ -48,6 +45,12 @@ public class User
 		//this.friends = new ArrayList<>();
 	}
 	
+	public User(Integer id) 
+	{
+		super();
+		this.id = id;
+	}
+	
 	public User(Integer id, String username, String password, String email) 
 	{
 		super();
@@ -58,12 +61,7 @@ public class User
 		//this.friends = new ArrayList<>();
 	}
 	
-	public User(Integer id) {
-		super();
-		this.id = id;
-	}
-
-	public Integer getId() 
+	public Integer getId()
 	{
 		return id;
 	}

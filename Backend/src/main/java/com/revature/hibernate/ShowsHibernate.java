@@ -1,4 +1,4 @@
-package com.revature.hibernate.data;
+package com.revature.hibernate;
 
 import java.util.HashSet;
 import java.util.List;
