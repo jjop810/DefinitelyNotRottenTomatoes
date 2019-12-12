@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -16,6 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="login")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class User 
 {
 	@Id
@@ -50,6 +53,11 @@ public class User
 		this.friends = new ArrayList<>();
 	}
 	
+	public User(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	public Integer getId() 
 	{
 		return id;

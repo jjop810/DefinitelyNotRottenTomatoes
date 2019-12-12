@@ -16,7 +16,10 @@ public class Admin extends User
 	public Admin() {
 		super();
 	}
-
+	
+	public Admin(Integer id) {
+		super(id);
+	}
 	public Admin(Integer id, String username, String password, String email, String title) {
 		super(id, username, password, email);
 		this.title = title;
