@@ -19,12 +19,12 @@ public class ShowReview {
 	@SequenceGenerator(name = "showReview", sequenceName = "showReview_seq", allocationSize = 1)
 	
 	private Integer id;
-	private User u;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
-	private Shows s;
+	private User u;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "showId")
+	private Shows s;
 	private String review;
 	
 	public ShowReview() {
