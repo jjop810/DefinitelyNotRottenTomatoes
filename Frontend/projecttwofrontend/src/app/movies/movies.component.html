@@ -1,15 +1,15 @@
 <p>movies works!</p>
 
-<div *ngIf="movie">
+<!--<div *ngIf="m">-->
 <p>ID: {{movie.id}}</p>
 <p>Title: {{movie.title}}</p>
-<p>Title: {{movie.movieLength}}</p>
-<p>Title: {{movie.title}}</p>
-</div>
+<p>Length: {{movie.movieLength}}</p>
+<p>Image URL: {{movie.imgUrl}}</p>
+
 <div>
-Title: <input type="text" [(ngModel)]="movie.title"> <br>
-Length: <input type="number" [(ngModel)]="movie.movieLength"> <br>
-Image URL: <input type="text" [(ngModel)]="movie.imgUrl"> <br>
+Title: <input type="text" [(ngModel)]="m.title"> <br>
+Length: <input type="number" [(ngModel)]="m.movieLength"> <br>
+Image URL: <input type="text" [(ngModel)]="m.imgUrl"> <br>
  
 <button type="button" (click)="addMovie()">Submit</button>
 

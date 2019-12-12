@@ -9,7 +9,7 @@ import com.revature.data.MoviesDAO;
 @Service
 public class MoviesService {
 
-	/*
+	
 	@Autowired
 	private MoviesDAO md;
 	
@@ -33,5 +33,5 @@ public class MoviesService {
 		md.updateMovie(mov);
 	}
 	
-	*/
+	
 }

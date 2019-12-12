@@ -8,7 +8,7 @@ import com.revature.data.ShowsDAO;
 
 @Service
 public class ShowsService {
-/*
+
 	@Autowired
 	private ShowsDAO sd;
 	
@@ -31,6 +31,6 @@ public class ShowsService {
 	public void updateShow(Shows show) {
 		sd.updateShow(show);
 	}
-	*/
+	
 	
 }
