@@ -18,10 +18,19 @@ export class MoviesComponent implements OnInit {
   ngOnInit() { 
   }
 
-  addMovie() {
+  addMovie() { 
+    console.log()
+    console.log("this is component var: "+this.mov);
     this.movieService.addMovie(this.mov).subscribe(
       resp => {
         this.created.emit(true);
       });
+    }
+
+
+    submitted() {
+    
+      this.mov = new Movies();
+      
     }
 }

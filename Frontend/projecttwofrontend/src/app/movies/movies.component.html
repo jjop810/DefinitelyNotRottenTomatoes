@@ -6,11 +6,10 @@
     <p>Length: {{mov.movieLength}}</p>
     <p>Image URL: {{mov.imgUrl}}</p>
 </div>
-<div *ngIf="movies">
-    Title: <input type="text" [(ngModel)]="mov.title"> <br>
-    Length: <input type="text" [(ngModel)]="mov.movieLength"> <br>
-    Image URL: <input type="text" [(ngModel)]="mov.imgUrl"> <br>
+<div *ngIf="mov">
+    Title: <input type="text" [(ngModel)]="title"> <br>
+    Length: <input type="text" [(ngModel)]="movieLength"> <br>
+    Image URL: <input type="text" [(ngModel)]="imgUrl"> <br>
 
     <button type="button" (click)="addMovie()">Submit</button>
-
 </div>
