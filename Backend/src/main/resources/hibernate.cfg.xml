@@ -19,6 +19,7 @@
 		
 		<!-- Annotation Mappings -->
 		
+<<<<<<< HEAD
 		<mapping class="com.revature.beans.Shows"/>
 		<mapping class="com.revature.beans.Movies"/>
 		
@@ -31,5 +32,15 @@
 		<mapping class="com.revature.beans.InvoiceLine"/>
 		<mapping class="com.revature.beans.Purchase"/>
 		<mapping class="com.revature.beans.User"/>-->
+=======
+		<mapping class="com.revature.beans.Admin"/>
+		<mapping class="com.revature.beans.MovieRating"/>
+		<mapping class="com.revature.beans.MovieReview"/>
+		<mapping class="com.revature.beans.Movies"/>
+		<mapping class="com.revature.beans.ShowRating"/>
+		<mapping class="com.revature.beans.ShowReview"/>
+		<mapping class="com.revature.beans.Shows"/>
+		<mapping class="com.revature.beans.User"/>
+>>>>>>> 0882ede99d86b4ba9adf2ab4f1349a0793f4c029
 	</session-factory>
 </hibernate-configuration>
