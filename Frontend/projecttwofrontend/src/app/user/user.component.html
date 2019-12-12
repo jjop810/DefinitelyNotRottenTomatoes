@@ -1,0 +1,35 @@
+<p>---inside--user !</p>
+<div *ngIf="user">
+<p> Username: {{user.username}}</p>
+<p>Password: {{user.password}}</p>
+<p>ID: {{user.id}}</p>
+</div>
+
+
+ <p>After user name</p>
+
+<div>
+    Username: <input type="text" [(ngModel)]="username"> <br><br>
+    Password: <input type="text" [(ngModel)]="password"><br><br>
+    Id: <input type="number" [(ngModel)]="id"><br>
+    <br>
+    <button type="button" (click)="login()">Login</button>
+    <p>logged in</p>
+</div>
+<!-- <p>nothing{{name}}</p>
+<button (click)="change()">change</button> -->
+
+<!-- <div>
+    <p>Here must be the list</p>
+    <div *ngFor="let user of colors">
+        
+        <li>User {{user}}</li>
+
+    </div>
+    <div *ngFor="let u of users">
+        
+            <li>User {{u.name}}</li>
+    
+        </div>
+    <p>list end</p>
+</div>  -->
