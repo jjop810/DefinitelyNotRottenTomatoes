@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import com.revature.beans.Shows;
 import com.revature.data.ShowsDAO;
 
-@Service
+//@Service
 public class ShowsService {
 
-	@Autowired
+	//@Autowired
 	private ShowsDAO sd;
 	
 	public Shows getShow(String name) {

@@ -9,7 +9,7 @@ import { Movies } from '../movies';
 })
 export class MovieListComponent implements OnInit {
 
-  m:Movies;
+  mov:Movies;
   movs:Movies[];
 
   constructor(private movieService: MoviesService) { }
@@ -18,7 +18,7 @@ export class MovieListComponent implements OnInit {
     this.movieService.getMovies().subscribe(resp =>{
       this.movs = resp;
     });
-    this.m = new Movies();
+    this.mov = new Movies();
   }
 
 }

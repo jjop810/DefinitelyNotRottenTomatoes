@@ -1,9 +1,10 @@
-package com.revature.hibernate.data;
+package com.revature.hibernate;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -18,6 +19,8 @@ import com.revature.utils.LogUtil;
 
 @Component
 public class MoviesHibernate implements MoviesDAO {
+	
+	private static Logger log = Logger.getLogger(MoviesHibernate.class);
 	
 	@Autowired
 	private HibernateUtil hu;
@@ -95,6 +98,7 @@ public class MoviesHibernate implements MoviesDAO {
 
 	@Override
 	public Set<Movies> getMovies() {
+		log.trace("attempting to open session and get movies from: "+ MoviesHibernate.class);
 		Session s = hu.getSession();
 		String query = "from Movies";
 		Query<Movies> q = s.createQuery(query, Movies.class);

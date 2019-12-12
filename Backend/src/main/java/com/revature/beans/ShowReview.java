@@ -17,7 +17,6 @@ public class ShowReview {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "showReview")
 	@SequenceGenerator(name = "showReview", sequenceName = "showReview_seq", allocationSize = 1)
-	
 	private Integer id;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")

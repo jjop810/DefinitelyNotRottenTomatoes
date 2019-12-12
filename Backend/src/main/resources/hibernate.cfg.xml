@@ -4,7 +4,7 @@
 	<session-factory>
 		<!-- JDBC set up -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@jjrevdata.c9ga4ppggkty.us-east-2.rds.amazonaws.com:1521:orcl</property>
 		<property name="hibernate.connection.username">projecttwo</property>
 		<property name="hibernate.connection.password">pass</property>
 		
@@ -31,17 +31,6 @@
 		<mapping class="com.revature.beans.Shows"/>
 		<mapping class="com.revature.beans.User"/>
 
-
-		
-		<!-- <mapping class="com.revature.beans.Address"/> 
-		<mapping class="com.revature.beans.Author"/>
-		<mapping class="com.revature.beans.Book"/>
-		<mapping class="com.revature.beans.Customer"/>
-		<mapping class="com.revature.beans.Employee"/>
-		<mapping class="com.revature.beans.Genre"/>
-		<mapping class="com.revature.beans.InvoiceLine"/>
-		<mapping class="com.revature.beans.Purchase"/>
-		<mapping class="com.revature.beans.User"/>-->
 
 	</session-factory>
 </hibernate-configuration>

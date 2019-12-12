@@ -10,7 +10,7 @@ import { MoviesService } from '../movies.service';
 })
 export class MoviesComponent implements OnInit {
   @Output() created = new EventEmitter<Boolean>();
-  @Input() m: Movies;
+  @Input() mov: Movies;
 
 
   constructor(private movieService: MoviesService) { }
@@ -19,7 +19,7 @@ export class MoviesComponent implements OnInit {
   }
 
   addMovie() {
-    this.movieService.addMovie(this.m).subscribe(
+    this.movieService.addMovie(this.mov).subscribe(
       resp => {
         this.created.emit(true);
       });
