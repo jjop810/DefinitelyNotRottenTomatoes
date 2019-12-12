@@ -16,7 +16,6 @@ public class Shows {
 	@SequenceGenerator(name="shows", sequenceName="shows_seq", allocationSize=1)
 	Integer id;
 	String title;
-	
 	Integer rating;
 	String imgUrl;
 	public Shows() {
