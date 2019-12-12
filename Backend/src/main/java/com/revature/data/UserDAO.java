@@ -1,5 +1,5 @@
 package com.revature.data;
 
-public class LoginDao {
+public class UserDAO {
 
 }
