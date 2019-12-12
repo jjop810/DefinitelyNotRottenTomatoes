@@ -1,5 +1,9 @@
 package com.revature.hibernate.data;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -72,7 +76,7 @@ public class MoviesHibernate implements MoviesDAO {
 	}
 
 	@Override
-	public void updateMovie(Movies mov) {
+	public Movies updateMovie(Movies mov) {
 		Session s = hu.getSession();
 		Transaction t = null;
 		try{
@@ -86,6 +90,17 @@ public class MoviesHibernate implements MoviesDAO {
 		} finally {
 			s.close();
 		}
+		return mov;
+	}
+
+	@Override
+	public Set<Movies> getMovies() {
+		Session s = hu.getSession();
+		String query = "from Movies";
+		Query<Movies> q = s.createQuery(query, Movies.class);
+		List<Movies> movies = q.list();
+		s.close();
+		return new HashSet<Movies>(movies);
 	}
 
 }

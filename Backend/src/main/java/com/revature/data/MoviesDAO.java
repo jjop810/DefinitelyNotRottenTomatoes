@@ -1,5 +1,7 @@
 package com.revature.data;
 
+import java.util.Set;
+
 import com.revature.beans.Movies;
 
 public interface MoviesDAO {
@@ -26,6 +28,8 @@ public int addMovie(Movies mov);
 	 * @return the movie from the database that matches the name, and id
 	 */
 	public Movies getMovie(Movies mov);
+	
+	public Set<Movies> getMovies();
 	/**
 	 * returns a movie object from the database
 	 * 
@@ -40,5 +44,5 @@ public int addMovie(Movies mov);
 	 * 
 	 * @param movies the Movies to be updated
 	 */
-	public void updateMovie(Movies mov);
+	public Movies updateMovie(Movies mov);
 }

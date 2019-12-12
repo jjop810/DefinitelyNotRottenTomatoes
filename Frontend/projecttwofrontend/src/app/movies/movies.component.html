@@ -1,0 +1,16 @@
+<p>movies works!</p>
+
+<div *ngIf="movie">
+<p>ID: {{movie.id}}</p>
+<p>Title: {{movie.title}}</p>
+<p>Title: {{movie.movieLength}}</p>
+<p>Title: {{movie.title}}</p>
+</div>
+<div>
+Title: <input type="text" [(ngModel)]="movie.title"> <br>
+Length: <input type="number" [(ngModel)]="movie.movieLength"> <br>
+Image URL: <input type="text" [(ngModel)]="movie.imgUrl"> <br>
+ 
+<button type="button" (click)="addMovie()">Submit</button>
+
+</div>

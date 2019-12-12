@@ -1,11 +1,14 @@
 package com.revature.hibernate.data;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-
 
 import com.revature.beans.Shows;
 import com.revature.data.ShowsDAO;
@@ -60,6 +63,16 @@ public class ShowsHibernate implements ShowsDAO{
 		s.close();
 		return ret;
 	}
+	
+	@Override
+	public Set<Shows> getShows(){
+		Session s = hu.getSession();
+		String query = "from Shows";
+		Query<Shows> q = s.createQuery(query, Shows.class);
+		List<Shows> ls = q.list();
+		s.close();
+		return new HashSet<Shows>(ls);
+	}
 
 	@Override
 	public Shows getShowById(Shows mov) {
@@ -70,7 +83,7 @@ public class ShowsHibernate implements ShowsDAO{
 	}
 
 	@Override
-	public void updateShow(Shows mov) {
+	public Shows updateShow(Shows mov) {
 		Session s = hu.getSession();
 		Transaction t = null;
 		try{
@@ -84,6 +97,8 @@ public class ShowsHibernate implements ShowsDAO{
 		} finally {
 			s.close();
 		}
+		
+		return mov;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.revature.data;
 
+import java.util.Set;
+
 import com.revature.beans.Shows;
 
 public interface ShowsDAO {
@@ -25,6 +27,9 @@ public int addShow(Shows mov);
 	 * @return the Show from the database that matches the name, director, and year
 	 */
 	public Shows getShow(Shows mov);
+	
+	public Set<Shows> getShows();
+	
 	/**
 	 * returns a Show object from the database
 	 * 
@@ -39,5 +44,5 @@ public int addShow(Shows mov);
 	 * 
 	 * @param Shows the Shows to be updated
 	 */
-	public void updateShow(Shows mov);
+	public Shows updateShow(Shows mov);
 }
