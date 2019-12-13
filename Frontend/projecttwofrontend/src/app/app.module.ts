@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { AddMoviesComponent } from './add-movies/add-movies.component';
-import { ShowsComponent } from './shows/shows.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
+import { AddMoviesComponent } from './movies/add-movies/add-movies.component';
+import { AddShowsComponent } from './shows/add-shows/add-shows.component';
+import { MovieListComponent } from './movies/movie-list/movie-list.component';
 
 
 
@@ -22,7 +22,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
     UserComponent,
     UserListComponent,
     AddMoviesComponent,
-    ShowsComponent,
+    AddShowsComponent,
     MovieListComponent
 
   ],

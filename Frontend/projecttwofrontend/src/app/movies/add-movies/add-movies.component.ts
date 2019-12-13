@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Movies } from '../movies';
-import { MoviesService } from '../movies.service';
+import { Movies } from '../shared/movies';
+import { MoviesService } from '../shared/movies.service';
 
 
 @Component({
@@ -27,8 +27,8 @@ export class AddMoviesComponent implements OnInit {
       resp => {
         this.created.emit(true);
       });
-      (<HTMLInputElement> document.getElementById("btnExcel")).disabled = true;
-      location.reload();
+      (<HTMLInputElement> document.getElementById("submit")).disabled = true;
+      //location.reload();
     }
 
 

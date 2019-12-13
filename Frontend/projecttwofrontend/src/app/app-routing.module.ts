@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddMoviesComponent } from './add-movies/add-movies.component';
+import { AddMoviesComponent } from './movies/add-movies/add-movies.component';
+import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
 {
   path: 'movies/add',
   component: AddMoviesComponent
+},
+{
+  path: 'shows/add',
+  component: AddShowsComponent
 }
 
 

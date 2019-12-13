@@ -9,13 +9,15 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Shows;
 import com.revature.data.ShowsDAO;
 import com.revature.utils.HibernateUtil;
 import com.revature.utils.LogUtil;
 
-public class ShowsHibernate implements ShowsDAO{
+@Component
+public class ShowsHibernate implements ShowsDAO  {
 	
 	@Autowired
 	private HibernateUtil hu;
