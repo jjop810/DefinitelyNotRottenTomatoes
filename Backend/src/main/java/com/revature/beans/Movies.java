@@ -1,15 +1,20 @@
 package com.revature.beans;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table
-
 public class Movies {
 	
 	@Id
@@ -20,12 +25,15 @@ public class Movies {
 	Integer movieLength;
 	Integer rating;
 	String imgUrl;
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="movieGenre",
+		joinColumns=@JoinColumn(name="movieid"),
+		inverseJoinColumns=@JoinColumn(name="genreid"))
+	private Set<Genre> genres;
 	
 	public Movies() {
 		super();
-		
 	}
-
 	public Movies(Integer id, String title, Integer movieLength, Integer rating, String imgUrl) {
 		super();
 		this.id = id;
@@ -74,11 +82,17 @@ public class Movies {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-
+	public Set<Genre> getGenres() {
+		return genres;
+	}
+	public void setGenres(Set<Genre> genres) {
+		this.genres = genres;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((genres == null) ? 0 : genres.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((imgUrl == null) ? 0 : imgUrl.hashCode());
 		result = prime * result + ((movieLength == null) ? 0 : movieLength.hashCode());
@@ -86,7 +100,6 @@ public class Movies {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -96,6 +109,11 @@ public class Movies {
 		if (getClass() != obj.getClass())
 			return false;
 		Movies other = (Movies) obj;
+		if (genres == null) {
+			if (other.genres != null)
+				return false;
+		} else if (!genres.equals(other.genres))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -123,15 +141,11 @@ public class Movies {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
 		return "Movies [id=" + id + ", title=" + title + ", movieLength=" + movieLength + ", rating=" + rating
-				+ ", imgUrl=" + imgUrl + "]";
+				+ ", imgUrl=" + imgUrl + ", genres=" + genres + "]";
 	}
-	
-	
-	
-	
 
+	
 }
