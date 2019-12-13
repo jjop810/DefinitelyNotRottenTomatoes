@@ -7,13 +7,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login.service';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     UserListComponent,
-    AddUserComponent
+    AddUserComponent,
+    LoginComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,9 @@ import { AddUserComponent } from './add-user/add-user.component';
     FormsModule
     
   ],
-  providers: [],
+  providers: [
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

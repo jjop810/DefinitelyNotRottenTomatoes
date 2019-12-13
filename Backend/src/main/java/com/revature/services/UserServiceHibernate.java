@@ -42,8 +42,7 @@ public class UserServiceHibernate implements UserService{
 	}
 
 	@Override
-	public void addEmployee(User u) {
-		// TODO Auto-generated method stub
+	public void addUser(User u) {
 		
 	}
 
