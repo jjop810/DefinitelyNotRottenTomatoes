@@ -1,0 +1,9 @@
+<p>add-user works!</p>
+
+<div *ngIf="user">
+        Username: <input type="text" [(ngModel)]="user.username"> <br><br>
+        Password: <input type="text" [(ngModel)]="user.password"> <br><br>
+        Email: <input type="text" [(ngModel)]="user.email"> <br><br>
+        <button type="button" (click)="addUser()">Create User</button>
+
+</div>

@@ -20,4 +20,10 @@ export class UserListComponent implements OnInit {
     this.user = new User();
   }
 
+  submitted(){
+    this.users.push(this.user);
+    this.user = new User();
+
+  }
+
 }

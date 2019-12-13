@@ -7,27 +7,10 @@ import { User } from '../user';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  @Input() user: User;
 
-
-  public colors = ['red', 'blue', 'green'];
-
-  // public username: string;
-  // public password: string;
-  // public i: number;
-  // @Output() created = new EventEmitter<Boolean>();
-   @Input() user: User;
   constructor() { }
 
   ngOnInit() {
-    // this.userService.getUsers().subscribe(resp =>{
-    //   this.users = resp;
-    // });
   }
-  login(){
-    
-  }
-  change(){
-    //this.name = 'works';
-  }
-
 }

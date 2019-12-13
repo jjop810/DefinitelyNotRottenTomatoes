@@ -2,15 +2,19 @@ package com.revature.controllers;
 
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.User;
@@ -30,6 +34,33 @@ public class UserController {
 		return ResponseEntity.ok(ud.getUsers());
 		
 	}
+	
+//	@GetMapping
+//	public ResponseEntity<User> login(HttpSession session) {
+//		User u = (User) session.getAttribute("loggedUser");
+//		if(u == null)
+//			return ResponseEntity.status(401).build();
+//		return ResponseEntity.ok(u);
+//	}
+
+	
+//	@PostMapping
+//	public ResponseEntity<User> login(@RequestParam String username,@RequestParam String password, HttpSession session) {
+//		User u = ud.getUser(username, password);
+//		if(u==null) {
+//			return ResponseEntity.status(401).build();
+//		}
+//		session.setAttribute("loggedUser", u);
+//		return ResponseEntity.ok(u);
+//
+//	}
+//	
+//	@DeleteMapping
+//	public ResponseEntity<Void> logout(HttpSession session) {
+//		session.invalidate();
+//		return ResponseEntity.noContent().build();
+//	}
+
 	
 	@GetMapping(value = "{id}")
 	public ResponseEntity<User> getRanger(@PathVariable Integer id) {
