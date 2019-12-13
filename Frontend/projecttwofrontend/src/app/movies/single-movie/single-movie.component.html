@@ -1,0 +1,10 @@
+<div class="container border" *ngIf="movies">
+   <h3>{{movies.title}}</h3>
+   <img *ngIf="movies.imgUrl" class="card-img-top img-responsive col" [src]="movies.imgUrl" alt="cover image for Movie">
+          
+    <h5>Genres:</h5>
+    <ul>
+      <li *ngFor="let m of movies.genres">{{m.genreName}}</li>
+    </ul>>
+  </div>
+  
