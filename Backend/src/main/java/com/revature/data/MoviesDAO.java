@@ -6,5 +6,7 @@ import com.revature.beans.Movies;
 
 
 public interface MoviesDAO {
-	Set<Movies> getMovies();
+	Set<Movies> getMovies(Integer page);
+	
+	Integer getLastPage();
 }

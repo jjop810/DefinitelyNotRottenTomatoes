@@ -1,10 +1,35 @@
-<div class="container border" *ngIf="movies">
-   <h3>{{movies.title}}</h3>
-   <img *ngIf="movies.imgUrl" class="card-img-top img-responsive col" [src]="movies.imgUrl" alt="cover image for Movie">
-          
-    <h5>Genres:</h5>
-    <ul>
+
+  <div class="container border" *ngIf="movies">
+    <div class="row">
+        <div class="col-sm border card">
+          <h4 class="border border-dark mx-auto">{{movies.title}}</h4>
+          <div class="row">
+            <img style="width: 200px; height: 250px;" *ngIf="movies.imgUrl" [src]="movies.imgUrl" alt="cover image for Movie">
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="row">
+            <div class="col">
+              <h5>Duration in minutes:</h5>
+            </div>
+            <div class="col">
+              <p>{{movies.movieLength}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5>Rating:</h5>
+            </div>
+            <div class="col">
+              <p>{{movies.rating}}</p>
+            </div>
+          </div>
+          <br>
+          <h5>Genres:</h5>
+         <ul>
       <li *ngFor="let m of movies.genres">{{m.genreName}}</li>
-    </ul>>
+      </ul>
+          </div>
+      </div>
   </div>
   

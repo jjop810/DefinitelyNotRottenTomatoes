@@ -17,22 +17,34 @@ public class MoviesHibernate implements MoviesDAO {
 	@Autowired
 	private HibernateUtil hu;
 	
+	private Integer lastPageNumber = 0;
 	@Override
-	public Set<Movies> getMovies() {
+	public Set<Movies> getMovies(Integer page) {
 		Session s = hu.getSession();
-		
-		int pageSize = 100;
+		int pageSize = 50;
 		String count = "Select count (m.id) from Movies m";
-		Query countQuery = s.createQuery(count);
-		Long countResults = (Long) countQuery.uniqueResult();
-		int lastPageNumber = (int) (Math.ceil(countResults / pageSize));
-		System.out.println(count);
-		String query = "from Movies";
+		Query<Long> countQuery = s.createQuery(count, Long.class);
+		Long countResults = countQuery.uniqueResult();
+		lastPageNumber = (int) (Math.ceil(countResults / pageSize));
+		if(page > lastPageNumber)
+		{
+			page = lastPageNumber;
+		}
+		else if(page < 1)
+		{
+			page = 1;
+		}
+		String query = "from Movies order by title asc";
 		Query<Movies> q = s.createQuery(query, Movies.class);
-		q.setFirstResult((lastPageNumber - 1) * pageSize);
+		q.setFirstResult((page - 1) * pageSize);
 		q.setMaxResults(pageSize);
 		List<Movies> movies = q.list();
 		s.close();
 		return new HashSet<Movies>(movies);
+	}
+	@Override
+	public Integer getLastPage() {
+		System.out.println("test" + lastPageNumber);
+		return lastPageNumber;
 	}
 }

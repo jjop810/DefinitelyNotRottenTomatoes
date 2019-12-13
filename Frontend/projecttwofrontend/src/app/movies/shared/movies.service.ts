@@ -9,13 +9,19 @@ import { Movies } from './movies';
   providedIn: 'root'
 })
 export class MoviesService {
-  private appUrl = this.url.getUrl() + '/movies';
+  private appUrl = this.url.getUrl() + '/movies/';
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private url: UrlService, private http: HttpClient) { }
 
-  getMovies(): Observable<Movies[]> {
-    return this.http.get(this.appUrl, {withCredentials: true} ).pipe(
+  getMovies(page: number): Observable<Movies[]> {
+    return this.http.get(this.appUrl + page, {withCredentials: true} ).pipe(
       map( resp => resp as Movies[])
+    );
+  }
+
+  getLastPage(): Observable<number> {
+    return this.http.get(this.appUrl, {withCredentials: true} ).pipe(
+      map( resp => resp as number)
     );
   }
 

@@ -1,1 +1,4 @@
+<button (click)="previousPage()">Previous</button>
+Current Page: {{page}}
+<button (click)="nextPage()">Next</button>
 <app-single-movie *ngFor="let m of movies" [movies]="m"></app-single-movie>
