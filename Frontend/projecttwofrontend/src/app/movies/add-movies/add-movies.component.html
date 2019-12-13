@@ -1,10 +1,11 @@
 <p>movies works!</p>
 
+<div>
+    <div id="submitdiv">
+        Title:<br> <input type="text" [(ngModel)]="movl.title"> <br>
+        Length: <input type="text" [(ngModel)]="movl.movieLength"> <br>
+        Image URL: <input type="text" [(ngModel)]="movl.imgUrl"> <br>
 
-
-    Title: <input type="text" [(ngModel)]="movl.title"> <br>
-    Length: <input type="text" [(ngModel)]="movl.movieLength"> <br>
-    Image URL: <input type="text" [(ngModel)]="movl.imgUrl"> <br>
-
-    <button id="submit" type="button" (click)="addMovie()">Submit</button>
-
+        <button id="submit" type="button" (click)="addMovie()">Submit</button>
+    </div>
+</div>
