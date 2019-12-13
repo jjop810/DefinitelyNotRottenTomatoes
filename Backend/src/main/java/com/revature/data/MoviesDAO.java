@@ -36,7 +36,7 @@ public int addMovie(Movies mov);
 	 * @param u previously created movie object for updating with movie information
 	 * @return the movie from the database that matches the name, director, and year
 	 */
-	public Movies getMovieById(Movies mov);
+	public Movies getMovieById(Integer id);
 	
 	
 	/**

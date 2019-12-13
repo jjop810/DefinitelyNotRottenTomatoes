@@ -10,6 +10,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AddMoviesComponent } from './movies/add-movies/add-movies.component';
 import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
+import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
+import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 
 
 
@@ -23,7 +25,9 @@ import { MovieListComponent } from './movies/movie-list/movie-list.component';
     UserListComponent,
     AddMoviesComponent,
     AddShowsComponent,
-    MovieListComponent
+    MovieListComponent,
+    EditMoviesComponent,
+    EditShowsComponent
 
   ],
   imports: [

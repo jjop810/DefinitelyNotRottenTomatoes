@@ -46,9 +46,9 @@ public class MoviesController {
 		rd.addMovie(r);
 		return ResponseEntity.status(201).body(r);
 	}
-	@PutMapping(value="{title}")
-	public ResponseEntity<Movies> updateMovies(@PathVariable String title, @RequestBody Movies r) {
-		if(rd.getMovie(title) == null)
+	@PutMapping(value="{id}")
+	public ResponseEntity<Movies> updateMovies(@PathVariable Integer id, @RequestBody Movies r) {
+		if(rd.getMovieById(id) == null)
 			return ResponseEntity.status(405).body(null);
 		return ResponseEntity.ok(rd.updateMovie(r));
 	}

@@ -77,9 +77,9 @@ public class ShowsHibernate implements ShowsDAO  {
 	}
 
 	@Override
-	public Shows getShowById(Shows mov) {
+	public Shows getShowById(Integer id) {
 		Session s = hu.getSession();
-		Shows ret = s.get(Shows.class, mov.getId());
+		Shows ret = s.get(Shows.class, id);
 		s.close();
 		return ret;
 	}

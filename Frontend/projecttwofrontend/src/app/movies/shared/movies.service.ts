@@ -19,7 +19,7 @@ export class MoviesService {
     );
   }
   public getMovie(title: string): Observable<Movies> {
-    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movies' +title;
+    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movies/' +title;
     return this.http.get(url, {withCredentials: true}).pipe(
       map( resp => resp as Movies )
     );
@@ -34,7 +34,7 @@ export class MoviesService {
     );
   }
   public updateMovie(movie: Movies): Observable<Movies> {
-    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movies' + movie.id;
+    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movies/' + movie.id;
     const body = JSON.stringify(movie);
     return this.http.put(url, body, {headers: this.headers, withCredentials: true} ).pipe(
       map( resp => resp as Movies )

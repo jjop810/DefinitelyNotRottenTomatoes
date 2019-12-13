@@ -71,20 +71,21 @@ public class MoviesHibernate implements MoviesDAO {
 	}
 
 	@Override
-	public Movies getMovieById(Movies mov) {
+	public Movies getMovieById(Integer id) {
 		Session s = hu.getSession();
-		Movies ret = s.get(Movies.class, mov.getId());
+		Movies ret = s.get(Movies.class, id);
 		s.close();
 		return ret;
 	}
 
 	@Override
 	public Movies updateMovie(Movies mov) {
+		log.trace("Update using this object: "+mov.getId());
 		Session s = hu.getSession();
 		Transaction t = null;
 		try{
 			t = s.beginTransaction();
-			s.update(mov.getId());
+			s.update(mov);
 			t.commit();
 		} catch(Exception e) {
 			if(t != null)

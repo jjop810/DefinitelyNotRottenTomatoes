@@ -1,0 +1,14 @@
+<p>edit-movies works!</p>
+
+
+<div>
+    <div id="submitdiv">
+        ID: <br> <input id="id" type="text" [(ngModel)]="mov.id" disabled="true"> <br>
+        Title:<br> <input id="title" type="text" [(ngModel)]="mov.title"> <br>
+        Length: <input id="length" type="text" [(ngModel)]="mov.movieLength"> <br>
+        Rating: <input id="rating" type="text" [(ngModel)]="mov.rating"> <br>
+        Image URL: <input id="imgurl" type="text" [(ngModel)]="mov.imgUrl"> <br>
+
+        <button id="submit" type="button" (click)="editMovie()">Submit</button>
+    </div>
+</div>

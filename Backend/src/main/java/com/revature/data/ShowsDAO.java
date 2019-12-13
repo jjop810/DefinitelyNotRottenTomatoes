@@ -36,7 +36,7 @@ public int addShow(Shows mov);
 	 * @param u previously created Show object for updating with Show information
 	 * @return the Show from the database that matches the name, director, and year
 	 */
-	public Shows getShowById(Shows mov);
+	public Shows getShowById(Integer id);
 	
 	
 	/**
