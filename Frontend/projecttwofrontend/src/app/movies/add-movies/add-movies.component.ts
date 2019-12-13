@@ -23,11 +23,16 @@ export class AddMoviesComponent implements OnInit {
     //console.log("created: "+this.created);
     console.log("this is component var: ");
     console.log(this.movl.title);
-    this.movieService.addMovie(this.movl).subscribe(
-      resp => {
-        this.created.emit(true);
-      });
-      (<HTMLInputElement> document.getElementById("submit")).disabled = true;
+    if(this.movl.title){
+      this.movieService.addMovie(this.movl).subscribe(
+        resp => {
+          this.created.emit(true);
+        });
+        (<HTMLInputElement> document.getElementById("submit")).disabled = true;
+    }else{
+      console.log("You didn't put in a title!");
+    }
+    
       //location.reload();
     }
 
