@@ -32,19 +32,14 @@ public class MoviesController {
 	public ResponseEntity<Integer> getLastPage() {
 		return ResponseEntity.ok(md.getLastPage());
 	}
-	
+	/*
 	@GetMapping(value="{title}")
 	public ResponseEntity<Movies> getMovie(@PathVariable String title) {
 		Movies r = md.getMovie(title);
 		if(r==null)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(r);
-	}
-	
-	@GetMapping
-	public ResponseEntity<Set<Movies>> getMovies() {
-		return ResponseEntity.ok(md.getMovies());
-	}
+	}*/
 	
 	@PostMapping
 	public ResponseEntity<Movies> addMovie(@RequestBody Movies r) {

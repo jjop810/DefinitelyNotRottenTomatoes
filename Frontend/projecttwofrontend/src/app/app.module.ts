@@ -10,7 +10,6 @@ import { SingleMovieComponent } from './movies/single-movie/single-movie.compone
 import { UrlService } from './shared/url.service';
 import { MoviesService } from './movies/shared/movies.service';
 import { ShowsComponent } from './shows/shows.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
 import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -30,7 +29,6 @@ import { HomeComponent } from './home/home.component';
     MoviesComponent,
     SingleMovieComponent,
     ShowsComponent,
-    MovieListComponent,
     HomeComponent
   ],
   imports: [
