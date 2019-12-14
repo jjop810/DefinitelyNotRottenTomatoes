@@ -1,0 +1,32 @@
+
+<div class="box-form">
+<ng-container *ngIf="!loggedUser; else display">
+    
+        Username: <input type="text" [(ngModel)]="username">
+    
+        Password: <input type="password" [(ngModel)]="password" (keydown.enter)="login()">
+    
+    
+        <button (click)= "login()">Login</button>
+    
+   
+
+</ng-container>
+
+<ng-template #display>
+    
+            <div *ngIf="loggedUser.admin; else normaluser">
+                <span>WELCOME {{loggedUser.admin.tittle}}!</span>
+            </div>
+        
+            <button (click)="logout()">Logout</button>
+    
+</ng-template>
+<ng-template #normaluser>
+    <div>
+        <span>Welcome user : {{loggedUser.user.username}}!</span>
+    </div>
+
+</ng-template>
+
+</div>

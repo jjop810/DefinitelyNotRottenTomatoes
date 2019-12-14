@@ -1,0 +1,54 @@
+<div class="jumbotron" style="margin-bottom:0px;">
+    <h1>Movies and Shows</h1>
+    <p>Search, Review, Rate...</p>
+</div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <!-- toggler button -->
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target"> <span class="navbar-toggler-icon"></span></button>
+    
+
+    <!-- brand -->
+    <a class="navbar-brand" routerLink="/home">
+        <span class="badge-danger" style="padding: 5px;">{{title}}</span>
+    </a>
+
+    <!-- things getting collapsed -->
+    <div class="collapse navbar-collapse" id="collapse_target">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a *ngIf="route.url!=='/movies'" class="nav-link" routerLink="/movies" >Movies</a>
+        </li>
+        <li class="nav-item">
+            <a *ngIf="route.url!=='/shows'" class="nav-link" routerLink="/shows" >Shows</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="" >Search Movies</a>
+        </li>
+        <li *ngIf="isAdmin()" class="nav-item">
+            <a *ngIf="route.url!=='/addmovies'" class="nav-link" routerLink="/addmovies" >Add Movies</a>
+        </li>
+        <li *ngIf="isAdmin()" class="nav-item">
+            <a *ngIf="route.url!=='/addshows'" class="nav-link" routerLink="/addshows" >Add Shows</a>
+        </li>
+        <li *ngIf="isAdmin()&& isUser()" class="nav-item">
+            <a *ngIf="route.url!=='/addfriend'" class="nav-link" routerLink="/addfriend" >Add Friend</a>
+        </li>
+        
+        <li *ngIf="!isAdmin()&& !isUser()" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#droplogin" href="#" >Sign Up
+                <span class="carat"></span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="droplogin">
+                <a class="dropdown-item" routerLink='/createuser'>Create new account</a>
+            </div>
+        </li>
+
+    </ul>
+    <app-login></app-login>
+    
+</div>
+
+</nav>
+
+
+    
