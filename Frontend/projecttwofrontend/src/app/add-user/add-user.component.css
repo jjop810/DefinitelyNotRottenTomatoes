@@ -1,8 +1,9 @@
 .box-form{
-    border: 1px solid black;
+    border: 1px solid rgb(196, 190, 190);
     padding: 10px;
     width:60%;
     margin: auto;
+    
 }
 h3{
     text-align: center;
@@ -10,4 +11,9 @@ h3{
 .loginbox{
     width:60%;
     margin: auto;
+}
+input[type="text"], input[type="password"]{
+    width: 100%;
+    border-radius: 5px;
+
 }

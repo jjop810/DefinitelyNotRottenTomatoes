@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import com.revature.beans.Movies;
 import com.revature.data.MoviesDAO;
 
-@Service
+//@Service
 public class MoviesService {
 
 	
-	@Autowired
+	//@Autowired
 	private MoviesDAO md;
 	
 	public Movies getMovie(String name) {

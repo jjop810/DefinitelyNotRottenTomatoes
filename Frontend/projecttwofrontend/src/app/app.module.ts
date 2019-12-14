@@ -15,6 +15,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     NavBarComponent,
     MoviesComponent,
     ShowsComponent,
-    MovieListComponent
+    MovieListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

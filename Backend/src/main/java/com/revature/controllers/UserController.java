@@ -35,32 +35,6 @@ public class UserController {
 		
 	}
 	
-//	@GetMapping
-//	public ResponseEntity<User> login(HttpSession session) {
-//		User u = (User) session.getAttribute("loggedUser");
-//		if(u == null)
-//			return ResponseEntity.status(401).build();
-//		return ResponseEntity.ok(u);
-//	}
-
-	
-//	@PostMapping
-//	public ResponseEntity<User> login(@RequestParam String username,@RequestParam String password, HttpSession session) {
-//		User u = ud.getUser(username, password);
-//		if(u==null) {
-//			return ResponseEntity.status(401).build();
-//		}
-//		session.setAttribute("loggedUser", u);
-//		return ResponseEntity.ok(u);
-//
-//	}
-//	
-//	@DeleteMapping
-//	public ResponseEntity<Void> logout(HttpSession session) {
-//		session.invalidate();
-//		return ResponseEntity.noContent().build();
-//	}
-
 	
 	@GetMapping(value = "{id}")
 	public ResponseEntity<User> getRanger(@PathVariable Integer id) {

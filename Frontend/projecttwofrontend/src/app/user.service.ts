@@ -20,10 +20,7 @@ export class UserService {
     );
   }
 
-  // public getUsersByUsername(username: string, password: string): Observable<User>{
-  //   return this.http.get('http://localhost:8080/DefinetlyNotRottenTomatos/login', {withCredentials: true}).pipe(
-  //     map( resp => resp as User));
-  // }
+
 
   public getUserById(id: number): Observable<User>{
     const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/login' + id;

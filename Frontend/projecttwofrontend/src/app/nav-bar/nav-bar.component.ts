@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor() { }
+  title = ' Movies and Shows ';
+  constructor(public route: Router, private loginService: LoginService) { }
 
   ngOnInit() {
   }
 
+  isAdmin(): boolean{
+    return this.loginService.isAdmin();
+  }
+  isUser(): boolean{
+    return this.loginService.isUser();
+  }
 }

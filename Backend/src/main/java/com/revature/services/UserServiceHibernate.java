@@ -43,7 +43,7 @@ public class UserServiceHibernate implements UserService{
 
 	@Override
 	public void addUser(User u) {
-		
+		ud.addUser(u);
 	}
 
 }

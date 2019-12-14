@@ -15,7 +15,7 @@ import com.revature.data.ShowsDAO;
 
 public class ShowsController {
 
-	@Autowired
+	//@Autowired
 	private ShowsDAO rd;
 	
 	@GetMapping

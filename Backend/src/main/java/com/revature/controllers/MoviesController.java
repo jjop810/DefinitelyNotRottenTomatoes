@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.revature.beans.Movies;
 import com.revature.data.MoviesDAO;
 
-@RestController
-@CrossOrigin(origins="http://localhost:4200")
-@RequestMapping(value="/movies")
+//@RestController
+//@CrossOrigin(origins="http://localhost:4200")
+//@RequestMapping(value="/movies")
 public class MoviesController {
 
-	@Autowired
+	//@Autowired
 	private MoviesDAO rd;
 	
 	@GetMapping
