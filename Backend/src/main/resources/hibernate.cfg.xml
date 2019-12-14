@@ -8,6 +8,7 @@
 		<property name="hibernate.connection.username">projecttwo</property>
 		<property name="hibernate.connection.password">pass</property>
 		
+		
 		<!-- Hibernate set up -->
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		
@@ -18,20 +19,16 @@
 		<!-- Tell Hibernate where our mappings are -->
 		
 		<!-- Annotation Mappings -->
+
 		<mapping class="com.revature.beans.Admin"/>
-		<!-- 
 		<mapping class="com.revature.beans.MovieRating"/>
 		<mapping class="com.revature.beans.MovieReview"/>
-		 -->
 		<mapping class="com.revature.beans.Movies"/>
-		<!-- 
 		<mapping class="com.revature.beans.ShowRating"/>
 		<mapping class="com.revature.beans.ShowReview"/>
-		 -->
-		
 		<mapping class="com.revature.beans.Shows"/>
 		<mapping class="com.revature.beans.User"/>
 		<mapping class="com.revature.beans.Genre"/>
-		
+
 	</session-factory>
 </hibernate-configuration>
