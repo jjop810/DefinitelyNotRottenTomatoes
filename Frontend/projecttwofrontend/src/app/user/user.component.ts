@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
     });
     this.user = new User();
   }
-  submitted(){
+  submitted() {
     this.users.push(this.user);
     this.user = new User();
 
