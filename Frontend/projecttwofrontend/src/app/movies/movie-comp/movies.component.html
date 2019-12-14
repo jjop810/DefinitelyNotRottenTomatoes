@@ -1,4 +1,6 @@
 <button (click)="previousPage()">Previous</button>
 Current Page: {{page}}
 <button (click)="nextPage()">Next</button>
+Jump to page: <input type="number" min="1" max="10" [(ngModel)]="jumpToPage"/>
+<button (click)="jumpPage()">Go</button>
 <app-single-movie *ngFor="let m of movies" [movies]="m"></app-single-movie>

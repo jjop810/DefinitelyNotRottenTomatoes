@@ -9,6 +9,7 @@ import { MoviesService } from '../shared/movies.service';
 export class MoviesComponent implements OnInit {
   movies: Movies[];
   lastPage: number;
+  jumpToPage: number;
   page = 1;
   constructor(
     private moviesService: MoviesService) { }
@@ -25,7 +26,7 @@ export class MoviesComponent implements OnInit {
       );
       }
       nextPage(): void {
-        console.log(this.lastPage);
+        console.log(this.jumpToPage);
         this.page += 1;
         if (this.page > this.lastPage) {
           this.page = 1;
@@ -47,4 +48,19 @@ export class MoviesComponent implements OnInit {
           }
           );
     }
+    jumpPage(): void {
+      if (this.jumpToPage > this.lastPage) {
+        this.jumpToPage = this.lastPage;
+        this.page = this.jumpToPage;
+      } else if (this.jumpToPage < 1) {
+        this.jumpToPage = 1;
+        this.page = this.jumpToPage;
+      }
+      this.page = this.jumpToPage;
+      this.moviesService.getMovies(this.jumpToPage).subscribe(
+        resp => {
+          this.movies = resp;
+        }
+        );
+  }
 }
