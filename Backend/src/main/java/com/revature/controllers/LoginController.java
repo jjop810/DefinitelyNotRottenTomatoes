@@ -46,7 +46,6 @@ public class LoginController {
 			User u = ud.getUser(username, password);
 			Admin a = ad.getAdmin(username, password);
 		
-		
 		if(u==null && a==null) {
 			return ResponseEntity.status(401).build();
 		}

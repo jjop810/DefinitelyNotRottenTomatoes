@@ -34,7 +34,6 @@ public class User
 	private String password;
 	private String email;
 
-	
 	@JoinTable(
 	        name = "FRIENDS",
 	        joinColumns = @JoinColumn(name = "USERID"),
@@ -42,9 +41,7 @@ public class User
 	)
 	@ManyToMany(fetch=FetchType.LAZY)
 	private List<User> friends;
-	
 
-	
 	public User() 
 	{
 		super();
