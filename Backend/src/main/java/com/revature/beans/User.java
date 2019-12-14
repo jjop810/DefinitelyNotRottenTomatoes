@@ -33,22 +33,22 @@ public class User
 	private String username;
 	private String password;
 	private String email;
-<<<<<<< HEAD
-=======
+
 	
-//	@JoinTable(
-//	        name = "FRIENDS",
-//	        joinColumns = @JoinColumn(name = "USERID"),
-//	        inverseJoinColumns = @JoinColumn(name = "FRIENDID")
-//	)
-//	@ManyToMany(fetch=FetchType.LAZY)
-//	private List<User> friends;
+	@JoinTable(
+	        name = "FRIENDS",
+	        joinColumns = @JoinColumn(name = "USERID"),
+	        inverseJoinColumns = @JoinColumn(name = "FRIENDID")
+	)
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<User> friends;
 	
->>>>>>> 626bb00871d17826833b68b58ae80d183ec7e056
+
+	
 	public User() 
 	{
 		super();
-		//this.friends = new ArrayList<>();
+		this.friends = new ArrayList<>();
 	}
 	
 	public User(Integer id, String username, String password, String email) 
@@ -58,7 +58,7 @@ public class User
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		//this.friends = new ArrayList<>();
+		this.friends = new ArrayList<>();
 	}
 	
 	public Integer getId() 
@@ -101,13 +101,13 @@ public class User
 		this.email = email;
 	}
 	
-//	public List<User> getFriends() {
-//		return friends;
-//	}
-//
-//	public void setFriends(List<User> friends) {
-//		this.friends = friends;
-//	}
+	public List<User> getFriends() {
+		return friends;
+	}
+
+	public void setFriends(List<User> friends) {
+		this.friends = friends;
+	}
 
 	@Override
 	public int hashCode() 
@@ -163,8 +163,10 @@ public class User
 	}
 
 	@Override
-	public String toString() 
-	{
-		return "User [id=" + id + ", username=" + username + ", email=" + email + "]";
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", friends=" + friends + "]";
 	}
+
+	
 }
