@@ -25,8 +25,6 @@ public class User
 	private String username;
 	private String password;
 	private String email;
-<<<<<<< HEAD
-=======
 	
 	@JoinTable(
 	        name = "FRIENDS",
@@ -36,7 +34,6 @@ public class User
 	@ManyToMany(fetch=FetchType.LAZY)
 	private List<User> friends;
 	
->>>>>>> 626bb00871d17826833b68b58ae80d183ec7e056
 	public User() 
 	{
 		super();
