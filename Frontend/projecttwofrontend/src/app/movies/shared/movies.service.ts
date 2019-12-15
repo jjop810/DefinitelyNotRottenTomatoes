@@ -27,7 +27,8 @@ export class MoviesService {
   public addMovie(movie: Movies) {
     console.log("this is the passed in variable:"+movie);
     const body = JSON.stringify(movie);
-    console.log("this is the body:"+body);
+    console.log("this is the body:")
+    console.log(body);
     return this.http.post('http://localhost:8080/DefinetlyNotRottenTomatos/movies',
       body, {headers: this.headers, withCredentials: true} ).pipe(
       map( resp => resp as Movies )

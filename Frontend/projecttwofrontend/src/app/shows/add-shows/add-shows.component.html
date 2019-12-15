@@ -1,13 +1,24 @@
 <p>shows works!</p>
 
 
-
 <div>
     <div id="submitdiv">
-Title: <br><input type="text" [(ngModel)]="showl.title"> <br>
-Length: <input type="text" [(ngModel)]="showl.movieLength"> <br>
-Image URL: <input type="text" [(ngModel)]="showl.imgUrl"> <br>
+        Title:<br> <input type="text" [(ngModel)]="showl.title"> <br>
+        Episodes:<br> <input type="text" [(ngModel)]="showl.episodes"> <br>
+        Image URL:<br> <input type="text" [(ngModel)]="showl.imgUrl"> <br>
 
-<button id="submit" type="button" (click)="addShow()">Submit</button>
-</div>
+        <h5>Genres:</h5>
+        <ul *ngIf="showl.genres">
+            <li *ngFor="let g of showl.genres">{{g.genreName}}
+                <button class="btn btn-sm btn-danger" (click)="removeGenre(g)">x</button>
+            </li>
+        </ul>
+        <select ngModel (ngModelChange)="addGenre($event)" name="genres">
+            <option *ngFor="let g of genreList" [ngValue]="g">{{g.genreName}}</option>
+        </select>
+        <br>
+        <button id="submit" type="button" (click)="addShow()">Submit</button>
+    </div> <br>
+
+    
 </div>
