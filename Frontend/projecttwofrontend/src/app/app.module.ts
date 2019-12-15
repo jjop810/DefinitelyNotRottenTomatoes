@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
+import { SearchService } from './shared/search.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HomeComponent } from './home/home.component';
   providers: [
     UrlService,
     MoviesService,
+    SearchService,
     LoginService,
     HttpClientModule,
     FormsModule

@@ -50,6 +50,9 @@ public class MoviesHibernate implements MoviesDAO {
 		System.out.println("test" + lastPageNumber);
 		return lastPageNumber;
 	}
+	
+	
+	
 	@Override
 	public int addMovie(Movies mov) {
 		Session s = hu.getSession();
@@ -121,13 +124,5 @@ public class MoviesHibernate implements MoviesDAO {
 		return mov;
 	}
 
-	@Override
-	public Set<Movies> getMovies() {
-		Session s = hu.getSession();
-		String query = "from Movies";
-		Query<Movies> q = s.createQuery(query, Movies.class);
-		List<Movies> movies = q.list();
-		s.close();
-		return new HashSet<Movies>(movies);
-	}
+
 }

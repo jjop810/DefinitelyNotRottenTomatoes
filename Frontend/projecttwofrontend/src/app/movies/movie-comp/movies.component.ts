@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movies } from '../shared/movies';
 import { MoviesService } from '../shared/movies.service';
+import { SearchService } from 'src/app/shared/search.service';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -9,10 +10,11 @@ import { MoviesService } from '../shared/movies.service';
 export class MoviesComponent implements OnInit {
   movies: Movies[];
   lastPage: number;
+  searchTxt: string;
   page = 1;
-  constructor(
-    private moviesService: MoviesService) { }
+  constructor(private moviesService: MoviesService, private searchService: SearchService) { }
     ngOnInit() {
+      console.log(this.searchTxt);
       this.moviesService.getMovies(this.page).subscribe(
         resp => {
           this.movies = resp;
@@ -46,5 +48,15 @@ export class MoviesComponent implements OnInit {
             this.movies = resp;
           }
           );
-    }
+      }
+
+      search(): void {
+        if (this.searchTxt) {
+        this.searchService.getMovieSearch(this.searchTxt, 1).subscribe(
+          resp => {
+            this.movies = resp;
+          }
+        );
+        }
+      }
 }

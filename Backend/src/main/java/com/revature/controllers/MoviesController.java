@@ -28,10 +28,12 @@ public class MoviesController {
 		return ResponseEntity.ok(md.getMovies(page));
 	}
 	
+	
 	@GetMapping
 	public ResponseEntity<Integer> getLastPage() {
 		return ResponseEntity.ok(md.getLastPage());
 	}
+	
 	/*
 	@GetMapping(value="{title}")
 	public ResponseEntity<Movies> getMovie(@PathVariable String title) {
