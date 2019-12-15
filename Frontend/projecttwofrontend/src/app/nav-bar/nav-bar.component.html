@@ -24,13 +24,15 @@
         <li class="nav-item">
             <a class="nav-link" routerLink="" >Search Movies</a>
         </li>
+        <li *ngIf="isUser()" class="nav-item">
+                <a *ngIf="route.url!=='/watchlist'" class="nav-link" routerLink="/watchlist">Watchlist</a>
         <li *ngIf="isAdmin()" class="nav-item">
             <a *ngIf="route.url!=='/addmovies'" class="nav-link" routerLink="/addmovies" >Add Movies</a>
         </li>
         <li *ngIf="isAdmin()" class="nav-item">
             <a *ngIf="route.url!=='/addshows'" class="nav-link" routerLink="/addshows" >Add Shows</a>
         </li>
-        <li *ngIf="isAdmin()&& isUser()" class="nav-item">
+        <li *ngIf="isUser()" class="nav-item">
             <a *ngIf="route.url!=='/addfriend'" class="nav-link" routerLink="/addfriend" >Add Friend</a>
         </li>
         

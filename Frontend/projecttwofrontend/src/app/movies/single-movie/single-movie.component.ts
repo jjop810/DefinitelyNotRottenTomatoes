@@ -16,5 +16,8 @@ export class SingleMovieComponent implements OnInit {
   ngOnInit() {
     console.log(this.movies);
   }
+  addWatchlist() {
+    
+  }
 
 }
