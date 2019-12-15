@@ -1,9 +1,16 @@
 package com.revature.beans;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -20,19 +27,35 @@ public class Movies {
 	Integer movieLength;
 	Integer rating;
 	String imgUrl;
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinTable(name="movieGenre",
+		joinColumns=@JoinColumn(name="movieid"),
+		inverseJoinColumns=@JoinColumn(name="genreid"))
+	private Set<Genre> genres;
 	
-	public Movies() {
-		super();
-		
-	}
-
-	public Movies(Integer id, String title, Integer movieLength, Integer rating, String imgUrl) {
+	public Movies(Integer id, String title, Integer movieLength, Integer rating, String imgUrl, Set<Genre> genres) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.movieLength = movieLength;
 		this.rating = rating;
 		this.imgUrl = imgUrl;
+		this.genres = genres;
+	}
+
+	public Movies() {
+		super();
+		
+	}
+
+	
+
+	public Set<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(Set<Genre> genres) {
+		this.genres = genres;
 	}
 
 	public Integer getId() {
@@ -127,7 +150,7 @@ public class Movies {
 	@Override
 	public String toString() {
 		return "Movies [id=" + id + ", title=" + title + ", movieLength=" + movieLength + ", rating=" + rating
-				+ ", imgUrl=" + imgUrl + "]";
+				+ ", imgUrl=" + imgUrl + " genres: "+genres+"]";
 	}
 	
 	

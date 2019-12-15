@@ -42,7 +42,7 @@ public class MoviesController {
 	}
 	@PostMapping
 	public ResponseEntity<Movies> addMovie(@RequestBody Movies r) {
-		log.trace("adding movie through controller");
+		
 		rd.addMovie(r);
 		return ResponseEntity.status(201).body(r);
 	}

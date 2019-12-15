@@ -5,4 +5,6 @@ export class Shows {
 	episodes: number;
 	rating: number;
 	imgUrl: string;
+	genreId:number;
+
 }

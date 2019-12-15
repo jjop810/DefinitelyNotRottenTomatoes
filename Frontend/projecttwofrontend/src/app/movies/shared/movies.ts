@@ -1,3 +1,5 @@
+import { Genre } from 'src/app/all-shared/genre-shared/genre';
+
 export class Movies {
 
     id:number;
@@ -5,4 +7,5 @@ export class Movies {
     movieLength:number;
     rating:number;
     imgUrl:string;
+    genres:Genre[];
 }

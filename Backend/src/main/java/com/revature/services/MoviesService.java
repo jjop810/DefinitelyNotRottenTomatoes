@@ -21,7 +21,7 @@ public class MoviesService {
 		return md.getMovie(mov);
 	}
 	
-	public Movies getMovieById(Movies mov) {
+	public Movies getMovieById(Integer mov) {
 		return md.getMovieById(mov);
 	}
 	

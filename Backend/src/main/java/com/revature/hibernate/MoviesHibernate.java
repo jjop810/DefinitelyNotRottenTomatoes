@@ -24,23 +24,31 @@ public class MoviesHibernate implements MoviesDAO {
 	
 	@Autowired
 	private HibernateUtil hu;
+	
+	
+	
 
 	@Override
 	public int addMovie(Movies mov) {
 		Session s = hu.getSession();
-		Transaction t = null;
-		Integer i = 0;
+		Transaction tx = null;
 		try {
-			t = s.beginTransaction();
-			i = (Integer) s.save(mov);
-			t.commit();
-		} catch(HibernateException e) {
-			t.rollback();
+			tx = s.beginTransaction();
+			s.save(mov);
+			log.trace("adding movie through hibernate " + mov);
+			
+			tx.commit();
+		} catch(Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
 			LogUtil.logException(e, MoviesHibernate.class);
 		} finally {
 			s.close();
 		}
-		return i;
+		
+		
+		return mov.getId();
 		
 	}
 

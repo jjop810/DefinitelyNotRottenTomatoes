@@ -12,6 +12,7 @@ import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
+import { GenreComponent } from './all-shared/genre/genre.component';
 
 
 
@@ -27,7 +28,8 @@ import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
     AddShowsComponent,
     MovieListComponent,
     EditMoviesComponent,
-    EditShowsComponent
+    EditShowsComponent,
+    GenreComponent
 
   ],
   imports: [
