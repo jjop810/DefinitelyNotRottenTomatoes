@@ -28,7 +28,7 @@ export class EditMoviesComponent implements OnInit {
     this.mov = new Movies();
     //this.mov = this.getMovie("MovieTesty");
 
-    this.movieService.getMovie("MovieTesty").subscribe(
+    this.movieService.getMovie("THE Joker").subscribe(
       movie => {
         // set current movie to the movie retrieved.
         this.mov = movie;

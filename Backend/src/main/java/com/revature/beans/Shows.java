@@ -1,9 +1,16 @@
 package com.revature.beans;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,20 +26,45 @@ public class Shows {
 	Integer episodes;
 	Integer rating;
 	String imgUrl;
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinTable(name="showGenre",
+		joinColumns=@JoinColumn(name="showid"),
+		inverseJoinColumns=@JoinColumn(name="genreid"))
+	private Set<Genre> genres;
+	
 	public Shows() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public Shows(Integer id, String title, Integer episodes, Integer rating, String imgUrl) {
+
+
+	public Shows(Integer id, String title, Integer episodes, Integer rating, String imgUrl, Set<Genre> genres) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.episodes = episodes;
 		this.rating = rating;
 		this.imgUrl = imgUrl;
+		this.genres = genres;
 	}
+
+
+
+
+	public Set<Genre> getGenres() {
+		return genres;
+	}
+
+
+
+
+	public void setGenres(Set<Genre> genres) {
+		this.genres = genres;
+	}
+
+
 
 
 	public Integer getEpisodes() {
@@ -116,10 +148,12 @@ public class Shows {
 			return false;
 		return true;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "Shows [id=" + id + ", title=" + title + ", episodes=" + episodes + ", rating=" + rating + ", imgUrl="
-				+ imgUrl + "]";
+				+ imgUrl + ", genres=" + genres + "]";
 	}
 	
 	

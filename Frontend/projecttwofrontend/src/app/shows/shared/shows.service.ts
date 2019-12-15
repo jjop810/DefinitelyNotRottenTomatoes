@@ -21,7 +21,7 @@ export class ShowsService {
       );
     }
     public getShow(title: string): Observable<Shows> {
-      const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/shows' +title;
+      const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/shows/' +title;
       return this.http.get(url, {withCredentials: true}).pipe(
         map( resp => resp as Shows )
       );
@@ -36,7 +36,7 @@ export class ShowsService {
       );
     }
     public updateShow(show: Shows): Observable<Shows> {
-      const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/shows' + show.id;
+      const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/shows/' + show.id;
       const body = JSON.stringify(show);
       return this.http.put(url, body, {headers: this.headers, withCredentials: true} ).pipe(
         map( resp => resp as Shows )

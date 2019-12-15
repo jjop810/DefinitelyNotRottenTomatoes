@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,25 +20,32 @@ import com.revature.utils.LogUtil;
 @Component
 public class ShowsHibernate implements ShowsDAO  {
 	
+	private static Logger log = Logger.getLogger(ShowsHibernate.class);
+	
 	@Autowired
 	private HibernateUtil hu;
 
 	@Override
 	public int addShow(Shows mov) {
 		Session s = hu.getSession();
-		Transaction t = null;
-		Integer i = 0;
+		Transaction tx = null;
 		try {
-			t = s.beginTransaction();
-			i = (Integer) s.save(mov);
-			t.commit();
-		} catch(HibernateException e) {
-			t.rollback();
-			LogUtil.logException(e, ShowsHibernate.class);
+			tx = s.beginTransaction();
+			s.save(mov);
+			log.trace("adding show through hibernate " + mov);
+			
+			tx.commit();
+		} catch(Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			LogUtil.logException(e, MoviesHibernate.class);
 		} finally {
 			s.close();
 		}
-		return i;
+		
+		
+		return mov.getId();
 	}
 
 	@Override
@@ -90,7 +98,7 @@ public class ShowsHibernate implements ShowsDAO  {
 		Transaction t = null;
 		try{
 			t = s.beginTransaction();
-			s.update(mov.getId());
+			s.update(mov);
 			t.commit();
 		} catch(Exception e) {
 			if(t != null)
@@ -99,7 +107,6 @@ public class ShowsHibernate implements ShowsDAO  {
 		} finally {
 			s.close();
 		}
-		
 		return mov;
 	}
 
