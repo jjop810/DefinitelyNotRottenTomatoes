@@ -13,6 +13,6 @@ public interface WatchlistDAO {
 	 * @param watch the watchlist object to be inserted
 	 * @return the id of the watchlist object inserted
 	 */
-	public int addMovie(Watchlist watch);
+	public Integer addMovie(Watchlist watch);
 
 }

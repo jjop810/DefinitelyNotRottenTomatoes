@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,9 +30,30 @@ public class WatchlistHibernate implements WatchlistDAO{
 	}
 	
 	@Override
-	public int addMovie(Watchlist watch) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Integer addMovie(Watchlist watch) {
+		Integer i = null;
+		if(watch.getMovieId() != 0 || watch.getShowId() != 0)
+		{
+			//Adding a movie or show
+			Session s = hu.getSession();
+			Transaction tx = null;
+			try {
+				tx = s.beginTransaction();
+				i = (Integer) s.save(watch);
+				tx.commit();
+			}catch(Exception e) {
+				if(tx !=null)
+					tx.rollback();
+				e.printStackTrace();
+			}finally {
+				s.close();
+			}
+		}
+		else
+		{
+			System.out.println("Bad request on adding to watchlist");
+		}
+		return i;
 	}
 
 }
