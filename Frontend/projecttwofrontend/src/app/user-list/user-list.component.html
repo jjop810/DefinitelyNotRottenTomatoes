@@ -1,3 +1,10 @@
 <!-- <p>--inside--user-list---</p> -->
 <!-- <app-user *ngFor="let user of users" [user]="user"></app-user> -->
+
 <!-- <app-add-user [user]="user" (created)="submitted()"></app-add-user> -->
+
+<div *ngIf="user">
+    <p>Username: {{user.username}}</p>
+    <p>Friend:</p>
+    <li *ngFor="let f of user.friends">{{f.friendname}}</li>
+    </div>

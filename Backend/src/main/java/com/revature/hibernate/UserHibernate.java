@@ -95,12 +95,17 @@ public class UserHibernate implements UserDAO{
 	@Override
 	public Set<User> getUsers() {
 		Session s = hu.getSession();
-		String query = "from User";
-		Query<User> q = s.createQuery(query,User.class);
-		List<User>users = q.list();
+		String query = "FROM User";
+		Query<User> q = s.createQuery(query, User.class);
+		List<User> users = q.getResultList();
+//		Set<User> users = new HashSet<User>();
+//		users.addAll(list);
+//		for(User u : users) {
+//			u.getFriends().forEach( (friend) -> {
+//				friend.getUsername();
+//			});
+//		}
 		s.close();
-		
-		
 		return new HashSet<User>(users);
 	}
 

@@ -30,6 +30,7 @@ export class LoginService {
           if (u) {
             this.admin = u.admin;
             this.user = u.user;
+            
           }
           return u;
 

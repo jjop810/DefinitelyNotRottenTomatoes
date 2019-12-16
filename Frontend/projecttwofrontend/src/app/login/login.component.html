@@ -16,7 +16,7 @@
 <ng-template #display>
     
             <div *ngIf="loggedUser.admin; else normaluser">
-                <span>WELCOME {{loggedUser.admin.tittle}}!</span>
+                <!-- <span>WELCOME {{loggedUser.admin.tittle}}!</span> -->
             </div>
         
             <button (click)="logout()">Logout</button>
