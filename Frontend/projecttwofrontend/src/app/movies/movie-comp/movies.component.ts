@@ -28,6 +28,7 @@ export class MoviesComponent implements OnInit {
       }
       nextPage(): void {
         console.log(this.lastPage);
+
         this.page += 1;
         if (this.page > this.lastPage) {
           this.page = 1;
