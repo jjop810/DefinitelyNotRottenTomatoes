@@ -22,7 +22,7 @@ export class LoginService {
       //const body = JSON.stringify([username, password]);
       console.log(body);
 
-      return this.http.post('http://localhost:8080/DefinetlyNotRottenTomatos/logined', body, {
+      return this.http.post('http://localhost:8080/DefinitelyNotRottenTomatoes/logined', body, {
         headers: this.headers, withCredentials: true
       }).pipe(
         map (resp => {
@@ -36,7 +36,7 @@ export class LoginService {
         })
       );
     } else{
-      return this.http.get('http://localhost:8080/DefinetlyNotRottenTomatos/logined').pipe(
+      return this.http.get('http://localhost:8080/DefinitelyNotRottenTomatoes/logined').pipe(
         map( resp => {
           const u: Currentuser = resp as Currentuser;
           if (u) {
@@ -50,7 +50,7 @@ export class LoginService {
   }
 
   logout(): Observable<object>{
-    return this.http.delete('http://localhost:8080/DefinetlyNotRottenTomatos/logined',{withCredentials:true}).pipe(
+    return this.http.delete('http://localhost:8080/DefinitelyNotRottenTomatoes/logined',{withCredentials:true}).pipe(
       map(success => {
         this.admin = null;
         this.user = null;
