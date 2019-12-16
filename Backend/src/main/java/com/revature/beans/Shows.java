@@ -1,14 +1,21 @@
 package com.revature.beans;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name = "shows")
 public class Shows {
 	
 	@Id
@@ -16,20 +23,60 @@ public class Shows {
 	@SequenceGenerator(name="shows", sequenceName="shows_seq", allocationSize=1)
 	Integer id;
 	String title;
-	
+	Integer episodes;
 	Integer rating;
 	String imgUrl;
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinTable(name="showGenre",
+		joinColumns=@JoinColumn(name="showid"),
+		inverseJoinColumns=@JoinColumn(name="genreid"))
+	private Set<Genre> genres;
+	
 	public Shows() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Shows(Integer id, String title, Integer rating, String imgUrl) {
+	
+	
+
+
+	public Shows(Integer id, String title, Integer episodes, Integer rating, String imgUrl, Set<Genre> genres) {
 		super();
 		this.id = id;
 		this.title = title;
+		this.episodes = episodes;
 		this.rating = rating;
 		this.imgUrl = imgUrl;
+		this.genres = genres;
 	}
+
+
+
+
+	public Set<Genre> getGenres() {
+		return genres;
+	}
+
+
+
+
+	public void setGenres(Set<Genre> genres) {
+		this.genres = genres;
+	}
+
+
+
+
+	public Integer getEpisodes() {
+		return episodes;
+	}
+
+
+	public void setEpisodes(Integer episodes) {
+		this.episodes = episodes;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -58,6 +105,7 @@ public class Shows {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((episodes == null) ? 0 : episodes.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((imgUrl == null) ? 0 : imgUrl.hashCode());
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
@@ -73,6 +121,11 @@ public class Shows {
 		if (getClass() != obj.getClass())
 			return false;
 		Shows other = (Shows) obj;
+		if (episodes == null) {
+			if (other.episodes != null)
+				return false;
+		} else if (!episodes.equals(other.episodes))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -95,9 +148,12 @@ public class Shows {
 			return false;
 		return true;
 	}
+	
+	
 	@Override
 	public String toString() {
-		return "Shows [id=" + id + ", title=" + title + ", rating=" + rating + ", imgUrl=" + imgUrl + "]";
+		return "Shows [id=" + id + ", title=" + title + ", episodes=" + episodes + ", rating=" + rating + ", imgUrl="
+				+ imgUrl + ", genres=" + genres + "]";
 	}
 	
 	

@@ -1,0 +1,25 @@
+<p>edit-shows works!</p>
+
+
+<div>
+    <div id="submitdiv">
+        ID: <br> <input id="id" type="text" [(ngModel)]="show.id" disabled="true"> <br>
+        Title:<br> <input id="title" type="text" [(ngModel)]="show.title"> <br>
+        Episodes: <input id="episodes" type="text" [(ngModel)]="show.episodes"> <br>
+        Rating: <input id="rating" type="text" [(ngModel)]="show.rating"> <br>
+        Image URL: <input id="imgurl" type="text" [(ngModel)]="show.imgUrl"> <br>
+
+        <h5>Genres:</h5>
+        <ul *ngIf="show.genres">
+            <li *ngFor="let g of show.genres">{{g.genreName}}
+                <button class="btn btn-sm btn-danger" (click)="removeGenre(g)">x</button>
+            </li>
+        </ul>
+        <select ngModel (ngModelChange)="addGenre($event)" name="genres">
+            <option *ngFor="let g of genreList" [ngValue]="g">{{g.genreName}}</option>
+        </select>
+        <br>
+
+        <button id="submit" type="button" (click)="editShow()">Submit</button>
+    </div>
+</div>
