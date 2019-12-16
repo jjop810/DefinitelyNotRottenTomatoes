@@ -68,6 +68,5 @@ public class Genre {
 	@Override
 	public String toString() {
 		return "Genre [id=" + id + ", genreName=" + genreName + "]";
-	}
-	
+	}	
 }

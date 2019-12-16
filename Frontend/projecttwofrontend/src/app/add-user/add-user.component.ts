@@ -1,6 +1,7 @@
 import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -11,7 +12,7 @@ export class AddUserComponent implements OnInit {
 
   @Output() created = new EventEmitter<Boolean>();
   @Input() user: User;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,  private routeTo: Router) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,7 @@ export class AddUserComponent implements OnInit {
         this.created.emit(true);
       }
     );
+    this.routeTo.navigateByUrl('home');
   }
 
 }
