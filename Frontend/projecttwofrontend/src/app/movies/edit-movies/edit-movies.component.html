@@ -1,0 +1,20 @@
+   <div class="box-form">
+        ID: <br> <input id="id" type="text" [(ngModel)]="mov.id" disabled="true"> <br>
+        Title:<br> <input id="title" type="text" [(ngModel)]="mov.title"> <br>
+        Length: <input id="length" type="text" [(ngModel)]="mov.movieLength"> <br>
+        Rating: <input id="rating" type="text" [(ngModel)]="mov.rating"> <br>
+        Image URL: <input id="imgurl" type="text" [(ngModel)]="mov.imgUrl"> <br>
+
+        <h5>Genres:</h5>
+        <ul *ngIf="mov.genres">
+            <li *ngFor="let g of mov.genres">{{g.genreName}}
+                <button class="btn btn-sm btn-danger" (click)="removeGenre(g)">x</button>
+            </li>
+        </ul>
+        <select ngModel (ngModelChange)="addGenre($event)" name="genres">
+            <option *ngFor="let g of genreList" [ngValue]="g">{{g.genreName}}</option>
+        </select>
+        <br>
+
+        <button id="submit" type="button" (click)="editMovie()">Submit</button>
+    </div>

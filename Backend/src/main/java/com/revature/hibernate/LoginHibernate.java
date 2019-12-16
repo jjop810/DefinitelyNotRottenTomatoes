@@ -1,4 +1,4 @@
-package com.revature.data;
+package com.revature.hibernate;
 
 public class LoginHibernate {
 

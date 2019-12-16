@@ -1,27 +1,51 @@
 package com.revature.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="login")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class User 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="login")
 	@SequenceGenerator(name="login", sequenceName="login_seq", allocationSize=1)
 	private Integer id;
+	public User(Integer id) {
+		super();
+		this.id = id;
+	}
+
 	private String username;
 	private String password;
 	private String email;
 	
+//	@JoinTable(
+//	        name = "FRIENDS",
+//	        joinColumns = @JoinColumn(name = "USERID"),
+//	        inverseJoinColumns = @JoinColumn(name = "FRIENDID")
+//	)
+//	@ManyToMany(fetch=FetchType.LAZY)
+//	private List<User> friends;
+	
 	public User() 
 	{
 		super();
+		//this.friends = new ArrayList<>();
 	}
 	
 	public User(Integer id, String username, String password, String email) 
@@ -31,6 +55,7 @@ public class User
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		//this.friends = new ArrayList<>();
 	}
 	
 	public Integer getId() 
@@ -73,6 +98,14 @@ public class User
 		this.email = email;
 	}
 	
+//	public List<User> getFriends() {
+//		return friends;
+//	}
+//
+//	public void setFriends(List<User> friends) {
+//		this.friends = friends;
+//	}
+
 	@Override
 	public int hashCode() 
 	{
