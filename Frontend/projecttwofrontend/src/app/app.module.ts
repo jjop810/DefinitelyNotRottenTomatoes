@@ -22,6 +22,7 @@ import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { GenreComponent } from './all-shared/genre/genre.component';
+import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
 
 //#endregion
 
@@ -41,7 +42,8 @@ import { GenreComponent } from './all-shared/genre/genre.component';
     AddShowsComponent,
     EditMoviesComponent,
     EditShowsComponent,
-    GenreComponent
+    GenreComponent,
+    AddMoviereviewComponent
 
   ],
   imports: [
