@@ -15,12 +15,12 @@ export class GenreService {
     constructor( private http: HttpClient) { }
   
     public getGenres(): Observable<Genre[]> {
-      return this.http.get('http://localhost:8080/DefinetlyNotRottenTomatos/genre', {withCredentials: true}).pipe(
+      return this.http.get('http://localhost:8080/DefinitelyNotRottenTomatoes/genre', {withCredentials: true}).pipe(
         map( resp => resp as Genre[] )
       );
     }
     public getGenre(name: string): Observable<Genre> {
-      const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/genre/' +name;
+      const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/genre/' +name;
       return this.http.get(url, {withCredentials: true}).pipe(
         map( resp => resp as Genre )
       );
