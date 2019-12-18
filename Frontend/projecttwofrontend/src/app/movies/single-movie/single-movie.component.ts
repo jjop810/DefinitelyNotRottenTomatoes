@@ -26,7 +26,7 @@ export class SingleMovieComponent implements OnInit {
     console.log('Adding to watchlist');
     const userId = this.loginService.getUser().id;
     // tslint:disable-next-line: radix
-    this.watchlistService.addWatchlist(parseInt(userId), this.movies.id);
+    this.watchlistService.addWatchlist(parseInt(userId), this.movies.id).subscribe();
   }
   editMovie() {
     this.route.navigate(['movies/edit', this.movies.id]);
