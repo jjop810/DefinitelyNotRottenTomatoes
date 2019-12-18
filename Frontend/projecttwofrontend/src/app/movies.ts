@@ -1,8 +1,0 @@
-export class Movies {
-
-    id:number;
-    title:string;
-    movieLength:number;
-    rating:number;
-    imgUrl:string;
-}

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.HibernateException;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -19,7 +19,8 @@ import com.revature.data.MoviesDAO;
 public class MoviesHibernate implements MoviesDAO {
 	@Autowired
 	private HibernateUtil hu;
-	
+
+	private static Logger log = Logger.getLogger(MoviesHibernate.class);
 	private Integer lastPageNumber = 0;
 	@Override
 	public Set<Movies> getMovies(Integer page) {
@@ -50,22 +51,28 @@ public class MoviesHibernate implements MoviesDAO {
 		System.out.println("test" + lastPageNumber);
 		return lastPageNumber;
 	}
+	
 	@Override
 	public int addMovie(Movies mov) {
 		Session s = hu.getSession();
-		Transaction t = null;
-		Integer i = 0;
+		Transaction tx = null;
 		try {
-			t = s.beginTransaction();
-			i = (Integer) s.save(mov);
-			t.commit();
-		} catch(HibernateException e) {
-			t.rollback();
+			tx = s.beginTransaction();
+			s.save(mov);
+			log.trace("adding movie through hibernate " + mov);
+			
+			tx.commit();
+		} catch(Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
 			LogUtil.logException(e, MoviesHibernate.class);
 		} finally {
 			s.close();
 		}
-		return i;
+		
+		
+		return mov.getId();
 		
 	}
 
@@ -96,20 +103,21 @@ public class MoviesHibernate implements MoviesDAO {
 	}
 
 	@Override
-	public Movies getMovieById(Movies mov) {
+	public Movies getMovieById(Integer id) {
 		Session s = hu.getSession();
-		Movies ret = s.get(Movies.class, mov.getId());
+		Movies ret = s.get(Movies.class, id);
 		s.close();
 		return ret;
 	}
 
 	@Override
 	public Movies updateMovie(Movies mov) {
+		log.trace("Update using this object: "+mov.getId());
 		Session s = hu.getSession();
 		Transaction t = null;
 		try{
 			t = s.beginTransaction();
-			s.update(mov.getId());
+			s.update(mov);
 			t.commit();
 		} catch(Exception e) {
 			if(t != null)
@@ -119,15 +127,5 @@ public class MoviesHibernate implements MoviesDAO {
 			s.close();
 		}
 		return mov;
-	}
-
-	@Override
-	public Set<Movies> getMovies() {
-		Session s = hu.getSession();
-		String query = "from Movies";
-		Query<Movies> q = s.createQuery(query, Movies.class);
-		List<Movies> movies = q.list();
-		s.close();
-		return new HashSet<Movies>(movies);
 	}
 }

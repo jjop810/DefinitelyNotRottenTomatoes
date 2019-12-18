@@ -4,7 +4,9 @@
 	<session-factory>
 		<!-- JDBC set up -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@jjrevdata.c9ga4ppggkty.us-east-2.rds.amazonaws.com:1521:orcl</property>
+		
 		<property name="hibernate.connection.username">projecttwo</property>
 		<property name="hibernate.connection.password">pass</property>
 		
@@ -20,16 +22,21 @@
 		
 		<!-- Annotation Mappings -->
 
+		
+	
+
 		<mapping class="com.revature.beans.Admin"/>
+		<!-- 
 		<mapping class="com.revature.beans.MovieRating"/>
 		<mapping class="com.revature.beans.MovieReview"/>
-		<mapping class="com.revature.beans.Movies"/>
 		<mapping class="com.revature.beans.ShowRating"/>
+		 -->
+		<mapping class="com.revature.beans.Movies"/>
 		<mapping class="com.revature.beans.ShowReview"/>
 		<mapping class="com.revature.beans.Shows"/>
-		<mapping class="com.revature.beans.User"/>
 		<mapping class="com.revature.beans.Genre"/>
 		<mapping class="com.revature.beans.Watchlist"/>
+		<mapping class="com.revature.beans.User"/>
 
 	</session-factory>
 </hibernate-configuration>

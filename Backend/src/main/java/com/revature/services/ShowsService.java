@@ -20,7 +20,7 @@ public class ShowsService {
 		return sd.getShow(show);
 	}
 	
-	public Shows getShowById(Shows show) {
+	public Shows getShowById(Integer show) {
 		return sd.getShowById(show);
 	}
 	

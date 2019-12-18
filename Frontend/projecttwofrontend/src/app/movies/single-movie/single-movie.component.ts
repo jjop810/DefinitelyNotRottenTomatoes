@@ -3,6 +3,7 @@ import { Movies } from '../shared/movies';
 import { MoviesService } from '../shared/movies.service';
 import { LoginService } from 'src/app/login.service';
 import { WatchlistService} from 'src/app/watchlist.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-single-movie',
@@ -14,7 +15,8 @@ export class SingleMovieComponent implements OnInit {
   constructor(
     private moviesService: MoviesService,
     private loginService: LoginService,
-    private watchlistService: WatchlistService
+    private watchlistService: WatchlistService,
+    private route: Router
   ) { }
 
   ngOnInit() {
@@ -23,9 +25,10 @@ export class SingleMovieComponent implements OnInit {
   addWatchlist() {
     console.log('Adding to watchlist');
     const userId = this.loginService.getUser().id;
+    // tslint:disable-next-line: radix
     this.watchlistService.addWatchlist(parseInt(userId), this.movies.id);
-    // Get the id of the movie
-    // Pass the userId and movieId to the watchlistService
   }
-
+  editMovie() {
+    this.route.navigate(['movies/edit', this.movies.id]);
+  }
 }

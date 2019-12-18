@@ -13,14 +13,14 @@ export class UserService {
 
 
   public getUsers(): Observable<User[]> {
-    return this.http.get('http://localhost:8080/DefinetlyNotRottenTomatos/login', {withCredentials: true}).pipe(
+    return this.http.get('http://localhost:8080/DefinitelyNotRottenTomatoes/login', {withCredentials: true}).pipe(
       map( resp => resp as User[] )
     );
   }
 
 
   public getUserById(id: number): Observable<User>{
-    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/login' + id;
+    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/login' + id;
     return this.http.get(url,{withCredentials: true}).pipe(
       map(resp => resp as User)
     );
@@ -28,7 +28,7 @@ export class UserService {
 
   public addUser(user: User) {
     const body = JSON.stringify(user);
-    return this.http.post('http://localhost:8080/DefinetlyNotRottenTomatos/login',
+    return this.http.post('http://localhost:8080/DefinitelyNotRottenTomatoes/login',
       body, {headers: this.headers, withCredentials: true} ).pipe(
       map( resp => resp as User )
     );

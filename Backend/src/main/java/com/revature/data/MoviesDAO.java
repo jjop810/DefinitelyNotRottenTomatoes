@@ -10,6 +10,7 @@ public interface MoviesDAO {
 	
 	Integer getLastPage();
 	
+	
 	/**
 	 * Returns the id of a movie object inserted into the database.
 	 * 
@@ -33,15 +34,13 @@ public interface MoviesDAO {
 	 * @return the movie from the database that matches the name, and id
 	 */
 	public Movies getMovie(Movies mov);
-	
-	public Set<Movies> getMovies();
 	/**
 	 * returns a movie object from the database
 	 * 
 	 * @param u previously created movie object for updating with movie information
 	 * @return the movie from the database that matches the name, director, and year
 	 */
-	public Movies getMovieById(Movies mov);
+	public Movies getMovieById(Integer id);
 	
 	/**
 	 * updates a Movie in the database
