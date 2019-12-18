@@ -22,7 +22,8 @@ export class SingleMovieComponent implements OnInit {
   }
   addWatchlist() {
     console.log('Adding to watchlist');
-    let user = this.loginService.getUser();
+    const userId = this.loginService.getUser().id;
+    this.watchlistService.addWatchlist(parseInt(userId), this.movies.id);
     // Get the id of the movie
     // Pass the userId and movieId to the watchlistService
   }
