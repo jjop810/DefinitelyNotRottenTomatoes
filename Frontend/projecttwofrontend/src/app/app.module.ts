@@ -39,6 +39,7 @@ import { AddMoviereviewComponent } from './movies/add-moviereview/add-movierevie
     MoviesComponent,
     SingleMovieComponent,
     AddMoviesComponent,
+    AddMoviereviewComponent,
     AddShowsComponent,
     EditMoviesComponent,
     EditShowsComponent,

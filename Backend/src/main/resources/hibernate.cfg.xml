@@ -32,6 +32,7 @@
 		<mapping class="com.revature.beans.ShowRating"/>
 		 -->
 		<mapping class="com.revature.beans.Movies"/>
+		<mapping class="com.revature.beans.MovieReview"/>
 		<mapping class="com.revature.beans.ShowReview"/>
 		<mapping class="com.revature.beans.Shows"/>
 		<mapping class="com.revature.beans.Genre"/>
