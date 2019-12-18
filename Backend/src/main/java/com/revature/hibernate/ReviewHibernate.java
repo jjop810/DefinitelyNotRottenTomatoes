@@ -10,23 +10,21 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.revature.beans.MovieReview;
-import com.revature.data.MovieReviewDAO;
+import com.revature.beans.Reviews;
+import com.revature.data.ReviewDAO;
 import com.revature.utils.HibernateUtil;
 import com.revature.utils.LogUtil;
 
 @Component
-public class MovieReviewHibernate implements MovieReviewDAO{
-
+public class ReviewHibernate implements ReviewDAO {
+	
 	@Autowired
 	private HibernateUtil hu;
 
-	private static Logger log = Logger.getLogger(MovieReviewHibernate.class);
-	private Integer lastPageNumber = 0;
-	
+	private static Logger log = Logger.getLogger(MoviesHibernate.class);
+
 	@Override
-	public MovieReview addReview(MovieReview rev) {
+	public int addReview(Reviews rev) {
 		Session s = hu.getSession();
 		Transaction tx = null;
 		try {
@@ -39,18 +37,17 @@ public class MovieReviewHibernate implements MovieReviewDAO{
 			if (tx != null) {
 				tx.rollback();
 			}
-			LogUtil.logException(e, MovieReviewHibernate.class);
+			LogUtil.logException(e, ReviewHibernate.class);
 		} finally {
 			s.close();
 		}
 		
 		
-		return rev;
+		return rev.getId();
 	}
-	
-	//Are we doing pages for reviews???
+
 	@Override
-	public Set<MovieReview> getReviews() {
+	public Set<Reviews> getReviews() {
 		Session s = hu.getSession();
 		/*int pageSize = 50;
 		String count = "Select count (m.id) from Movies m";
@@ -66,35 +63,45 @@ public class MovieReviewHibernate implements MovieReviewDAO{
 			page = 1;
 		}
 		*/
-		String query = "from moviereviews";
-		Query<MovieReview> q = s.createQuery(query, MovieReview.class);
-		/*
-		 * q.setFirstResult((page - 1) * pageSize);
-		 * q.setMaxResults(pageSize);
-
-		*/
-		List<MovieReview> reviews = q.list();
+		String query = "from reviews";
+		Query<Reviews> q = s.createQuery(query, Reviews.class);
+		//q.setFirstResult((page - 1) * pageSize);
+		//q.setMaxResults(pageSize);
+		List<Reviews> revs = q.list();
 		s.close();
-		return new HashSet<MovieReview>(reviews);
+		return new HashSet<Reviews>(revs);
 	}
 
 	@Override
-	public MovieReview getReview(String review) {
+	public Reviews getReview(Integer userid, Integer movieid) {
 		Session s = hu.getSession();
-		String query = "from moviereviews r where r.review=:review";
-		Query<MovieReview> q = s.createQuery(query, MovieReview.class);
+		String query = "from reviews r where r.userid=:userid AND r.movieid=:movieid";
+		Query<Reviews> q = s.createQuery(query, Reviews.class);
 		
-		q.setParameter("review", review);
-		MovieReview m = q.uniqueResult();
+		q.setParameter("userid", userid);
+		q.setParameter("movieid", movieid);
+		Reviews r = q.uniqueResult();
 		s.close();
-		return m;
+		return r;
+	}
+	
+	@Override
+	public Reviews getReview(Reviews rev) {
+		Session s = hu.getSession();
+		Reviews ret = s.get(Reviews.class, rev.getId());
+		if(ret==null) {
+			String query = "from Reviews rev where rev.review=:review";
+			Query<Reviews> q = s.createQuery(query, Reviews.class);
+			q.setParameter("username", rev.getReview());
+			ret = q.getSingleResult();
+		}
+		s.close();
+		return ret;
 	}
 
-	
-
 	@Override
-	public MovieReview updateReview(MovieReview rev) {
-		log.trace("Update using this object: "+rev);
+	public Reviews updateReview(Reviews rev) {
+		log.trace("Update using this object: "+rev.getId());
 		Session s = hu.getSession();
 		Transaction t = null;
 		try{
@@ -104,11 +111,13 @@ public class MovieReviewHibernate implements MovieReviewDAO{
 		} catch(Exception e) {
 			if(t != null)
 				t.rollback();
-			LogUtil.logException(e, MovieReviewHibernate.class);
+			LogUtil.logException(e, ReviewHibernate.class);
 		} finally {
 			s.close();
 		}
 		return rev;
 	}
+
+	
 
 }
