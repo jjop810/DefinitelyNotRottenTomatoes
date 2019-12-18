@@ -14,10 +14,10 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  isAdmin(): boolean{
+  isAdmin(): boolean {
     return this.loginService.isAdmin();
   }
-  isUser(): boolean{
+  isUser(): boolean {
     return this.loginService.isUser();
   }
 }

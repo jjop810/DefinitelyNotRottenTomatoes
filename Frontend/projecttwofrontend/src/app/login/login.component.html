@@ -3,7 +3,7 @@
 <ng-container *ngIf="!loggedUser; else display">
     
         Username: <input type="text" [(ngModel)]="username">
-    
+  
         Password: <input type="password" [(ngModel)]="password" (keydown.enter)="login()">
     
     

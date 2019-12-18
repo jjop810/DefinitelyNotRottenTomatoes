@@ -22,20 +22,21 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  login(){
+  login() {
     this.loginService.login(this.username, this.password).subscribe(
-      resp =>{
+      resp => {
         this.loggedUser = resp;
       }
     );
   }
 
-  logout(){
+  logout() {
     this.loginService.logout().subscribe(
       resp => {
         this.loggedUser = null;
+        this.username = null;
+        this.password = null;
       }
-
     );
   }
 

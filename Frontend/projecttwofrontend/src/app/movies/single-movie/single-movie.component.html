@@ -29,8 +29,8 @@
          <ul>
       <li *ngFor="let m of movies.genres">{{m.genreName}}</li>
       </ul>
-      <button *ngIf="route.url!=='movies/edit'" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-primary" (click)="editMovie()">Edit Movie</button>
-      <button class="btn btn-primary"> Add To Watch List</button>
+      <button *ngIf="route.url!=='movies/edit' &&  isAdmin()" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-primary" (click)="editMovie()">Edit Movie</button>
+      <button  *ngIf="isUser()" class="btn btn-primary"> Add To Watch List</button>
       
           </div>
       </div>

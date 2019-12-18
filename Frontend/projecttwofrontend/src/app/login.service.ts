@@ -16,10 +16,9 @@ export class LoginService {
   private user: User;
   constructor( private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<Currentuser>{
+  login(username: string, password: string): Observable<Currentuser> {
     if (username && password) {
       const body = `user=${username}&pass=${password}`;
-      //const body = JSON.stringify([username, password]);
       console.log(body);
 
       return this.http.post('http://localhost:8080/DefinitelyNotRottenTomatoes/logined', body, {
@@ -35,7 +34,7 @@ export class LoginService {
 
         })
       );
-    } else{
+    } else {
       return this.http.get('http://localhost:8080/DefinitelyNotRottenTomatoes/logined').pipe(
         map( resp => {
           const u: Currentuser = resp as Currentuser;
@@ -49,8 +48,8 @@ export class LoginService {
     }
   }
 
-  logout(): Observable<object>{
-    return this.http.delete('http://localhost:8080/DefinitelyNotRottenTomatoes/logined',{withCredentials:true}).pipe(
+  logout(): Observable<object> {
+    return this.http.delete('http://localhost:8080/DefinitelyNotRottenTomatoes/logined', {withCredentials: true}).pipe(
       map(success => {
         this.admin = null;
         this.user = null;
@@ -59,19 +58,19 @@ export class LoginService {
     );
   }
 
-  getUser(): User{
+  getUser(): User {
     return this.user;
   }
 
-  getAdmin(): Admin{
+  getAdmin(): Admin {
     return this.admin;
 
   }
 
-  isAdmin(): boolean{
-    return (this.admin !== undefined && this.admin !==null);
+  isAdmin(): boolean {
+    return (this.admin !== undefined && this.admin !== null);
   }
-  isUser(): boolean{
+  isUser(): boolean {
     return (this.user !== undefined && this.user !== null);
   }
 
