@@ -16,6 +16,9 @@ import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
+import { FriendsComponent } from './friends/friends.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
+import { FriendlistComponent } from './friendlist/friendlist.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { HomeComponent } from './home/home.component';
     MoviesComponent,
     ShowsComponent,
     MovieListComponent,
-    HomeComponent
+    HomeComponent,
+    FriendsComponent,
+    AddFriendComponent,
+    FriendlistComponent
   ],
   imports: [
     BrowserModule,

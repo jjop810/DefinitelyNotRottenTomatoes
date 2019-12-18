@@ -48,6 +48,7 @@ public class User
 		this.friends = new ArrayList<>();
 	}
 	
+	
 	public User(Integer id, String username, String password, String email) 
 	{
 		super();

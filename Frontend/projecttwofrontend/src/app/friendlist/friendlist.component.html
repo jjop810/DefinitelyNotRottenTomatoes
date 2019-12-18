@@ -1,0 +1,9 @@
+<p>friendlist works!</p>
+<div *ngFor="let user of users">
+    {{user.username}}
+<app-add-friend [friend]="user" (created)="submitted()"></app-add-friend> 
+</div>
+
+<!-- <app-friend *ngFor="let friend of friends" [friend]="friend"></app-friend>
+<app-add-friend [friend]="friend" (created)="submitted()"></app-add-friend> -->
+<!-- <app-add-ranger [ranger]="ranger" (created)="submitted()"></app-add-ranger> -->

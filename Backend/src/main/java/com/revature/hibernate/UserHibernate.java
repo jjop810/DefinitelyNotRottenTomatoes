@@ -1,5 +1,7 @@
 package com.revature.hibernate;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,6 +30,7 @@ public class UserHibernate implements UserDAO{
 		q.setParameter("username", username);
 		q.setParameter("password", password);
 		User u = q.uniqueResult();
+		setFriendsFriends(u.getFriends());
 		s.close();
 		return u;
 
@@ -45,6 +48,7 @@ public class UserHibernate implements UserDAO{
 			q.setParameter("password", u.getPassword());
 			ret = q.uniqueResult();
 		}
+		setFriendsFriends(ret.getFriends());
 		s.close();
 		return ret;
 
@@ -55,6 +59,7 @@ public class UserHibernate implements UserDAO{
 	public User getUserById(Integer i) {
 		Session s = hu.getSession();
 		User u = s.get(User.class, i);
+		setFriendsFriends(u.getFriends());
 		s.close();
 		return u;
 	}
@@ -101,12 +106,17 @@ public class UserHibernate implements UserDAO{
 		Set<User> users = new HashSet<User>();
 		users.addAll(list);
 		for(User u : users) {
-			u.getFriends().forEach( (friend) -> {
-				friend.getId();
-			});
+			setFriendsFriends(u.getFriends());
 		}
 		s.close();
 		return users;
+	}
+	
+	public void setFriendsFriends(Collection<User> users) {
+		users.forEach((friend) -> {
+			friend.getId();
+			friend.setFriends(new ArrayList<User>());
+		});
 	}
 
 }

@@ -27,6 +27,7 @@
 		<mapping class="com.revature.beans.ShowRating"/>
 		<mapping class="com.revature.beans.ShowReview"/>
 		<mapping class="com.revature.beans.Shows"/>
+		<mapping class="com.revature.beans.Friends"/>
 		<mapping class="com.revature.beans.User"/>
 
 		
