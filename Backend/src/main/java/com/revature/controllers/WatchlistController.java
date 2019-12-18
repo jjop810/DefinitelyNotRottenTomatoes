@@ -16,7 +16,7 @@ import com.revature.data.WatchlistDAO;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-@RequestMapping(value="/watchlist/")
+@RequestMapping(value="/watchlist")
 public class WatchlistController {
 	@Autowired
 	private WatchlistDAO wd;

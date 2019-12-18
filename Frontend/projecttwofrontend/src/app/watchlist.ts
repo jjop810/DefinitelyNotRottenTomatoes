@@ -1,6 +1,8 @@
+import { User } from './user';
+
 export class Watchlist {
-    id: string;
-    userId: string;
-    movieId: string;
-    showId: string;
+    id: number;
+    userId: User;
+    movieId: number;
+    showId: number;
 }
