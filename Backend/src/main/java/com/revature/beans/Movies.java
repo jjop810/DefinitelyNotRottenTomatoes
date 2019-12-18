@@ -2,6 +2,7 @@ package com.revature.beans;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table (name = "movies")
 public class Movies {
 	
 	@Id
@@ -25,7 +26,7 @@ public class Movies {
 	Integer movieLength;
 	Integer rating;
 	String imgUrl;
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinTable(name="movieGenre",
 		joinColumns=@JoinColumn(name="movieid"),
 		inverseJoinColumns=@JoinColumn(name="genreid"))
@@ -34,14 +35,16 @@ public class Movies {
 	public Movies() {
 		super();
 	}
-	public Movies(Integer id, String title, Integer movieLength, Integer rating, String imgUrl) {
+	public Movies(Integer id, String title, Integer movieLength, Integer rating, String imgUrl, Set<Genre> genres) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.movieLength = movieLength;
 		this.rating = rating;
 		this.imgUrl = imgUrl;
+		this.genres = genres;
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -145,6 +148,7 @@ public class Movies {
 	public String toString() {
 		return "Movies [id=" + id + ", title=" + title + ", movieLength=" + movieLength + ", rating=" + rating
 				+ ", imgUrl=" + imgUrl + ", genres=" + genres + "]";
+
 	}
 
 	
