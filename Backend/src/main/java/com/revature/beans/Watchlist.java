@@ -1,9 +1,12 @@
 package com.revature.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -15,15 +18,16 @@ public class Watchlist {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="watchlist")
 	@SequenceGenerator(name="watchlist", sequenceName="watchlist_seq", allocationSize=1)
 	private Integer id;
-	@OneToOne
-	private Integer userId;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="userId")
+	private User userId;
 	private Integer movieId;
 	private Integer showId;
 	
 	public Watchlist() {
 		super();
 	}
-	public Watchlist(Integer id, Integer userId) {
+	public Watchlist(Integer id, User userId) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -35,9 +39,9 @@ public class Watchlist {
 		this.id = id;
 	}
 	public Integer getUserId() {
-		return userId;
+		return userId.getId();
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(User userId) {
 		this.userId = userId;
 	}
 	public Integer getMovieId() {

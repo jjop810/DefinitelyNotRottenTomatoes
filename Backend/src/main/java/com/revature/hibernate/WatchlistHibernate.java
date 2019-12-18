@@ -8,11 +8,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.revature.beans.Watchlist;
 import com.revature.data.WatchlistDAO;
 import com.revature.utils.HibernateUtil;
 
+@Component
 public class WatchlistHibernate implements WatchlistDAO{
 	@Autowired
 	private HibernateUtil hu;
@@ -31,6 +33,7 @@ public class WatchlistHibernate implements WatchlistDAO{
 	
 	@Override
 	public Integer addMovie(Watchlist watch) {
+		System.out.println("In watchlist hibernate" + watch.toString());
 		Integer i = null;
 		if(watch.getMovieId() != 0 || watch.getShowId() != 0)
 		{

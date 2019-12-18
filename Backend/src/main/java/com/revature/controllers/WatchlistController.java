@@ -16,13 +16,14 @@ import com.revature.data.WatchlistDAO;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-@RequestMapping(value="/watchlist")
+@RequestMapping(value="/watchlist/")
 public class WatchlistController {
 	@Autowired
 	private WatchlistDAO wd;
 	
 	@PostMapping
 	public ResponseEntity<Watchlist> addWatchlist(@RequestBody Watchlist wl) {
+		System.out.println("In Controller");
 		wd.addMovie(wl);
 		return ResponseEntity.status(201).body(wl);
 	}
