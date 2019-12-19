@@ -23,7 +23,7 @@ public class Watchlist {
 	private User userId;
 	private Integer movieId;
 	private Integer showId;
-	
+	private String title;
 	public Watchlist() {
 		super();
 	}
@@ -56,6 +56,12 @@ public class Watchlist {
 	public void setShowId(Integer showId) {
 		this.showId = showId;
 	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -63,6 +69,7 @@ public class Watchlist {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((movieId == null) ? 0 : movieId.hashCode());
 		result = prime * result + ((showId == null) ? 0 : showId.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
 		return result;
 	}
@@ -90,6 +97,11 @@ public class Watchlist {
 				return false;
 		} else if (!showId.equals(other.showId))
 			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
 		if (userId == null) {
 			if (other.userId != null)
 				return false;
@@ -99,7 +111,8 @@ public class Watchlist {
 	}
 	@Override
 	public String toString() {
-		return "Watchlist [id=" + id + ", userId=" + userId + ", movieId=" + movieId + ", showId=" + showId + "]";
+		return "Watchlist [id=" + id + ", userId=" + userId + ", movieId=" + movieId + ", showId=" + showId + ", title="
+				+ title + "]";
 	}
 	
 	

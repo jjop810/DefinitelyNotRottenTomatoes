@@ -30,7 +30,8 @@ export class SingleMovieComponent implements OnInit {
       id: 1,
       userId: this.loginService.getUser(),
       movieId: this.movies.id,
-      showId: null};
+      showId: null,
+      title: this.movies.title };
     const userId = this.loginService.getUser();
     // tslint:disable-next-line: radix
     this.watchlistService.addWatchlist(this.watchlist).subscribe();

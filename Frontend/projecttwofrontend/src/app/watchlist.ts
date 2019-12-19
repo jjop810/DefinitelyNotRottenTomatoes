@@ -5,4 +5,5 @@ export class Watchlist {
     userId: User;
     movieId: number;
     showId: number;
+    title: string;
 }

@@ -29,9 +29,28 @@ export class WatchlistService {
     }
   }
 
-  getMovies(user: User): Observable<Movies[]> {
-    return this.http.post(this.appUrl + '/getwatchlist', user, { headers: this.headers, withCredentials: true } ).pipe(
+  getMovies(user: User, page: number): Observable<Movies[]> {
+    const body = JSON.stringify(user.id + ',' + user.username + ',' + user.password +
+      ',' + user.email + ',' + page);
+    console.log('Getting watchlist from: ' + body);
+    return this.http.post(this.appUrl + '/getwatchlist', body, { headers: this.headers, withCredentials: true } ).pipe(
       map( resp => resp as Movies[])
     );
+  }
+
+  getLastPage(): Observable<number> {
+    return this.http.get(this.appUrl + '/getwatchlist', {withCredentials: true} ).pipe(
+      map( resp => resp as number)
+    );
+  }
+
+  getMovieSearch(searchTxt: string, pageNum: number): Observable<Movies[]> {
+    if (searchTxt && pageNum && !isNaN(pageNum)) {
+      const body = searchTxt + '|' + pageNum;
+      console.log(body);
+      return this.http.get(this.appUrl + '/watchlist/' + body, {headers: this.headers, withCredentials: true}).pipe(
+        map( resp => resp as Movies[])
+        );
+    }
   }
 }

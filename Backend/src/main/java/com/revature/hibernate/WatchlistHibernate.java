@@ -1,5 +1,6 @@
 package com.revature.hibernate;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,22 +21,51 @@ import com.revature.utils.HibernateUtil;
 public class WatchlistHibernate implements WatchlistDAO{
 	@Autowired
 	private HibernateUtil hu;
+	private Integer lastPageNumber = 1;
 
 	@Override
-	public Set<Movies> getWatchlist(User userId) {
-		System.out.println("\n\n\n\n" + userId + "\n\n\n\n");
+	public List<Movies> getWatchlist(User userId, Integer page) {
 		Session s = hu.getSession();
 		String query = "from Watchlist wl where wl.userId=:watch";
 		Query<Watchlist> q = s.createQuery(query, Watchlist.class);
-		
 		q.setParameter("watch", userId);
 		List<Watchlist> wl = q.list();
-		Set<Movies> userWatchlist = new HashSet<Movies>();
+		if(wl.size() < 50)
+		{
+			int pageSize = wl.size();
+			query = "from Watchlist order by title asc";
+			q = s.createQuery(query, Watchlist.class);
+			q.setFirstResult((page - 1) * pageSize);
+			q.setMaxResults(pageSize);
+			wl = q.list();
+			System.out.println(wl.toString());
+		}
+		else
+		{
+			int pageSize = 50;
+			float pageCount = 50.0f;
+			String count = "Select count (wl.id) from Watchlist wl";
+			Query<Long> countQuery = s.createQuery(count, Long.class);
+			Long countResults = countQuery.uniqueResult();
+			lastPageNumber = (int) (Math.ceil(countResults / pageCount));
+			if(page > lastPageNumber)
+			{
+				page = lastPageNumber;
+			}
+			else if(page < 1)
+			{
+				page = 1;
+			}
+			query = "from Watchlist order by title asc";
+			q = s.createQuery(query, Watchlist.class);
+			q.setFirstResult((page - 1) * pageSize);
+			q.setMaxResults(pageSize);
+			wl = q.list();
+		}
+		List<Movies> userWatchlist = new ArrayList<Movies>();
 		for(int x = 0; x < wl.size(); x++)
 		{
-			System.out.println("\n\n" + wl.get(x).getMovieId() + "\n\n"); 
 			Movies ret = s.get(Movies.class, wl.get(x).getMovieId());
-			System.out.println("\n\n" + ret + "\n\n");
 			userWatchlist.add(ret);
 		}
 		s.close();
@@ -68,6 +98,30 @@ public class WatchlistHibernate implements WatchlistDAO{
 			System.out.println("Bad request on adding to watchlist");
 		}
 		return i;
+	}
+
+	@Override
+	public Integer getLastPage() {
+		System.out.println("test" + lastPageNumber);
+		return lastPageNumber;
+	}
+
+	@Override
+	public Set<Movies> getMovieSerarch(String title, Integer page) {
+		Session s = hu.getSession();
+		int pageSize = 200;	
+		String query = "from Watchlist where upper(title) like '%"+title.toUpperCase()+"%'";
+		Query<Watchlist> q = s.createQuery(query, Watchlist.class);		
+		q.setMaxResults(pageSize);
+		List<Watchlist> wl = q.list();
+		List<Movies> userWatchlist = new ArrayList<Movies>();
+		for(int x = 0; x < wl.size(); x++)
+		{
+			Movies ret = s.get(Movies.class, wl.get(x).getMovieId());
+			userWatchlist.add(ret);
+		}
+		s.close();
+		return new HashSet<Movies>(userWatchlist);
 	}
 
 }
