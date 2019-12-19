@@ -35,6 +35,10 @@ public class Movies {
 	public Movies() {
 		super();
 	}
+	public Movies(Integer id) {
+		super();
+		this.id = id;
+	}
 	public Movies(Integer id, String title, Integer movieLength, Integer rating, String imgUrl, Set<Genre> genres) {
 		super();
 		this.id = id;

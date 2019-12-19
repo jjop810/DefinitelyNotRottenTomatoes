@@ -34,6 +34,7 @@
             <a *ngIf="route.url!=='/addfriend'" class="nav-link" routerLink="/addfriend" >Add Friend</a>
         </li>
         
+
         <li *ngIf="!isAdmin()&& !isUser()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#droplogin" href="#" >Sign Up
                 <span class="carat"></span>
@@ -49,6 +50,5 @@
 </div>
 
 </nav>
-
-
+<!-- <app-movierating></app-movierating> -->
     

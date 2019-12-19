@@ -6,7 +6,7 @@
     
         Password: <input type="password" [(ngModel)]="password" (keydown.enter)="login()">
     
-    
+
         <button (click)= "login()">Login</button>
     
    
@@ -25,6 +25,8 @@
 <ng-template #normaluser>
     <div>
         <span>Welcome user : {{loggedUser.user.username}}!</span>
+        <!-- <span>Welcome user : {{loggedUser.user.id}}!</span> -->
+
     </div>
 
 </ng-template>

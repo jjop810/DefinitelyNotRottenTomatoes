@@ -5,7 +5,8 @@
 		<!-- JDBC set up -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
 
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@jjrevdata.c9ga4ppggkty.us-east-2.rds.amazonaws.com:1521:orcl</property>
+		  <property name="hibernate.connection.url">jdbc:oracle:thin:@jjrevdata.c9ga4ppggkty.us-east-2.rds.amazonaws.com:1521:orcl</property> 
+		<!-- <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:xe</property> -->
 		
 		<property name="hibernate.connection.username">projecttwo</property>
 		<property name="hibernate.connection.password">pass</property>
@@ -31,6 +32,7 @@
 		<mapping class="com.revature.beans.MovieReview"/>
 		<mapping class="com.revature.beans.ShowRating"/>
 		 -->
+		<mapping class="com.revature.beans.MovieRating"/>
 		<mapping class="com.revature.beans.Movies"/>
 		<mapping class="com.revature.beans.ShowReview"/>
 		<mapping class="com.revature.beans.Shows"/>

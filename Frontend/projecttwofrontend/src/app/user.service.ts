@@ -23,7 +23,7 @@ export class UserService {
 
 
   public getUserById(id: number): Observable<User>{
-    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/login' + id;
+    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/login/' + id;
     return this.http.get(url,{withCredentials: true}).pipe(
       map(resp => resp as User)
     );

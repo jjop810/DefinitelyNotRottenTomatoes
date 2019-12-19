@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.loginService.logout().subscribe(
       resp => {
         this.loggedUser = null;
+        
       }
 
     );
