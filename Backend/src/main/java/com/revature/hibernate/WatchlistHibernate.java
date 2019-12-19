@@ -10,6 +10,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.revature.beans.Movies;
+import com.revature.beans.User;
 import com.revature.beans.Watchlist;
 import com.revature.data.WatchlistDAO;
 import com.revature.utils.HibernateUtil;
@@ -20,15 +22,24 @@ public class WatchlistHibernate implements WatchlistDAO{
 	private HibernateUtil hu;
 
 	@Override
-	public Set<Watchlist> getWatchlist(Integer userId) {
+	public Set<Movies> getWatchlist(User userId) {
+		System.out.println("\n\n\n\n" + userId + "\n\n\n\n");
 		Session s = hu.getSession();
-		String query = "from Watchlist wl where wl.userId=:user";
+		String query = "from Watchlist wl where wl.userId=:watch";
 		Query<Watchlist> q = s.createQuery(query, Watchlist.class);
 		
-		q.setParameter("title", userId);
+		q.setParameter("watch", userId);
 		List<Watchlist> wl = q.list();
+		Set<Movies> userWatchlist = new HashSet<Movies>();
+		for(int x = 0; x < wl.size(); x++)
+		{
+			System.out.println("\n\n" + wl.get(x).getMovieId() + "\n\n"); 
+			Movies ret = s.get(Movies.class, wl.get(x).getMovieId());
+			System.out.println("\n\n" + ret + "\n\n");
+			userWatchlist.add(ret);
+		}
 		s.close();
-		return new HashSet<Watchlist>(wl);
+		return userWatchlist;
 	}
 	
 	@Override

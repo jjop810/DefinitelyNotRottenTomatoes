@@ -7,7 +7,7 @@
 
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@jjrevdata.c9ga4ppggkty.us-east-2.rds.amazonaws.com:1521:orcl</property>
 		
-		<property name="hibernate.connection.username">projecttwo</property>
+		<property name="hibernate.connection.username">ProjectTwo</property>
 		<property name="hibernate.connection.password">pass</property>
 		
 		
