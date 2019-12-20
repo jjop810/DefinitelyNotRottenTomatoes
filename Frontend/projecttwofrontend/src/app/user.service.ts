@@ -8,8 +8,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-
- 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   constructor( private http: HttpClient) { }
 
@@ -19,7 +17,6 @@ export class UserService {
       map( resp => resp as User[] )
     );
   }
-
 
 
   public getUserById(id: number): Observable<User>{
@@ -42,7 +39,6 @@ export class UserService {
       map( resp => resp as User )
     );
   }
-
   public editUser(user: User) {
     const body = JSON.stringify(user);
     return this.http.put('http://localhost:8080/DefinitelyNotRottenTomatoes/login/' + user.id,
@@ -50,7 +46,5 @@ export class UserService {
       map( resp => resp as User )
     );
   }
-
-
 
 }
