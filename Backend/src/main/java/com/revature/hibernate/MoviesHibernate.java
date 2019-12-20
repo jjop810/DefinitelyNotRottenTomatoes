@@ -29,7 +29,7 @@ public class MoviesHibernate implements MoviesDAO {
 		String count = "Select count (m.id) from Movies m";
 		Query<Long> countQuery = s.createQuery(count, Long.class);
 		Long countResults = countQuery.uniqueResult();
-		lastPageNumber = (int) (Math.ceil(countResults / pageSize));
+		lastPageNumber = (int) (Math.ceil(countResults / (float)pageSize));
 		if(page > lastPageNumber)
 		{
 			page = lastPageNumber;
