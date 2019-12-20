@@ -59,7 +59,7 @@ import { FriendService } from './friend.service';
     UserReviewListComponent,
     ReviewsComponent,
     ShowGuestReviewComponent,
-    GuestReviewsComponent
+    GuestReviewsComponent,
     WatchlistComponent,
     AddFriendComponent
   ],

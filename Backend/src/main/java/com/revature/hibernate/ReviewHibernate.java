@@ -1,5 +1,7 @@
 package com.revature.hibernate;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,8 +33,9 @@ public class ReviewHibernate implements ReviewDAO {
 		Session s = hu.getSession();
 		Integer id = null;
 		Transaction tx = null;
+		setFriendsFriends(rev.getUser().getFriends());
 		try {
-			tx = s.beginTransaction();
+			tx = s.beginTransaction();		
 			id = (Integer) s.save(rev);
 			log.trace("adding review through hibernate " + rev);
 			
@@ -53,25 +56,12 @@ public class ReviewHibernate implements ReviewDAO {
 	@Override
 	public Set<Reviews> getReviews() {
 		Session s = hu.getSession();
-		/*int pageSize = 50;
-		String count = "Select count (m.id) from Movies m";
-		Query<Long> countQuery = s.createQuery(count, Long.class);
-		Long countResults = countQuery.uniqueResult();
-		lastPageNumber = (int) (Math.ceil(countResults / pageSize));
-		if(page > lastPageNumber)
-		{
-			page = lastPageNumber;
-		}
-		else if(page < 1)
-		{
-			page = 1;
-		}
-		*/
 		String query = "from reviews";
 		Query<Reviews> q = s.createQuery(query, Reviews.class);
-		//q.setFirstResult((page - 1) * pageSize);
-		//q.setMaxResults(pageSize);
 		List<Reviews> revs = q.list();
+		for(Reviews r : revs) {
+			setFriendsFriends(r.getUser().getFriends());
+		}
 		s.close();
 		return new HashSet<Reviews>(revs);
 	}
@@ -84,6 +74,9 @@ public class ReviewHibernate implements ReviewDAO {
 		
 		q.setParameter("movieid", movieid);
 		List<Reviews> r = q.list();
+		for(Reviews revs : r) {
+			setFriendsFriends(revs.getUser().getFriends());
+		}
 		s.close();
 		return new HashSet<Reviews>(r);
 	}
@@ -96,6 +89,9 @@ public class ReviewHibernate implements ReviewDAO {
 		
 		q.setParameter("userid", userid);
 		List<Reviews> r = q.list();
+		for(Reviews revs : r) {
+			setFriendsFriends(revs.getUser().getFriends());
+		}
 		s.close();
 		return new HashSet<Reviews>(r);
 	}
@@ -174,5 +170,12 @@ public class ReviewHibernate implements ReviewDAO {
 		}
 	}
 	
+	
+	public void setFriendsFriends(Collection<User> users) {
+		users.forEach((friend) -> {
+			friend.getId();
+			friend.setFriends(new ArrayList<User>());
+		});
+	}
 
 }

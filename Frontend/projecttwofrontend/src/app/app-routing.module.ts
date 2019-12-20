@@ -56,6 +56,7 @@ const routes: Routes = [
     path: 'movies/review/view/:id',
     component: ShowGuestReviewComponent
   },
+  {
     path: 'watchlist',
     component: WatchlistComponent
   },

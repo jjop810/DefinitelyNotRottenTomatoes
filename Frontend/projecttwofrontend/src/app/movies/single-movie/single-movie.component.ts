@@ -4,7 +4,6 @@ import { MoviesService } from '../shared/movies.service';
 import { LoginService } from 'src/app/login.service';
 import { WatchlistService} from 'src/app/watchlist.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LoginService } from 'src/app/login.service';
 import { Watchlist } from 'src/app/watchlist';
 
 @Component({
