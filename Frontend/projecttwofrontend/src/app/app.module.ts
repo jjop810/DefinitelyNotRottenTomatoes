@@ -27,6 +27,8 @@ import { ReviewService } from './all-shared/review-shared/review.service';
 import { ReviewComponent } from './all-shared/review/review.component';
 import { UserReviewListComponent } from './movies/user-review-list/user-review-list.component';
 import { ReviewsComponent } from './all-shared/review-shared/reviews/reviews.component';
+import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
+import { GuestReviewsComponent } from './all-shared/review-shared/guest-reviews/guest-reviews.component';
 
 //#endregion
 
@@ -51,7 +53,9 @@ import { ReviewsComponent } from './all-shared/review-shared/reviews/reviews.com
     AddMoviereviewComponent,
     ReviewComponent,
     UserReviewListComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    ShowGuestReviewComponent,
+    GuestReviewsComponent
 
   ],
   imports: [

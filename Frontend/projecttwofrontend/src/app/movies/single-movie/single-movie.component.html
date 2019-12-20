@@ -29,11 +29,13 @@
          <ul>
       <li *ngFor="let m of movies.genres">{{m.genreName}}</li>
       </ul>
-      <button *ngIf="route.url!=='movies/edit'" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-warning" (click)="editMovie()">Edit Movie</button>
-      <button class="btn btn-primary"> Add To Watch List</button>
 
-      <button *ngIf="route.url!=='movies/review'" class="nav-link" routerLink="['movies/review', this.movies.id]" class="btn btn-info" (click)="reviewMovie()">Review Movie</button>
-      
+      <button *ngIf="isAdmin() && route.url!=='movies/edit'" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-warning" (click)="editMovie()">Edit Movie</button>
+      <button *ngIf="isUser()" class="btn btn-primary"> Add To Watch List</button>
+
+      <button *ngIf="isUser() && route.url!=='movies/review'" class="nav-link" routerLink="['movies/review', this.movies.id]" class="btn btn-info" (click)="reviewMovie()">Review Movie</button>
+
+      <button *ngIf="route.url!=='movies/review/view'" class="nav-link" routerLink="['movies/review/view', this.movies.id]" class="btn btn-info" (click)="viewReviews()">View Movie Reviews</button>
           </div>
       </div>
   </div>

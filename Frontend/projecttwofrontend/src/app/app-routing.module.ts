@@ -9,6 +9,7 @@ import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component'
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
 import { UserReviewListComponent } from './movies/user-review-list/user-review-list.component';
+import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'myreview',
     component: UserReviewListComponent
+  },
+  {
+    path: 'movies/review/view/:id',
+    component: ShowGuestReviewComponent
   }
 
 ];

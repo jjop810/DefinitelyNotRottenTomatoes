@@ -49,7 +49,7 @@ public class ReviewController {
 	
 	
 	@GetMapping(value="/movies/review/{m}")
-	public ResponseEntity<Set<Reviews>> getMovieRatingByUM(@PathVariable Integer m) {
+	public ResponseEntity<Set<Reviews>> getMovieReviews(@PathVariable Integer m) {
 		return ResponseEntity.ok(rd.getMovieReviews(m));
 		
 	}
