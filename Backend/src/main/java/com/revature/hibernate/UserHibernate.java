@@ -30,9 +30,9 @@ public class UserHibernate implements UserDAO{
 		q.setParameter("username", username);
 		q.setParameter("password", password);
 		User u = q.uniqueResult();
+		setFriendsFriends(u.getFriends());
 		s.close();
 		return u;
-
 	}
 
 	@Override
@@ -54,6 +54,18 @@ public class UserHibernate implements UserDAO{
 
 	}
 
+	@Override
+	public User getUserByUsername(String name) {
+		Session s = hu.getSession();
+		String query = "from User u where u.username=:username";
+		Query<User> q = s.createQuery(query, User.class);
+		q.setParameter("username", name);
+		User u = q.uniqueResult();
+		setFriendsFriends(u.getFriends());
+		s.close();
+		return u;
+	}
+	
 	@Override
 	public User getUserById(Integer i) {
 		Session s = hu.getSession();

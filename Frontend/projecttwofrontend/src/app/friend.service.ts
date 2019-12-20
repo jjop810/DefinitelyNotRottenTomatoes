@@ -34,4 +34,6 @@ export class FriendService {
       map( resp => resp as Friend )
     );
   }
+
+  
 }

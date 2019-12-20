@@ -2,6 +2,8 @@ package com.revature.data;
 
 import java.util.Set;
 
+import org.hibernate.Session;
+
 import com.revature.beans.User;
 
 public interface UserDAO {
@@ -13,5 +15,5 @@ public interface UserDAO {
 	Set<User>getUsers();
 	public void deleteUser(User u);
 	public User addFriend(User u);
-	
+	public User getUserByUsername(String i);
 }

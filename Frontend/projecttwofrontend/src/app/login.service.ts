@@ -19,7 +19,6 @@ export class LoginService {
   login(username: string, password: string): Observable<Currentuser>{
     if (username && password) {
       const body = `user=${username}&pass=${password}`;
-      //const body = JSON.stringify([username, password]);
       console.log(body);
 
       return this.http.post('http://localhost:8080/DefinitelyNotRottenTomatoes/logined', body, {
@@ -35,7 +34,7 @@ export class LoginService {
 
         })
       );
-    } else{
+    } else {
       return this.http.get('http://localhost:8080/DefinitelyNotRottenTomatoes/logined').pipe(
         map( resp => {
           const u: Currentuser = resp as Currentuser;

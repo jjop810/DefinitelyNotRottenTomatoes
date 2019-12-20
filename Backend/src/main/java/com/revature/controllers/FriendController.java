@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.User;
-import com.revature.data.FriendDAO;
+import com.revature.data.UserDAO;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
@@ -23,12 +23,14 @@ import com.revature.data.FriendDAO;
 public class FriendController {
 	
 	@Autowired
-	private FriendDAO fd;
+	private UserDAO ud;
 	
-	@GetMapping
-	public ResponseEntity<Set<User>> getFriends() {
-		return ResponseEntity.ok(fd.getFriends());
+	@GetMapping(value = "{name}")
+	public ResponseEntity<User> getUserByUsername(@PathVariable String name) {
+		User u = ud.getUserByUsername(name);
+		if(u ==null)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok(u);
 	}
-	
 
 }

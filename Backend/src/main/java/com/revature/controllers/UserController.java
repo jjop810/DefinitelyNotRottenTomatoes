@@ -37,12 +37,13 @@ public class UserController {
 	
 	
 	@GetMapping(value = "{id}")
-	public ResponseEntity<User> getRanger(@PathVariable Integer id) {
+	public ResponseEntity<User> getUser(@PathVariable Integer id) {
 		User u = ud.getUserById(id);
 		if(u ==null)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(u);
 	}
+	
 	
 	@PostMapping
 	public ResponseEntity<User> addUser(@RequestBody User u) {

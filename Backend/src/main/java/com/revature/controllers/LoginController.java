@@ -43,8 +43,10 @@ public class LoginController {
 			System.out.println("Username: " + username);
 			System.out.println("Password: " + password );
 			User u = ud.getUser(username, password);
-			Admin a = ad.getAdmin(username, password);
-		
+			Admin a= null;
+			if(u == null) {
+			 a = ad.getAdmin(username, password);
+			}
 		
 		if(u==null && a==null) {
 			return ResponseEntity.status(401).build();
