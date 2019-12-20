@@ -23,6 +23,8 @@ import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component'
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { GenreComponent } from './all-shared/genre/genre.component';
 import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
+import { ReviewService } from './all-shared/review-shared/review.service';
+import { ReviewComponent } from './all-shared/review/review.component';
 
 //#endregion
 
@@ -44,7 +46,8 @@ import { AddMoviereviewComponent } from './movies/add-moviereview/add-movierevie
     EditMoviesComponent,
     EditShowsComponent,
     GenreComponent,
-    AddMoviereviewComponent
+    AddMoviereviewComponent,
+    ReviewComponent
 
   ],
   imports: [
@@ -59,6 +62,7 @@ import { AddMoviereviewComponent } from './movies/add-moviereview/add-movierevie
     SearchService,
     LoginService,
     HttpClientModule,
+    ReviewService,
     FormsModule
   ],
   bootstrap: [AppComponent]

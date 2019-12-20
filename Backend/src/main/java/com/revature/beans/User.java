@@ -37,9 +37,9 @@ public class User
 	private String email;
 	
 	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinTable(name="reviews",
+	@JoinTable(name="userreviews",
 		joinColumns=@JoinColumn(name="userid"),
-		inverseJoinColumns=@JoinColumn(name="movieid"))
+		inverseJoinColumns=@JoinColumn(name="reviewid"))
 	private Set<Reviews> reviews;
 	
 //	@JoinTable(

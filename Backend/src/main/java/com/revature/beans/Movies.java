@@ -32,8 +32,6 @@ public class Movies {
 		inverseJoinColumns=@JoinColumn(name="genreid"))
 	private Set<Genre> genres;
 	
-	@ManyToMany(mappedBy = "reviews")
-    private Set<User> users;
 	
 	public Movies() {
 		super();

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,15 +18,62 @@ public class Reviews {
 	@SequenceGenerator(name="reviews", sequenceName="reviews_seq", allocationSize=1)
 	private Integer id;
 	private String review;
+	@ManyToOne
+	@JoinColumn(name="movieid")
+	private Movies movie;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="userid")
+    private User user;
+	
+	
+	
+	
+	
 	public Reviews() {
 		super();
 		
 	}
-	public Reviews(Integer id, String review) {
+	
+
+	public Reviews(Integer id) {
+		this.id = id;
+	}
+	
+	
+	
+	public Reviews(Integer id, String review, Movies movies, User users) {
 		super();
 		this.id = id;
 		this.review = review;
+		this.movie = movies;
+		this.user = users;
 	}
+
+
+
+
+	public Movies getMovie() {
+		return movie;
+	}
+
+
+	public void setMovie(Movies movie) {
+		this.movie = movie;
+	}
+
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -68,7 +117,7 @@ public class Reviews {
 	}
 	@Override
 	public String toString() {
-		return "Reviews [id=" + id + ", review=" + review + "]";
+		return "Reviews [id=" + id + ", review=" + review + ", movie=" + movie + "]";
 	}
 	
 	

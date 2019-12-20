@@ -95,7 +95,7 @@ public class MoviesHibernate implements MoviesDAO {
 		if(ret==null) {
 			String query = "from Movies mov where mov.title=:title";
 			Query<Movies> q = s.createQuery(query, Movies.class);
-			q.setParameter("username", mov.getTitle());
+			q.setParameter("title", mov.getTitle());
 			ret = q.getSingleResult();
 		}
 		s.close();

@@ -12,10 +12,18 @@ public interface ReviewDAO {
 	
 	public Set<Reviews> getReviews();
 	
-	public Reviews getReview(Integer uid, Integer movid);
+	public Set<Reviews>  getMovieReviews(Integer movid);
 	
-	public Reviews getReview(Reviews rev);
+	public Set<Reviews> getUserReviews(Integer userid);
+	
+	public Reviews getReview(User u, Movies m);
+	
+	public Reviews getReviewById(Integer id);
+	
+	public Reviews getReviewSingle(Reviews rev);
 	
 	public Reviews updateReview(Reviews rev);
+	
+	public void deleteReview(Reviews rev);
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ import com.revature.data.ReviewDAO;
 
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-@RequestMapping(value="/reviews")
+@RequestMapping(value="/review")
 public class ReviewController {
 
 	
@@ -39,21 +40,41 @@ public class ReviewController {
 		log.trace("getReviews called from controller.");
 		return ResponseEntity.ok(rd.getReviews());
 	}
-	
-	@GetMapping(value="{userid,movieid}")
-	public ResponseEntity<Reviews> getReview(@PathVariable Integer userid, @PathVariable Integer movieid){
-		Reviews r = rd.getReview(userid,movieid);
-		if(r==null)
-			return ResponseEntity.notFound().build();
-		return ResponseEntity.ok(r);
+	/*@GetMapping(value = "/userreview/{userid}")
+	public ResponseEntity<Set<Reviews>> getReviews(){
+		
 	}
 	
-	@GetMapping(value="{id}")
-	public ResponseEntity<Reviews> getReview(@PathVariable Integer id, @RequestBody Reviews review) {
-		log.trace("getReview called from controller.  (1 Review) with this Review: "+ review);
-		Reviews r = rd.getReview(review);
-		if(r==null)
-			return ResponseEntity.notFound().build();
-		return ResponseEntity.ok(r);
+	@GetMapping(value = "/moviereview/{movieid}")
+	*/
+	@PostMapping(value = "/moviereview")
+	public ResponseEntity<Reviews> getReviewById(@RequestBody Reviews r){
+		log.trace(r);
+		Reviews rev = rd.getReview(r.getUser(), r.getMovie());
+		
+		if(rev == null) {
+			rd.addReview(r);
+		}else {
+			rev.setReview(r.getReview());
+			rd.updateReview(rev);
+		}
+		return ResponseEntity.status(200).body(r);
+	}
+	
+	
+	@PutMapping(value="{id}")
+	public ResponseEntity<Reviews> updateReview(@PathVariable Integer id, @RequestBody Reviews r) {
+		Set<Reviews> rs = rd.getReviews();
+		Integer idr = -1;
+		for(Reviews rev : rs) {
+			if(rev.getId()==id) {
+				idr = id;
+				break;
+			}
+		}
+		
+		if(idr < 1)
+			return ResponseEntity.status(405).body(null);
+		return ResponseEntity.ok(rd.updateReview(r));
 	}
 }

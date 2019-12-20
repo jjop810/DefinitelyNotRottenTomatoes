@@ -19,4 +19,7 @@ export class SingleMovieComponent implements OnInit {
   editMovie() {
     this.route.navigate(['movies/edit', this.movies.id]);
   }
+  reviewMovie(){
+    this.route.navigate(['movies/review', this.movies.id]);
+  }
 }
