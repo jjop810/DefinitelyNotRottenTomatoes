@@ -4,6 +4,9 @@ table{
     font-size: medium;
     border-collapse: collapse;
     width: 600px;
+    margin: auto;
+    background-color: black;
+    color: blanchedalmond;
     
 }
 td{
@@ -11,7 +14,7 @@ td{
     padding: 5px;
 }
 th{
-    border: 1px solid rgb(233, 43, 30);
+    /* border: 1px solid rgb(233, 43, 30); */
     padding: 5px;
     text-align: center;
 }

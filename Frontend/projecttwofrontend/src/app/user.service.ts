@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from './user';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
- 
+//////////////
+ newuser: Observable<User>;
+/////////////
+  
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   constructor( private http: HttpClient) { }
 
@@ -24,7 +28,7 @@ export class UserService {
 
   public getUserById(id: number): Observable<User>{
     const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/login/' + id;
-    return this.http.get(url,{withCredentials: true}).pipe(
+    return this.http.get(url, {withCredentials: true}).pipe(
       map(resp => resp as User)
     );
   }
@@ -37,6 +41,14 @@ export class UserService {
     );
   }
 
+  // public addUser(user: User) {
+  //   const body = JSON.stringify(user);
+  //   this.newuser = this.http.post('http://localhost:8080/DefinetlyNotRottenTomatos/login',
+  //     body, {headers: this.headers, withCredentials: true} ).pipe(
+  //     map( resp => resp as User )
+  //   );
+  //   return this.newuser;
+  // }
 
 
 }
