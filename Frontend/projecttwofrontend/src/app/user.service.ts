@@ -20,8 +20,14 @@ export class UserService {
 
 
   public getUserById(id: number): Observable<User>{
-    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/login' + id;
+    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/login/' + id;
     return this.http.get(url,{withCredentials: true}).pipe(
+      map(resp => resp as User)
+    );
+  }
+  public getUserByUsername(name: string): Observable<User> {
+    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/friends/' + name;
+    return this.http.get(url, {withCredentials: true}).pipe(
       map(resp => resp as User)
     );
   }
@@ -33,4 +39,12 @@ export class UserService {
       map( resp => resp as User )
     );
   }
+  public editUser(user: User) {
+    const body = JSON.stringify(user);
+    return this.http.put('http://localhost:8080/DefinitelyNotRottenTomatoes/login/' + user.id,
+      body, {headers: this.headers, withCredentials: true} ).pipe(
+      map( resp => resp as User )
+    );
+  }
+
 }

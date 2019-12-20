@@ -8,6 +8,7 @@ import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'watchlist',
     component: WatchlistComponent
+  },
+  {
+    path: 'addfriend',
+    component: AddFriendComponent
   }
 ];
 

@@ -23,6 +23,8 @@ import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component'
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { GenreComponent } from './all-shared/genre/genre.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
+import { FriendService } from './friend.service';
 
 //#endregion
 
@@ -43,7 +45,8 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
     EditMoviesComponent,
     EditShowsComponent,
     GenreComponent,
-    WatchlistComponent
+    WatchlistComponent,
+    AddFriendComponent
 
   ],
   imports: [
@@ -58,7 +61,8 @@ import { WatchlistComponent } from './watchlist/watchlist.component';
     SearchService,
     LoginService,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FriendService
   ],
   bootstrap: [AppComponent]
 })
