@@ -79,7 +79,7 @@ public class ReviewHibernate implements ReviewDAO {
 	@Override
 	public Set<Reviews> getMovieReviews(Integer movieid) {
 		Session s = hu.getSession();
-		String query = "from reviews r where r.movieid=:movieid";
+		String query = "from Reviews r where r.movie.id=:movieid";
 		Query<Reviews> q = s.createQuery(query, Reviews.class);
 		
 		q.setParameter("movieid", movieid);
@@ -91,7 +91,7 @@ public class ReviewHibernate implements ReviewDAO {
 	@Override
 	public Set<Reviews> getUserReviews(Integer userid){
 		Session s = hu.getSession();
-		String query = "from reviews r where r.userid=:userid";
+		String query = "from Reviews r where r.user.id=:userid";
 		Query<Reviews> q = s.createQuery(query, Reviews.class);
 		
 		q.setParameter("userid", userid);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Reviews;
+import com.revature.beans.User;
 import com.revature.data.ReviewDAO;
 
 
@@ -40,15 +41,30 @@ public class ReviewController {
 		log.trace("getReviews called from controller.");
 		return ResponseEntity.ok(rd.getReviews());
 	}
-	/*@GetMapping(value = "/userreview/{userid}")
-	public ResponseEntity<Set<Reviews>> getReviews(){
-		
+	
+	@GetMapping(value = "{id}")
+	public ResponseEntity<Set<Reviews>> getReviews(@PathVariable Integer id){
+		return ResponseEntity.ok(rd.getUserReviews(id));
 	}
 	
-	@GetMapping(value = "/moviereview/{movieid}")
+	
+	@GetMapping(value="/movies/review/{m}")
+	public ResponseEntity<Set<Reviews>> getMovieRatingByUM(@PathVariable Integer m) {
+		return ResponseEntity.ok(rd.getMovieReviews(m));
+		
+	}
+	/*
+	@GetMapping(value="{id}")
+	public ResponseEntity<Reviews> getMovieReviewByID(@PathVariable Integer id) {
+		Reviews r = rd.getReviewById(id);
+		if(r==null)
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok(r);
+	}
+	
 	*/
 	@PostMapping(value = "/moviereview")
-	public ResponseEntity<Reviews> getReviewById(@RequestBody Reviews r){
+	public ResponseEntity<Reviews> getReviewId(@RequestBody Reviews r){
 		log.trace(r);
 		Reviews rev = rd.getReview(r.getUser(), r.getMovie());
 		

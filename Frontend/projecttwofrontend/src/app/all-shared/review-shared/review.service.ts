@@ -23,6 +23,33 @@ export class ReviewService {
       );
   
     }
+    /*All the movie reviews that are there*/
+  public getMovieReview(): Observable<Review[]>{
+    return this.http.get('http://localhost:8080/DefinitelyNotRottenTomatoes/review', {withCredentials: true}).pipe(
+      map(resp => resp as Review[])
+    );
+
+  }
+  /*Movie Review list for a user*/
+  public getMovieReviewByUserId(uid: number): Observable<Review[]>{
+    const url = this.uri + uid;
+
+    return this.http.get(url,{withCredentials: true}).pipe(
+      map(resp => resp as Review[])
+    );
+
+  }
+
+  /*Movie Review list for a user*/
+  public getMovieReviewByMovieId(mid: number): Observable<Review[]>{
+    const url = this.uri+ 'movies/review/' + mid;
+
+    return this.http.get(url,{withCredentials: true}).pipe(
+      map(resp => resp as Review[])
+    );
+
+  }
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   
     public getReviewById(id: number): Observable<Review>{
       const url = this.uri + id;
