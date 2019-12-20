@@ -1,3 +1,5 @@
+import { Review } from './all-shared/review-shared/review';
+
 export class User {
     id: string;
     username: string;
@@ -5,4 +7,5 @@ export class User {
     email: string;
     friends: User[];
 
+    reviews:Review[];
 }

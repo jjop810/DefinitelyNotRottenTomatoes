@@ -33,6 +33,7 @@ public class Movies implements Comparable<Movies>{
 		inverseJoinColumns=@JoinColumn(name="genreid"))
 	private Set<Genre> genres;
 	
+	
 	public Movies() {
 		super();
 	}

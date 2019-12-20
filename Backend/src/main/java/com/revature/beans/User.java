@@ -2,7 +2,9 @@ package com.revature.beans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,6 +36,13 @@ public class User
 	private String password;
 	private String email;
 	
+	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinTable(name="userreviews",
+		joinColumns=@JoinColumn(name="userid"),
+		inverseJoinColumns=@JoinColumn(name="reviewid"))
+	private Set<Reviews> reviews;
+	
+
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 	        name = "FRIENDS",

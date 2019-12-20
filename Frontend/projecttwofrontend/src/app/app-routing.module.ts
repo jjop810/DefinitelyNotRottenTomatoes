@@ -7,8 +7,12 @@ import { AddMoviesComponent } from './movies/add-movies/add-movies.component';
 import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
+import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
+import { UserReviewListComponent } from './movies/user-review-list/user-review-list.component';
+import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { AddFriendComponent } from './add-friend/add-friend.component';
+
 
 const routes: Routes = [
   {
@@ -41,6 +45,17 @@ const routes: Routes = [
     component: EditShowsComponent
   },
   {
+    path: 'movies/review/:id',
+    component: AddMoviereviewComponent
+  },
+  {
+    path: 'myreview',
+    component: UserReviewListComponent
+  },
+  {
+    path: 'movies/review/view/:id',
+    component: ShowGuestReviewComponent
+  },
     path: 'watchlist',
     component: WatchlistComponent
   },

@@ -4,6 +4,7 @@ import { MoviesService } from '../shared/movies.service';
 import { LoginService } from 'src/app/login.service';
 import { WatchlistService} from 'src/app/watchlist.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/login.service';
 import { Watchlist } from 'src/app/watchlist';
 
 @Component({
@@ -15,11 +16,9 @@ export class SingleMovieComponent implements OnInit {
   @Input() movies: Movies;
   watchlist: Watchlist;
   constructor(
-    private moviesService: MoviesService,
-    private loginService: LoginService,
-    private watchlistService: WatchlistService,
-    private route: Router
-  ) { }
+    private moviesService: MoviesService,private loginService: LoginService, private route: Router, private watchlistService: WatchlistService
+  ) {}
+
 
   ngOnInit() {
     console.log(this.movies);
@@ -39,4 +38,17 @@ export class SingleMovieComponent implements OnInit {
   editMovie() {
     this.route.navigate(['movies/edit', this.movies.id]);
   }
+  reviewMovie(){
+    this.route.navigate(['movies/review', this.movies.id]);
+  }
+  viewReviews(){
+    this.route.navigate(['movies/review/view', this.movies.id]);
+  }
+  isUser(): boolean{
+    return this.loginService.isUser();
+  }
+  isAdmin(): boolean{
+    return this.loginService.isAdmin();
+  }
+
 }
