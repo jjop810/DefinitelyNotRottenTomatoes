@@ -1,12 +1,25 @@
-<p>movierating works!</p>
 
 
 
-<div >
-    userid:<input type="number" [(ngModel)]="user.id" disabled><br>
+<div class="loginbox">
+    <br>
+    <p><b>Rating for:{{movieout.title}}</b></p>
+    <img style="width: 200px; height: 250px;" *ngIf="movieout.imgUrl" [src]="movieout.imgUrl" alt="cover image for Movie">
+    <br>
+    User Id<br>
+    <input type="number" [(ngModel)]="user.id" disabled><br>
     <!-- movie:<input type="number" [(ngModel)]="movierating.movie"><br> -->
-    movieid:<input id="movid" type="number" [(ngModel)]="movieout.id" disabled><br>
-    rating:<input type="number" [(ngModel)]="movierating.ratingvalue"><br>
-<button type="button" (click)="addMovieRatingorUpdate()">Rate it</button>
+    Movie Id<br>
+    <input type="text" [(ngModel)]="movieout.id" disabled><br>
+    Rating Value<br>
+    <input type="number" [(ngModel)]="movierating.ratingvalue"><br>
+    <br>
+    <button class="btn btn-danger" (click)="addMovieRatingorUpdate()">Rate it</button>
 
 </div>
+
+<!-- <app-urating-list></app-urating-list> -->
+<!-- <div *ngFor="let item of mlist" [rating]="item">
+    <p>this is id{{item.id}}</p>
+
+</div> -->

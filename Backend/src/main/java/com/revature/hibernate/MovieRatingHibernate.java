@@ -18,8 +18,6 @@ import com.revature.beans.User;
 import com.revature.data.MovieRatingDAO;
 import com.revature.utils.HibernateUtil;
 
-import oracle.net.aso.s;
-
 
 
 
@@ -50,7 +48,7 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 
 		Session session = hu.getSession();
 		User u = session.get(User.class,i);
-		String queryString ="FROM MovieRating where user=:u";
+		String queryString ="FROM MovieRating where user=:user";
 		Query<MovieRating> q = session.createQuery(queryString, MovieRating.class);
 		q.setParameter("user", u);
 		List<MovieRating>movieRatings = q.list();
@@ -61,8 +59,15 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 
 	@Override
 	public Set<MovieRating> getMovieRatingByMovieId(int i) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session s = hu.getSession();
+		Movies m = s.get(Movies.class, i);
+		String qString = "FROM MovieRating where movie=:movie";
+		Query<MovieRating> q = s.createQuery(qString, MovieRating.class);
+		q.setParameter("movie", m);
+		List<MovieRating>mList = q.list();
+		s.close();
+		return new HashSet<MovieRating>(mList);
 	}
 
 	@Override

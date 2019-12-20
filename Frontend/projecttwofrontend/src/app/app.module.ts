@@ -23,6 +23,8 @@ import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component'
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { GenreComponent } from './all-shared/genre/genre.component';
 import { MovieratingComponent } from './movierating/movierating/movierating.component';
+import { UratingListComponent } from './movierating/urating-list/urating-list.component';
+import { RatingComponent } from './movierating/rating/rating.component';
 
 //#endregion
 
@@ -43,7 +45,10 @@ import { MovieratingComponent } from './movierating/movierating/movierating.comp
     EditMoviesComponent,
     EditShowsComponent,
     GenreComponent,
-    MovieratingComponent
+    MovieratingComponent,
+    UratingListComponent,
+    RatingComponent,
+    
   ],
   imports: [
     BrowserModule,

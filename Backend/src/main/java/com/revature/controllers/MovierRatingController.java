@@ -35,41 +35,33 @@ public class MovierRatingController {
 	@Autowired
 	private MoviesDAO md;
 	
+	//Getting all the movie ratings
 	@GetMapping
 	public ResponseEntity<Set<MovieRating>> getMovieRatings(){
 		return ResponseEntity.ok(mrd.getMovieRatings());
 	}
 	
-//	@GetMapping(value="{m}")
-//	public ResponseEntity<MovieRating> getMovieRatingByUM(@PathVariable Integer u,@PathVariable Integer m) {
-//		MovieRating r = mrd.getMRByIDs(u, m);
-//		if(r==null)
-//			return ResponseEntity.notFound().build();
-//		return ResponseEntity.ok(r);
-//	}
-//
-//	@GetMapping(value="{u}")
-//	public ResponseEntity<Set<MovieRating>> getMovieRatingByUM(@PathVariable Integer u) {
-//		return ResponseEntity.ok(mrd.getMovieRatingByUserId(u));
-//		
-//	}
-	@GetMapping(value="{id}")
-	public ResponseEntity<MovieRating> getMovieRatingByID(@PathVariable Integer id) {
-		MovieRating r = mrd.getMRById(id);
-		if(r==null)
-			return ResponseEntity.notFound().build();
-		return ResponseEntity.ok(r);
+
+	//Getting movie ratings by movie id
+	@GetMapping(value="/movies/ratings/{m}")
+	public ResponseEntity<Set<MovieRating>> getMovieRatingByUM(@PathVariable Integer m) {
+		return ResponseEntity.ok(mrd.getMovieRatingByMovieId(m));
+		
 	}
 	
+	//Getting movie ratings by user id
+	@GetMapping(value="{id}")
+	public ResponseEntity<Set<MovieRating>> getMovieRatingByUserID(@PathVariable Integer id) {
+		
+		return ResponseEntity.ok( mrd.getMovieRatingByUserId(id));
+	}
+	
+	//Adding or updating using movie rating sent from the front end
 	@PostMapping(value = "/add")
 	public ResponseEntity<MovieRating>getRatingId(@RequestBody MovieRating m ){
 		
-//		User u = ud.getUserById(uid);
-//		Movies m = md.getMovieById(mid);
-//		MovieRating movierate = mrd.getMovieRating(u, m);
 		MovieRating movrate = mrd.getMovieRating(m.getUser(), m.getMovie());
-		
-		
+			
 		if(movrate == null) {
 			
 			mrd.addMovieRating(m);
@@ -83,13 +75,14 @@ public class MovierRatingController {
 		return ResponseEntity.status(200).body(m);
 	}
 	
-	
+	//Adding using  the movie
 	@PostMapping
 	public ResponseEntity<MovieRating> addMovieRating(@RequestBody MovieRating m) {
 		mrd.addMovieRating(m);
 		return ResponseEntity.status(201).body(m);
 	}
 
+	//Updating using movie rating id
 	@PutMapping(value = "{id}")
 	public ResponseEntity<MovieRating> updateMovieRating(@PathVariable Integer id, @RequestBody MovieRating m) {
 		if(mrd.getMRById(id) == null)
@@ -97,6 +90,7 @@ public class MovierRatingController {
 		return ResponseEntity.ok(mrd.updateMovieRating(m));
 	}
 
+	//Deleting using movie rating id
 	@DeleteMapping(value="{id}")
 	public ResponseEntity<Void> deleteMovieRating(@PathVariable Integer id) {
 		if(mrd.getMRById(id) == null)

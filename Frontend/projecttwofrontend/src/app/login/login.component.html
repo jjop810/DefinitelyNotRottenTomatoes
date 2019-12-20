@@ -19,7 +19,7 @@
                 <span>WELCOME {{loggedUser.admin.tittle}}!</span>
             </div>
         
-            <button (click)="logout()">Logout</button>
+            <button class="btn btn-danger" (click)="logout()" routerLink="/home">Logout</button>
     
 </ng-template>
 <ng-template #normaluser>

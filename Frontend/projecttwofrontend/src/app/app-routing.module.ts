@@ -8,7 +8,7 @@ import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { MovieratingComponent } from './movierating/movierating/movierating.component';
-import { LoginComponent } from './login/login.component';
+import { UratingListComponent } from './movierating/urating-list/urating-list.component';
 
 
 const routes: Routes = [
@@ -45,8 +45,10 @@ const routes: Routes = [
     path: 'movies/rating/:id',
     component: MovieratingComponent
   },
-  
- 
+  {
+    path: 'myrating',
+    component: UratingListComponent
+  }
 
 ];
 
