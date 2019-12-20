@@ -1,5 +1,7 @@
 package com.revature.hibernate;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +47,7 @@ public class UserHibernate implements UserDAO{
 			q.setParameter("password", u.getPassword());
 			ret = q.uniqueResult();
 		}
+		setFriendsFriends(ret.getFriends());
 		s.close();
 		return ret;
 
@@ -55,6 +58,7 @@ public class UserHibernate implements UserDAO{
 	public User getUserById(Integer i) {
 		Session s = hu.getSession();
 		User u = s.get(User.class, i);
+		setFriendsFriends(u.getFriends());
 		s.close();
 		return u;
 	}
@@ -66,10 +70,21 @@ public class UserHibernate implements UserDAO{
 	}
 
 	@Override
-	public User updateUser(User u) {
-		// TODO Auto-generated method stub
-		return null;
-		
+	public User addFriend(User u) {
+		Session s = hu.getSession();
+		Transaction tx = null;
+		try {
+			tx = s.beginTransaction();
+			s.update(u);
+			tx.commit();
+		} catch(Exception e) {
+			if(tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			s.close();
+		}
+		return u;
 	}
 
 	@Override
@@ -95,12 +110,23 @@ public class UserHibernate implements UserDAO{
 	@Override
 	public Set<User> getUsers() {
 		Session s = hu.getSession();
-		String query = "from User";
-		Query<User> q = s.createQuery(query,User.class);
-		List<User>users = q.list();
+		String query = "FROM User";
+		Query<User> q = s.createQuery(query, User.class);
+		List<User> list = q.getResultList();
+		Set<User> users = new HashSet<User>();
+		users.addAll(list);
+		for(User u : users) {
+			setFriendsFriends(u.getFriends());
+		}
 		s.close();
-		
-		
-		return new HashSet<User>(users);
+		return users;
 	}
+	
+	public void setFriendsFriends(Collection<User> users) {
+		users.forEach((friend) -> {
+			friend.getId();
+			friend.setFriends(new ArrayList<User>());
+		});
+	}
+
 }

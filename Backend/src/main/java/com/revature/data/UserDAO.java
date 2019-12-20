@@ -12,6 +12,6 @@ public interface UserDAO {
 	public User getUserById(Integer i);
 	Set<User>getUsers();
 	public void deleteUser(User u);
-	public User updateUser(User u);
+	public User addFriend(User u);
 	
 }

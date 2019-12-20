@@ -50,10 +50,10 @@ public class UserController {
 		return ResponseEntity.status(201).body(u);
 	}
 	@PutMapping(value="{id}")
-	public ResponseEntity<User> updateRanger(@PathVariable Integer id, @RequestBody User u) {
+	public ResponseEntity<User> addFriend(@PathVariable Integer id, @RequestBody User u) {
 		if(ud.getUserById(id) == null)
 			return ResponseEntity.status(405).body(null);
-		return ResponseEntity.ok(ud.updateUser(u));
+		return ResponseEntity.ok(ud.addFriend(u));
 	}
 	
 	
