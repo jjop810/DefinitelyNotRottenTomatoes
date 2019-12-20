@@ -10,6 +10,9 @@ import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
 import { UserReviewListComponent } from './movies/user-review-list/user-review-list.component';
 import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
+
 
 const routes: Routes = [
   {
@@ -52,8 +55,14 @@ const routes: Routes = [
   {
     path: 'movies/review/view/:id',
     component: ShowGuestReviewComponent
+  },
+    path: 'watchlist',
+    component: WatchlistComponent
+  },
+  {
+    path: 'addfriend',
+    component: AddFriendComponent
   }
-
 ];
 
 @NgModule({

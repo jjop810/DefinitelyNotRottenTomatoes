@@ -1,6 +1,12 @@
-
+<button (click)="previousPage()">Previous</button>
+Current Page: {{page}}
+<button (click)="nextPage()">Next</button>
+Jump to page: <input type="number" [(ngModel)]="jumpToPage"/>
+<button (click)="jumpPage()">Go</button>
+Search: <input type="text" [(ngModel)]="searchTxt"/>
+<button (click)="search()">Search</button>
   <div class="container border" *ngIf="movies">
-    <div class="row">
+    <div class="row"  *ngFor="let movies of movies">
         <div class="col-sm border card">
           <h4 class="border border-dark mx-auto">{{movies.title}}</h4>
           <div class="row">
@@ -29,13 +35,7 @@
          <ul>
       <li *ngFor="let m of movies.genres">{{m.genreName}}</li>
       </ul>
-      <button *ngIf="isAdmin() && route.url!=='movies/edit'" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-warning" (click)="editMovie()">Edit Movie</button>
-      <button *ngIf="isUser()" class="btn btn-primary"> Add To Watch List</button>
-      <button *ngIf="isUser() && route.url!=='movies/review'" class="nav-link" routerLink="['movies/review', this.movies.id]" class="btn btn-info" (click)="reviewMovie()">Review Movie</button>
-      <button *ngIf="route.url!=='movies/review/view'" class="nav-link" routerLink="['movies/review/view', this.movies.id]" class="btn btn-info" (click)="viewReviews()">View Movie Reviews</button>
-      <button *ngIf="route.url!=='movies/edit'" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-primary" (click)="editMovie()">Edit Movie</button>
-      <button (click)="addWatchlist()"> Add To Watch List</button>
           </div>
       </div>
-  </div>
   
+</div>

@@ -29,6 +29,10 @@ import { UserReviewListComponent } from './movies/user-review-list/user-review-l
 import { ReviewsComponent } from './all-shared/review-shared/reviews/reviews.component';
 import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
 import { GuestReviewsComponent } from './all-shared/review-shared/guest-reviews/guest-reviews.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
+import { FriendService } from './friend.service';
+
 
 //#endregion
 
@@ -56,7 +60,8 @@ import { GuestReviewsComponent } from './all-shared/review-shared/guest-reviews/
     ReviewsComponent,
     ShowGuestReviewComponent,
     GuestReviewsComponent
-
+    WatchlistComponent,
+    AddFriendComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ import { GuestReviewsComponent } from './all-shared/review-shared/guest-reviews/
     LoginService,
     HttpClientModule,
     ReviewService,
-    FormsModule
+    FormsModule,
+    FriendService
   ],
   bootstrap: [AppComponent]
 })
