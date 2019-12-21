@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movies } from '../shared/movies';
 import { MoviesService } from '../shared/movies.service';
-import { SearchService } from 'src/app/shared/search.service';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -13,7 +13,7 @@ export class MoviesComponent implements OnInit {
   jumpToPage: number;
   searchTxt: string;
   page = 1;
-  constructor(private moviesService: MoviesService, private searchService: SearchService) { }
+  constructor(private moviesService: MoviesService,  private route: Router) { }
   ngOnInit() {
     console.log(this.searchTxt);
     this.moviesService.getMovies(this.page).subscribe(
@@ -66,15 +66,7 @@ export class MoviesComponent implements OnInit {
     this.jumpToPage = null;
   }
   search(): void {
-    console.log('search called');
-    if (this.searchTxt) {
-      console.log(this.searchTxt);
-      this.searchService.getMovieSearch(this.searchTxt, 1).subscribe(
-        resp => {
-          this.movies = resp;
-        }
-      );
-    }
-    this.searchTxt = null;
+    console.log('Passed:' + this.searchTxt)
+    this.route.navigate(['movies/search', this.searchTxt]);
   }
 }

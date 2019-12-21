@@ -17,16 +17,35 @@ import com.revature.utils.HibernateUtil;
 public class SearchHibernate implements SearchDao{
 	@Autowired
 	private HibernateUtil hu;
+	private Integer lastPageNumber = 0;
 	@Override
 	public Set<Movies> getMovieSerarch(String title, Integer page) {
 		Session s = hu.getSession();
-		int pageSize = 200;	
-		String query = "from Movies where upper(title) like '%"+title.toUpperCase()+"%'";
-		Query<Movies> q = s.createQuery(query, Movies.class);		
+		int pageSize = 50;	
+		String count = "Select count (m.id) from Movies m";
+		Query<Long> countQuery = s.createQuery(count, Long.class);
+		Long countResults = countQuery.uniqueResult();
+		lastPageNumber = (int) (Math.ceil(countResults / (float)pageSize));
+		if(page > lastPageNumber)
+		{
+			page = lastPageNumber;
+		}
+		else if(page < 1)
+		{
+			page = 1;
+		}
+		String query = "from Movies where upper(title) like '%"+title.toUpperCase()+"%' order by title asc";
+		Query<Movies> q = s.createQuery(query, Movies.class);
+		q.setFirstResult((page - 1) * pageSize);
 		q.setMaxResults(pageSize);
 		List<Movies> movies = q.list();
 		s.close();
 		return new HashSet<Movies>(movies);
 	}
 	
+	@Override
+	public Integer getLastPage() {
+		System.out.println("test" + lastPageNumber);
+		return lastPageNumber;
+	}
 }

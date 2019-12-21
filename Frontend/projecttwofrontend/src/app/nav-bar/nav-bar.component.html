@@ -22,7 +22,7 @@
             <a *ngIf="route.url!=='/shows'" class="nav-link" routerLink="/shows" >Shows</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="" >Search Movies</a>
+            <a *ngIf="route.url!=='/search'" class="nav-link" routerLink="movies/search/:searchTxt" >Search Movies</a>
         </li>
         <li *ngIf="isAdmin()" class="nav-item">
             <a *ngIf="route.url!=='movies/add'" class="nav-link" routerLink="movies/add" >Add Movies</a>

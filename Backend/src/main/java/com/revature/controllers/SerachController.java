@@ -32,4 +32,9 @@ public class SerachController {
 		
 		return ResponseEntity.ok(sd.getMovieSerarch(tokens[0], Integer.parseInt(tokens[1])));
 	}
+	
+	@GetMapping
+	public ResponseEntity<Integer> getLastPage() {
+		return ResponseEntity.ok(sd.getLastPage());
+	}
 }
