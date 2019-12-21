@@ -8,7 +8,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  title = ' Movies and Shows ';
+  title = ' View Movies ';
 
 
   constructor(public route: Router, private loginService: LoginService) { }

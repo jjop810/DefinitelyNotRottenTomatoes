@@ -29,7 +29,7 @@ export class AddUserComponent implements OnInit {
         this.successMessage = 'Added!';
       }
     );
-    // this.routeTo.navigateByUrl('home');
+    this.routeTo.navigateByUrl('home');
   }
   backHome(){
         this.routeTo.navigateByUrl('home');

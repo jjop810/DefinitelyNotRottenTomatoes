@@ -16,17 +16,15 @@
 <ng-template #display>
     
             <div *ngIf="loggedUser.admin; else normaluser">
-                <span>WELCOME {{loggedUser.admin.tittle}}!</span>
+                <span>WELCOME {{loggedUser.admin.tittle}}<span>!</span></span>
+                <button class="btn btn-danger logoutbtn" (click)="logout()" routerLink="/home">Logout</button>
             </div>
-        
-            <button class="btn btn-danger" (click)="logout()" routerLink="/home">Logout</button>
     
 </ng-template>
 <ng-template #normaluser>
     <div>
         <span>Welcome user : {{loggedUser.user.username}}!</span>
-        <!-- <span>Welcome user : {{loggedUser.user.id}}!</span> -->
-
+        <button class="btn btn-danger logoutbtn" (click)="logout()" routerLink="/home">Logout</button>
     </div>
 
 </ng-template>

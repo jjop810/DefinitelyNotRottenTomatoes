@@ -37,6 +37,14 @@ export class WatchlistService {
     );
   }
 
+  getFriendMovies(userId: number, userName: string, page: number) {
+    const body = userId + ',' + userName + ',' + page;
+    console.log('Getting watchlist from: ' + this.appUrl + '/getwatchlist/' + body);
+    return this.http.get(this.appUrl + '/getwatchlist/' + body, { withCredentials: true } ).pipe(
+      map( resp => resp as Movies[])
+    );
+  }
+
   getLastPage(): Observable<number> {
     return this.http.get(this.appUrl + '/getwatchlist', {withCredentials: true} ).pipe(
       map( resp => resp as number)

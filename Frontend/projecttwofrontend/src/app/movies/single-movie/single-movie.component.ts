@@ -32,13 +32,17 @@ export class SingleMovieComponent implements OnInit {
           this.num += this.mra[i].ratingvalue;
         }
                this.num = this.num / this.mra.length;
-               this.movies.rating = this.num;
-
+               if (!(this.num / this.mra.length)) {
+               this.num = 0;
+               }
+               this.movies.rating = this.toFixed(this.num, 2);
       }
     );
-
-    console.log(this.movies);
   }
+toFixed(num, fixed) {
+    const re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+    return num.toString().match(re)[0];
+}
   addWatchlist() {
     console.log('Adding to watchlist');
     this.watchlist = {

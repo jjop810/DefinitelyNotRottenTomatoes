@@ -9,7 +9,7 @@
    <h5>Friend List:</h5>
    <div *ngFor="let f of currUser.friends">
     {{f.username}}
-    <button type="button" (click)="viewFriendWatchList()">View Watch List</button>
+    <button type="button" (click)="viewFriendWatchList(f.id,f.username)">View Watch List</button>
     <button type="button" (click)="deleteFriend(f)">Delete</button>
    </div>
 </div>
