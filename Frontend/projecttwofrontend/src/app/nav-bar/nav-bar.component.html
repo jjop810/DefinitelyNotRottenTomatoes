@@ -1,3 +1,4 @@
+
 <div class="jumbotron" style="margin-bottom:0px;">
     <h1>Movies and Shows</h1>
     <p>Search, Review, Rate...</p>
@@ -25,6 +26,9 @@
             <a class="nav-link" routerLink="" >Search Movies</a>
         </li>
         <li *ngIf="isUser()">
+            <a class="nav-link" routerLink="myrating">My Ratings</a>
+        </li>
+         <li *ngIf="isUser()">
             <a class="nav-link" routerLink="myreview">My Reviews</a>
         </li>
         <li *ngIf="isUser()" class="nav-item">
@@ -40,6 +44,7 @@
             <a *ngIf="route.url!=='/addfriend'" class="nav-link" routerLink="/addfriend" >Add Friend</a>
         </li>
         
+
         <li *ngIf="!isAdmin()&& !isUser()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#droplogin" href="#" >Sign Up
                 <span class="carat"></span>
@@ -55,6 +60,4 @@
 </div>
 
 </nav>
-
-
-    
+<br>

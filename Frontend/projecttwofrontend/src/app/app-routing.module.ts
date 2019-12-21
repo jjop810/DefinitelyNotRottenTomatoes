@@ -7,6 +7,8 @@ import { AddMoviesComponent } from './movies/add-movies/add-movies.component';
 import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
+import { MovieratingComponent } from './movierating/movierating/movierating.component';
+import { UratingListComponent } from './movierating/urating-list/urating-list.component';
 import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
 import { UserReviewListComponent } from './movies/user-review-list/user-review-list.component';
 import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
@@ -43,6 +45,14 @@ const routes: Routes = [
   {
     path: 'shows/edit',
     component: EditShowsComponent
+  },
+  {
+    path: 'movies/rating/:id',
+    component: MovieratingComponent
+  },
+  {
+    path: 'myrating',
+    component: UratingListComponent
   },
   {
     path: 'movies/review/:id',

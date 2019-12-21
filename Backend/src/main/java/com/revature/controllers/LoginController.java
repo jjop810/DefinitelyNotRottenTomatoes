@@ -40,8 +40,6 @@ public class LoginController {
 	@PostMapping
 	public ResponseEntity<LoginInfo> login(@RequestParam("user") String username, 
 			@RequestParam("pass") String password, HttpSession session) {
-			System.out.println("Username: " + username);
-			System.out.println("Password: " + password );
 			User u = ud.getUser(username, password);
 			Admin a= null;
 			if(u == null) {

@@ -1,0 +1,13 @@
+.jumbotron{
+    background-image: url(C:\Users\gurun\Desktop\GitProject\DefinitelyNotRottenTomatoes\Frontend\projecttwofrontend\Banner-movies.jpg);
+
+}
+h1,p{
+    color: whitesmoke;
+
+}
+
+.checked {
+    color: orange;
+    
+}

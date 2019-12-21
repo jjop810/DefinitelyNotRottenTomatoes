@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
     this.loginService.logout().subscribe(
       resp => {
         this.loggedUser = null;
+        this.username = null;
+        this.password = null;
       }
 
     );

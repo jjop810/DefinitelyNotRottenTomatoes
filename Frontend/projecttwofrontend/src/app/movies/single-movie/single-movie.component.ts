@@ -4,6 +4,9 @@ import { MoviesService } from '../shared/movies.service';
 import { LoginService } from 'src/app/login.service';
 import { WatchlistService} from 'src/app/watchlist.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/login.service';
+import { MrserviceService } from 'src/app/movierating/mrservice.service';
+import { Movierating } from 'src/app/movierating/movierating';
 import { Watchlist } from 'src/app/watchlist';
 
 @Component({
@@ -13,13 +16,29 @@ import { Watchlist } from 'src/app/watchlist';
 })
 export class SingleMovieComponent implements OnInit {
   @Input() movies: Movies;
+  mra: Movierating[];
+  num: number;
   watchlist: Watchlist;
   constructor(
-    private moviesService: MoviesService,private loginService: LoginService, private route: Router, private watchlistService: WatchlistService
+    private moviesService: MoviesService,private loginService: LoginService, private route: Router, private watchlistService: WatchlistService, private mrService: MrserviceService
   ) {}
 
 
   ngOnInit() {
+    this.num = 0;
+    this.mrService.getMovieRatingByMovieId(this.movies.id).subscribe(
+      resp => {this.mra = resp;
+               for (let i = 0 ; i < this.mra.length; i++) {
+          this.num += this.mra[i].ratingvalue;
+        }
+               this.num = this.num / this.mra.length;
+
+               console.log(this.num);
+               this.movies.rating = this.num;
+
+      }
+    );
+
     console.log(this.movies);
   }
   addWatchlist() {
@@ -37,6 +56,9 @@ export class SingleMovieComponent implements OnInit {
   editMovie() {
     this.route.navigate(['movies/edit', this.movies.id]);
   }
+  rateMovie(){
+    this.route.navigate(['movies/rating', this.movies.id]);
+  }
   reviewMovie(){
     this.route.navigate(['movies/review', this.movies.id]);
   }
@@ -49,5 +71,4 @@ export class SingleMovieComponent implements OnInit {
   isAdmin(): boolean{
     return this.loginService.isAdmin();
   }
-
 }
