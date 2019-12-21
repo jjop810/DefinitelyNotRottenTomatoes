@@ -30,15 +30,14 @@ export class SingleMovieComponent implements OnInit {
                for (let i = 0 ; i < this.mra.length; i++) {
           this.num += this.mra[i].ratingvalue;
         }
-               this.num = this.num / this.mra.length;
-
-               console.log(this.num);
+          if(this.num>0){
+               this.num = this.num / this.mra.length;}
+              
                this.movies.rating = this.num;
 
       }
     );
 
-    console.log(this.movies);
   }
   addWatchlist() {
     console.log('Adding to watchlist');
