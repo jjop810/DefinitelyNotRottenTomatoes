@@ -19,8 +19,8 @@ export class WatchlistService {
 
   addWatchlist(watchlist: Watchlist): Observable<Watchlist>  {
     if (watchlist) {
+    console.log(watchlist);
     const body = JSON.stringify(watchlist);
-    console.log('Adding to watchlist: ' + body);
     return this.http.post(this.appUrl + '/watchlist', body, {
        headers: this.headers, withCredentials: true
      }).pipe(
@@ -30,10 +30,9 @@ export class WatchlistService {
   }
 
   getMovies(user: User, page: number): Observable<Movies[]> {
-    const body = JSON.stringify(user.id + ',' + user.username + ',' + user.password +
-      ',' + user.email + ',' + page);
-    console.log('Getting watchlist from: ' + body);
-    return this.http.post(this.appUrl + '/getwatchlist', body, { headers: this.headers, withCredentials: true } ).pipe(
+    const body = user.id + ',' + user.username + ',' + page;
+    console.log('Getting watchlist from: ' + this.appUrl + '/getwatchlist/' + body);
+    return this.http.get(this.appUrl + '/getwatchlist/' + body, { withCredentials: true } ).pipe(
       map( resp => resp as Movies[])
     );
   }

@@ -18,9 +18,8 @@ export class WatchlistComponent implements OnInit {
     private watchlistService: WatchlistService,
     private loginService: LoginService
   ) { }
-
+  
   ngOnInit() {
-    console.log(this.movies);
     this.watchlistService.getMovies(this.loginService.getUser(), this.page).subscribe(
       resp => {
         this.movies = resp;

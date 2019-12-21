@@ -25,20 +25,25 @@ public class WatchlistHibernate implements WatchlistDAO{
 
 	@Override
 	public List<Movies> getWatchlist(User userId, Integer page) {
+		System.out.println("\n\n\n\n"+userId.toString()+"\n\n\n\n\n");
 		Session s = hu.getSession();
 		String query = "from Watchlist wl where wl.userId=:watch";
 		Query<Watchlist> q = s.createQuery(query, Watchlist.class);
 		q.setParameter("watch", userId);
 		List<Watchlist> wl = q.list();
+		
+		System.out.println("\n\n\n To String:::: "+wl.toString()+"\n\n\n");
+		
 		if(wl.size() < 50)
 		{
 			int pageSize = wl.size();
-			query = "from Watchlist order by title asc";
+			query = "from Watchlist wl where wl.userId=:watch order by title asc";
 			q = s.createQuery(query, Watchlist.class);
+			q.setParameter("watch", userId);
 			q.setFirstResult((page - 1) * pageSize);
 			q.setMaxResults(pageSize);
 			wl = q.list();
-			System.out.println(wl.toString());
+			System.out.println("\n\n\n What:::: "+wl.toString()+"\n\n\n");
 		}
 		else
 		{
@@ -62,6 +67,7 @@ public class WatchlistHibernate implements WatchlistDAO{
 			q.setMaxResults(pageSize);
 			wl = q.list();
 		}
+		
 		List<Movies> userWatchlist = new ArrayList<Movies>();
 		for(int x = 0; x < wl.size(); x++)
 		{
@@ -74,7 +80,7 @@ public class WatchlistHibernate implements WatchlistDAO{
 	
 	@Override
 	public Integer addMovie(Watchlist watch) {
-		System.out.println("In watchlist hibernate" + watch.toString());
+		System.out.println("In watchlist hibernate" + watch.getMovieId().toString());
 		Integer i = null;
 		if(watch.getMovieId() != 0 || watch.getShowId() != 0)
 		{
@@ -83,6 +89,7 @@ public class WatchlistHibernate implements WatchlistDAO{
 			Transaction tx = null;
 			try {
 				tx = s.beginTransaction();
+				System.out.println("Adding " + watch.toString() + " to watch list");
 				i = (Integer) s.save(watch);
 				tx.commit();
 			}catch(Exception e) {
