@@ -25,14 +25,12 @@ public class WatchlistHibernate implements WatchlistDAO{
 
 	@Override
 	public List<Movies> getWatchlist(User userId, Integer page) {
-		System.out.println("\n\n\n\n"+userId.toString()+"\n\n\n\n\n");
 		Session s = hu.getSession();
 		String query = "from Watchlist wl where wl.userId=:watch";
 		Query<Watchlist> q = s.createQuery(query, Watchlist.class);
 		q.setParameter("watch", userId);
 		List<Watchlist> wl = q.list();
 		
-		System.out.println("\n\n\n To String:::: "+wl.toString()+"\n\n\n");
 		
 		if(wl.size() < 50)
 		{
@@ -43,7 +41,6 @@ public class WatchlistHibernate implements WatchlistDAO{
 			q.setFirstResult((page - 1) * pageSize);
 			q.setMaxResults(pageSize);
 			wl = q.list();
-			System.out.println("\n\n\n What:::: "+wl.toString()+"\n\n\n");
 		}
 		else
 		{
