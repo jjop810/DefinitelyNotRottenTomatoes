@@ -1,5 +1,7 @@
 package com.revature.hibernate;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,6 +44,9 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		List<MovieRating> ratingList = q.getResultList();
 		Set<MovieRating> ratingSet = new HashSet<MovieRating>();
 		ratingSet.addAll(ratingList);
+		for(MovieRating mr : ratingSet) {
+			setFriendsFriends(mr.getUser().getFriends());
+		}
 		s.close();
 		
 		return ratingSet;
@@ -56,6 +61,9 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		Query<MovieRating> q = session.createQuery(queryString, MovieRating.class);
 		q.setParameter("user", u);
 		List<MovieRating>movieRatings = q.list();
+		for(MovieRating mr : movieRatings) {
+			setFriendsFriends(mr.getUser().getFriends());
+		}
 		session.close();
 
 		return new HashSet<MovieRating>(movieRatings);
@@ -70,6 +78,9 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		Query<MovieRating> q = s.createQuery(qString, MovieRating.class);
 		q.setParameter("movie", m);
 		List<MovieRating>mList = q.list();
+		for(MovieRating mr : mList) {
+			setFriendsFriends(mr.getUser().getFriends());
+		}
 		s.close();
 		return new HashSet<MovieRating>(mList);
 	}
@@ -84,23 +95,10 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		q.setParameter("movie", m);
 
 		MovieRating movieRating= q.uniqueResult();
-		
+		setFriendsFriends(movieRating.getUser().getFriends());
 		return movieRating;
 	}
 	
-	//AVERAGE/////////////////////////////////
-	@Override
-	public Double getAverageRating(Movies m) {
-		Session session = hu.getSession();
-		String squery = "Select avg(mr.ratingvalue) FROM MovieRating mr WHERE mr.movie:=movie";
-		Query<MovieRating> q = session.createQuery(squery,MovieRating.class);
-		q.setParameter("movie", m);
-		MovieRating avg = q.list().get(0);
-		session.close();
-//		Double d = new Double(avg.toString());
-		System.out.println(avg.getRatingvalue());
-		return null;
-	}
 
 	@Override
 	public Integer getMRByIDs(int i, int j) {
@@ -114,6 +112,7 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		q.setParameter("movie", m);
 		
 		MovieRating movieRating=q.uniqueResult();
+		setFriendsFriends(movieRating.getUser().getFriends());
 		return movieRating.getId();
 	}
 
@@ -124,6 +123,7 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 	public MovieRating getMRById(int i) {
 		Session s = hu.getSession();
 		MovieRating mRating = s.get(MovieRating.class, i);
+		setFriendsFriends(mRating.getUser().getFriends());
 		return mRating;
 	}
 
@@ -186,7 +186,13 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		}
 		
 	}
-
+	
+	public void setFriendsFriends(Collection<User> users) {
+		users.forEach((friend) -> {
+			friend.getId();
+			friend.setFriends(new ArrayList<User>());
+		});
+	}
 	
 
 	

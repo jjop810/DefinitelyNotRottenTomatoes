@@ -16,14 +16,14 @@ export class MrserviceService {
 
   /*All the movie ratings that are there*/
   public getMovieRating(): Observable<Movierating[]>{
-    return this.http.get('http://localhost:8080/DefinetlyNotRottenTomatos/movierating', {withCredentials: true}).pipe(
+    return this.http.get('http://localhost:8080/DefinitelyNotRottenTomatoes/movierating', {withCredentials: true}).pipe(
       map(resp => resp as Movierating[])
     );
 
   }
   /*Movie rating list for a user*/
   public getMovieRatingByUserId(uid: number): Observable<Movierating[]>{
-    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movierating/' + uid;
+    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/movierating/' + uid;
 
     return this.http.get(url,{withCredentials: true}).pipe(
       map(resp => resp as Movierating[])
@@ -33,7 +33,7 @@ export class MrserviceService {
 
   /*Movie rating list for a movieid*/
   public getMovieRatingByMovieId(mid: number): Observable<Movierating[]>{
-    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movierating/movies/ratings/' + mid;
+    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/movierating/movies/ratings/' + mid;
 
     return this.http.get(url,{withCredentials: true}).pipe(
       map(resp => resp as Movierating[])
@@ -45,7 +45,7 @@ export class MrserviceService {
   public CheckMovieRating(m: Movierating): Observable<Movierating>{
     const body = JSON.stringify(m);
     // tslint:disable-next-line: max-line-length
-    return this.http.post('http://localhost:8080/DefinetlyNotRottenTomatos/movierating/add' , body, {headers: this.headers, withCredentials: true}).pipe(
+    return this.http.post('http://localhost:8080/DefinitelyNotRottenTomatoes/movierating/add' , body, {headers: this.headers, withCredentials: true}).pipe(
       map(resp => resp as Movierating)
     );
   }
@@ -54,14 +54,14 @@ export class MrserviceService {
   public addMovieRating(movierating: Movierating){
     const body = JSON.stringify(movierating);
     // tslint:disable-next-line: max-line-length
-    return this.http.post('http://localhost:8080/DefinetlyNotRottenTomatos/movierating/', body, {headers: this.headers, withCredentials: true}).pipe(
+    return this.http.post('http://localhost:8080/DefinitelyNotRottenTomatoes/movierating/', body, {headers: this.headers, withCredentials: true}).pipe(
       map(resp => resp as Movierating)
     );
   }
 
   /*Just updating the movie ratings*/
   public updateMovieRating(movierating: Movierating): Observable<Movierating>{
-    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movierating/' + movierating.id;
+    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/movierating/' + movierating.id;
     const body = JSON.stringify(movierating);
     return this.http.put(url, body, {headers:this.headers, withCredentials: true}).pipe(
       map(resp => resp as Movierating)
@@ -70,7 +70,7 @@ export class MrserviceService {
   }
 
   public deleteMovieRating(movierating: Movierating): Observable<void>{
-  const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movierating/' + movierating.id;
+  const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/movierating/' + movierating.id;
   const body = JSON.stringify(movierating);
   return this.http.delete(url,{headers: this.headers, withCredentials: true}).pipe(
     map (resp => null)

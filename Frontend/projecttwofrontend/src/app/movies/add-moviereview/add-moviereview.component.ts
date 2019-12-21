@@ -46,7 +46,7 @@ export class AddMoviereviewComponent implements OnInit {
 
     this.idy = this.mov.id;
 
-    this.reviewService.getMovieReviewByUserId(parseInt(this.usr.id)).subscribe(
+    this.reviewService.getMovieReviewByUserId(this.usr.id).subscribe(
       reviews => {
         this.revs = reviews;
 
@@ -66,7 +66,7 @@ export class AddMoviereviewComponent implements OnInit {
     (<HTMLInputElement>document.getElementById("review_input")).disabled = false;
 
     (<HTMLInputElement>document.getElementById("id")).value = "" + this.idy;
-    (<HTMLInputElement>document.getElementById("user_doc")).value = this.usr.id;
+    (<HTMLInputElement>document.getElementById("user_doc")).value = this.usr.id.toString();;
     
 
 

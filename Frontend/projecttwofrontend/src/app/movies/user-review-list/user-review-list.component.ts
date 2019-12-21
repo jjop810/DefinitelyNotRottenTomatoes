@@ -19,7 +19,7 @@ export class UserReviewListComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.LService.getUser();
-    this.reviewService.getMovieReviewByUserId(parseInt(this.user.id)).subscribe(
+    this.reviewService.getMovieReviewByUserId(this.user.id).subscribe(
       resp =>{
         this.reviews = resp;
       }
