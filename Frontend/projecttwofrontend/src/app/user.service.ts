@@ -10,10 +10,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-//////////////
- newuser: Observable<User>;
-/////////////
-  
+
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   constructor( private http: HttpClient) { }
 
@@ -40,15 +37,6 @@ export class UserService {
       map( resp => resp as User )
     );
   }
-
-  // public addUser(user: User) {
-  //   const body = JSON.stringify(user);
-  //   this.newuser = this.http.post('http://localhost:8080/DefinetlyNotRottenTomatos/login',
-  //     body, {headers: this.headers, withCredentials: true} ).pipe(
-  //     map( resp => resp as User )
-  //   );
-  //   return this.newuser;
-  // }
 
 
 }

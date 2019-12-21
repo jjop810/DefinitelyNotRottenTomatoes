@@ -19,9 +19,12 @@ export class MovieratingComponent implements OnInit {
   @Input() movierating: Movierating;
   @Input() movieout: Movies;
   @Input() user: User;
-  movierate: Movierating;
-  mlist: Movierating[];
-  mrid: number;
+
+  // for auto-filling the rating value
+  mratings: Movierating[] = []
+  movid: number;
+  rvalue: number;
+
 
 
   
@@ -37,19 +40,31 @@ export class MovieratingComponent implements OnInit {
       this.movieout = resp;
       console.log(this.movieout); }
       );
+    this.mrService.getMovieRatingByUserId(this.user.id).subscribe(
+      resp =>{
+        this.mratings = resp;
+        for( let i=0 ; i< this.mratings.length ; i++){
+            if(this.mratings[i].movie.id === this.movieout.id){
+              this.rvalue = this.mratings[i].ratingvalue;
+              this.movierating.ratingvalue = this.rvalue;
+            }
+        }
+      }
+    );
 
-  }
+    }
 
   addMovieRatingorUpdate(){
     this.movierating.user = this.user;
-    // console.log('this is '+ this.movierating.user);
     this.movierating.movie = this.movieout;
-    console.log(this.movierating.movie);
     this.mrService.CheckMovieRating(this.movierating).subscribe(
       resp => {this.created.emit(true)}
     );
+
     console.log('ratings added!!');
+
   }
+
 
   
 

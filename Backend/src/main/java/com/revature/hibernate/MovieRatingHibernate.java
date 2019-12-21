@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Id;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -17,6 +19,8 @@ import com.revature.beans.Movies;
 import com.revature.beans.User;
 import com.revature.data.MovieRatingDAO;
 import com.revature.utils.HibernateUtil;
+
+import oracle.net.aso.s;
 
 
 
@@ -83,6 +87,20 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		
 		return movieRating;
 	}
+	
+	//AVERAGE/////////////////////////////////
+	@Override
+	public Double getAverageRating(Movies m) {
+		Session session = hu.getSession();
+		String squery = "Select avg(mr.ratingvalue) FROM MovieRating mr WHERE mr.movie:=movie";
+		Query<MovieRating> q = session.createQuery(squery,MovieRating.class);
+		q.setParameter("movie", m);
+		MovieRating avg = q.list().get(0);
+		session.close();
+//		Double d = new Double(avg.toString());
+		System.out.println(avg.getRatingvalue());
+		return null;
+	}
 
 	@Override
 	public Integer getMRByIDs(int i, int j) {
@@ -99,6 +117,9 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		return movieRating.getId();
 	}
 
+	
+
+	
 	@Override
 	public MovieRating getMRById(int i) {
 		Session s = hu.getSession();
@@ -166,6 +187,9 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		
 	}
 
+	
+
+	
 	
 
 	

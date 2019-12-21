@@ -15,3 +15,12 @@ h3{
 input[type="text"], input[type="password"]{
     border-radius: 5px;
 }
+.btndark{
+    border: none;
+    background-color: black;
+    color: #cecccc;
+    padding: 5px;
+    border-radius:3px;
+    margin-left: 5px;
+    
+}

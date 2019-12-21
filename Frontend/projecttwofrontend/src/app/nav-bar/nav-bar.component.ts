@@ -9,6 +9,8 @@ import { LoginService } from '../login.service';
 })
 export class NavBarComponent implements OnInit {
   title = ' Movies and Shows ';
+
+
   constructor(public route: Router, private loginService: LoginService) { }
 
   ngOnInit() {
@@ -20,4 +22,6 @@ export class NavBarComponent implements OnInit {
   isUser(): boolean{
     return this.loginService.isUser();
   }
+
+  
 }

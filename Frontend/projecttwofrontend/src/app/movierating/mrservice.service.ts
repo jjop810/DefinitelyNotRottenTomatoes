@@ -31,7 +31,7 @@ export class MrserviceService {
 
   }
 
-  /*Movie rating list for a user*/
+  /*Movie rating list for a movieid*/
   public getMovieRatingByMovieId(mid: number): Observable<Movierating[]>{
     const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/movierating/movies/ratings/' + mid;
 
