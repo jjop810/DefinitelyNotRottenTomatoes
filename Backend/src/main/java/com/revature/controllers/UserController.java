@@ -37,12 +37,13 @@ public class UserController {
 	
 	
 	@GetMapping(value = "{id}")
-	public ResponseEntity<User> getRanger(@PathVariable Integer id) {
+	public ResponseEntity<User> getUser(@PathVariable Integer id) {
 		User u = ud.getUserById(id);
 		if(u ==null)
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(u);
 	}
+	
 	
 	@PostMapping
 	public ResponseEntity<User> addUser(@RequestBody User u) {
@@ -50,10 +51,10 @@ public class UserController {
 		return ResponseEntity.status(201).body(u);
 	}
 	@PutMapping(value="{id}")
-	public ResponseEntity<User> updateRanger(@PathVariable Integer id, @RequestBody User u) {
+	public ResponseEntity<User> addFriend(@PathVariable Integer id, @RequestBody User u) {
 		if(ud.getUserById(id) == null)
 			return ResponseEntity.status(405).body(null);
-		return ResponseEntity.ok(ud.updateUser(u));
+		return ResponseEntity.ok(ud.addFriend(u));
 	}
 	
 	

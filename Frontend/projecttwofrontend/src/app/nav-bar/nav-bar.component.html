@@ -28,13 +28,19 @@
         <li *ngIf="isUser()">
             <a class="nav-link" routerLink="myrating">My Ratings</a>
         </li>
+         <li *ngIf="isUser()">
+            <a class="nav-link" routerLink="myreview">My Reviews</a>
+        </li>
+        <li *ngIf="isUser()" class="nav-item">
+                <a *ngIf="route.url!=='/watchlist'" class="nav-link" routerLink="/watchlist">Watchlist</a>
+        </li>
         <li *ngIf="isAdmin()" class="nav-item">
             <a *ngIf="route.url!=='movies/add'" class="nav-link" routerLink="movies/add" >Add Movies</a>
         </li>
         <li *ngIf="isAdmin()" class="nav-item">
             <a *ngIf="route.url!=='/addshows'" class="nav-link" routerLink="/addshows" >Add Shows</a>
         </li>
-        <li *ngIf="isAdmin()&& isUser()" class="nav-item">
+        <li *ngIf="isAdmin() || isUser()" class="nav-item">
             <a *ngIf="route.url!=='/addfriend'" class="nav-link" routerLink="/addfriend" >Add Friend</a>
         </li>
         

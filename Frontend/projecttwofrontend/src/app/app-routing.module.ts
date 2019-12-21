@@ -9,6 +9,11 @@ import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component'
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { MovieratingComponent } from './movierating/movierating/movierating.component';
 import { UratingListComponent } from './movierating/urating-list/urating-list.component';
+import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
+import { UserReviewListComponent } from './movies/user-review-list/user-review-list.component';
+import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
 
 
 const routes: Routes = [
@@ -48,8 +53,27 @@ const routes: Routes = [
   {
     path: 'myrating',
     component: UratingListComponent
+  },
+  {
+    path: 'movies/review/:id',
+    component: AddMoviereviewComponent
+  },
+  {
+    path: 'myreview',
+    component: UserReviewListComponent
+  },
+  {
+    path: 'movies/review/view/:id',
+    component: ShowGuestReviewComponent
+  },
+  {
+    path: 'watchlist',
+    component: WatchlistComponent
+  },
+  {
+    path: 'addfriend',
+    component: AddFriendComponent
   }
-
 ];
 
 @NgModule({

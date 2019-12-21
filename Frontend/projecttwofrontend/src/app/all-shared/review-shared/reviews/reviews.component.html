@@ -1,0 +1,17 @@
+<table *ngIf="review">
+    <thead>
+        <tr>
+            
+            <th><img style="width: 200px; height: 250px;" *ngIf="review.movie.imgUrl" [src]="review.movie.imgUrl" alt="cover image for Movie">
+            </th>
+            <th>{{review.movie.title}}</th>
+            <th >{{review.review}} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr>
+            <td>{{rating.movie.title}} </td>
+            <td>{{rating.ratingvalue}} </td>
+        </tr> -->
+    </tbody>
+</table>

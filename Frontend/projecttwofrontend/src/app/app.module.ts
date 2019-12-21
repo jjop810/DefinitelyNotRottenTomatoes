@@ -25,6 +25,16 @@ import { GenreComponent } from './all-shared/genre/genre.component';
 import { MovieratingComponent } from './movierating/movierating/movierating.component';
 import { UratingListComponent } from './movierating/urating-list/urating-list.component';
 import { RatingComponent } from './movierating/rating/rating.component';
+import { AddMoviereviewComponent } from './movies/add-moviereview/add-moviereview.component';
+import { ReviewService } from './all-shared/review-shared/review.service';
+import { ReviewComponent } from './all-shared/review/review.component';
+import { UserReviewListComponent } from './movies/user-review-list/user-review-list.component';
+import { ReviewsComponent } from './all-shared/review-shared/reviews/reviews.component';
+import { ShowGuestReviewComponent } from './all-shared/review-shared/show-guest-review/show-guest-review.component';
+import { GuestReviewsComponent } from './all-shared/review-shared/guest-reviews/guest-reviews.component';
+import { WatchlistComponent } from './watchlist/watchlist.component';
+import { AddFriendComponent } from './add-friend/add-friend.component';
+import { FriendService } from './friend.service';
 
 //#endregion
 
@@ -41,6 +51,7 @@ import { RatingComponent } from './movierating/rating/rating.component';
     MoviesComponent,
     SingleMovieComponent,
     AddMoviesComponent,
+    AddMoviereviewComponent,
     AddShowsComponent,
     EditMoviesComponent,
     EditShowsComponent,
@@ -48,7 +59,14 @@ import { RatingComponent } from './movierating/rating/rating.component';
     MovieratingComponent,
     UratingListComponent,
     RatingComponent,
-    
+    AddMoviereviewComponent,
+    ReviewComponent,
+    UserReviewListComponent,
+    ReviewsComponent,
+    ShowGuestReviewComponent,
+    GuestReviewsComponent,
+    WatchlistComponent,
+    AddFriendComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +81,9 @@ import { RatingComponent } from './movierating/rating/rating.component';
     SearchService,
     LoginService,
     HttpClientModule,
-    FormsModule
+    ReviewService,
+    FormsModule,
+    FriendService
   ],
   bootstrap: [AppComponent]
 })

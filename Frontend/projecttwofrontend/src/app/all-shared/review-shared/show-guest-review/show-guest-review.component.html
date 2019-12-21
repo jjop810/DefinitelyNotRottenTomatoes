@@ -1,0 +1,16 @@
+<h3 style="text-align: center;">Reviews for {{mov.title}}</h3>
+<div>
+    <img style="width: 200px; height: 250px; margin-left: 35%;" *ngIf="mov.imgUrl" [src]="mov.imgUrl" alt="cover image for Movie">
+</div>
+<table>
+    <thead>
+        
+        <tr>
+            <th>Username:</th>
+            <th>Reviews:</th>
+            
+        </tr>
+        
+    </thead>
+</table>
+<app-guest-reviews *ngFor="let item of reviews" [review]="item"></app-guest-reviews>

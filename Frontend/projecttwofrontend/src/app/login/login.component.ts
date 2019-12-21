@@ -5,13 +5,12 @@ import { LoginService } from '../login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   public loggedUser: Currentuser;
   public username: string;
   public password: string;
-
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  logout(){
+  logout() {
     this.loginService.logout().subscribe(
       resp => {
         this.loggedUser = null;
@@ -40,5 +39,4 @@ export class LoginComponent implements OnInit {
 
     );
   }
-
 }

@@ -1,5 +1,6 @@
 package com.revature.beans;
 
+import java.util.Comparator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "movies")
-public class Movies {
+public class Movies implements Comparable<Movies>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="movies")
@@ -31,6 +32,7 @@ public class Movies {
 		joinColumns=@JoinColumn(name="movieid"),
 		inverseJoinColumns=@JoinColumn(name="genreid"))
 	private Set<Genre> genres;
+	
 	
 	public Movies() {
 		super();
@@ -153,6 +155,10 @@ public class Movies {
 		return "Movies [id=" + id + ", title=" + title + ", movieLength=" + movieLength + ", rating=" + rating
 				+ ", imgUrl=" + imgUrl + ", genres=" + genres + "]";
 
+	}
+	@Override
+	public int compareTo(Movies arg0) {
+		return (this.getTitle().compareTo(arg0.getTitle()));   
 	}
 
 	
