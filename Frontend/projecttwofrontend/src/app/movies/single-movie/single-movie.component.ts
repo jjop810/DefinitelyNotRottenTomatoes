@@ -38,7 +38,6 @@ export class SingleMovieComponent implements OnInit {
       }
     );
 
-    console.log(this.movies);
   }
   addWatchlist() {
     console.log('Adding to watchlist');
