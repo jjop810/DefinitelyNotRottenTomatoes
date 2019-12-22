@@ -41,9 +41,12 @@ public class LoginController {
 	public ResponseEntity<LoginInfo> login(@RequestParam("user") String username, 
 			@RequestParam("pass") String password, HttpSession session) {
 			User u = ud.getUser(username, password);
-			Admin a= null;
-			if(u == null) {
-			 a = ad.getAdmin(username, password);
+			Admin a = null;
+			try {
+			 a = ad.getAdminById(u.getId());
+			}
+			catch(NullPointerException e){
+				System.out.println("not admin");
 			}
 		
 		if(u==null && a==null) {

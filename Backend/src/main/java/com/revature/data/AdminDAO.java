@@ -8,5 +8,6 @@ public interface AdminDAO {
 	public Admin getAdmin(Admin a);
 	
 	public Admin getAdmin(String u, String p);
+	public Admin getAdminById(Integer userId);
 
 }

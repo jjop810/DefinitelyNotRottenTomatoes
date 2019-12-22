@@ -53,6 +53,18 @@ public class AdminHibernate implements AdminDAO {
 		return admin;
 	}
 	
+	@Override
+	public Admin getAdminById(Integer userId) {
+		Session s = hu.getSession();
+		String query = "from Admin a where a.id=:userid";
+		Query<Admin> q = s.createQuery(query, Admin.class);
+		q.setParameter("userid", userId);
+		Admin admin = q.uniqueResult();
+		setFriendsFriends(admin.getFriends());
+		s.close();
+		return admin;
+	}
+	
 	public void setFriendsFriends(Collection<User> users) {
 		users.forEach((friend) -> {
 			friend.getId();
