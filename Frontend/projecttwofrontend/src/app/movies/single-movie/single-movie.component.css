@@ -6,3 +6,13 @@
 .infobox{
     padding-top:30px
 }
+
+#btnDiv{
+    margin-bottom: 20px;
+}
+#img{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}

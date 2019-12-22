@@ -49,7 +49,7 @@ const routes: Routes = [
   {
     path: 'movies/search/:searchTxt',
     component: SearchComponent
-  }
+  },
   {
     path: 'movies/rating/:id',
     component: MovieratingComponent

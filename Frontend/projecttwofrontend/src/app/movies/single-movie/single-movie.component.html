@@ -2,7 +2,7 @@
   <div class="container border" *ngIf="movies">
     <div class="row">
         <div class="col border card imgboxsize">
-          <div class="row">
+          <div class="row" id="img">
             <img style="width: 200px; height: 250px;" *ngIf="movies.imgUrl" [src]="movies.imgUrl" alt="cover image for Movie">
           </div>
         </div>
@@ -14,11 +14,13 @@
               <h5>Genres:</h5><span *ngFor="let m of movies.genres">   {{m.genreName}}</span>
          </div>
          <br>      
-      <button *ngIf="isAdmin() && route.url!=='movies/edit'" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-danger" (click)="editMovie()">Edit Movie</button>
-      <button *ngIf="isUser()" class="btn btn-dark" routerLink="['movies/rating',this.movies.id]" (click)="rateMovie()"> Rate it</button>     
-      <button *ngIf="isUser() && route.url!=='movies/review'" class="nav-link" routerLink="['movies/review', this.movies.id]" class="btn btn-info" (click)="reviewMovie()">Review Movie</button>
-      <button *ngIf="route.url!=='movies/review/view'" class="nav-link" routerLink="['movies/review/view', this.movies.id]" class="btn btn-info" (click)="viewReviews()">View Movie Reviews</button>
-      <button *ngIf="isUser()" (click)="addWatchlist()" class="btn btn-dark"> Add To Watch List</button>
+         <div id="btnDiv">
+           <button *ngIf="isAdmin() && route.url!=='movies/edit'" class="nav-link" routerLink="['movies/edit', this.movies.id]" class="btn btn-danger" (click)="editMovie()">Edit Movie</button>
+           <button *ngIf="isUser()" class="btn btn-dark" routerLink="['movies/rating',this.movies.id]" (click)="rateMovie()"> Rate it</button>     
+           <button *ngIf="isUser() && route.url!=='movies/review'" class="nav-link" routerLink="['movies/review', this.movies.id]" class="btn btn-info" (click)="reviewMovie()">Review Movie</button>
+           <button *ngIf="route.url!=='movies/review/view'" class="nav-link" routerLink="['movies/review/view', this.movies.id]" class="btn btn-info" (click)="viewReviews()">View Movie Reviews</button>
+           <button *ngIf="isUser()" (click)="addWatchlist()" class="btn btn-dark"> Add To Watch List</button>
+         </div>
           </div>
       </div>
   </div>

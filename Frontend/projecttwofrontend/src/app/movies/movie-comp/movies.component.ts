@@ -15,7 +15,6 @@ export class MoviesComponent implements OnInit {
   page = 1;
   constructor(private moviesService: MoviesService,  private route: Router) { }
   ngOnInit() {
-    //console.log(this.searchTxt);
     this.moviesService.getMovies(this.page).subscribe(
       resp => {
         this.movies = resp;
@@ -66,7 +65,9 @@ export class MoviesComponent implements OnInit {
     this.jumpToPage = null;
   }
   search(): void {
-    console.log('Passed:' + this.searchTxt)
     this.route.navigate(['movies/search', this.searchTxt]);
+  }
+  goTop() {
+    window.scroll(0, 0);
   }
 }
