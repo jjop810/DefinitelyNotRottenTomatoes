@@ -12,18 +12,28 @@ export class AddUserComponent implements OnInit {
 
   @Output() created = new EventEmitter<Boolean>();
   @Input() user: User;
+  successMessage: string = '';
+  errorMessage: string = '';
+
   constructor(private userService: UserService,  private routeTo: Router) { }
 
   ngOnInit() {
   }
 
   addUser(){
+    this.successMessage = '';
+    this.errorMessage = '';
     this.userService.addUser(this.user).subscribe(
       resp => {
         this.created.emit(true);
+        this.successMessage = 'Added!';
       }
     );
     this.routeTo.navigateByUrl('home');
+  }
+  backHome(){
+        this.routeTo.navigateByUrl('home');
+
   }
 
 }

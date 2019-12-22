@@ -1,0 +1,15 @@
+<div>
+   <h5>Username</h5>
+   <input type="text" [(ngModel)]="inputTxt">
+   <button type="button" (click)="searchFriend()">Search Friend</button>
+   <div *ngIf = "friends">
+    {{friends.username}}<button type="button" (click)="addFriend()">Add Friend</button>
+   </div>
+   <br>
+   <h5>Friend List:</h5>
+   <div *ngFor="let f of currUser.friends">
+    {{f.username}}
+    <button type="button" (click)="viewFriendWatchList(f.id,f.username)">View Watch List</button>
+    <button type="button" (click)="deleteFriend(f)">Delete</button>
+   </div>
+</div>

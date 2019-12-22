@@ -40,12 +40,14 @@ public class LoginController {
 	@PostMapping
 	public ResponseEntity<LoginInfo> login(@RequestParam("user") String username, 
 			@RequestParam("pass") String password, HttpSession session) {
-			System.out.println("Hi");
-			System.out.println("Username: " + username);
-			System.out.println("Password: " + password );
 			User u = ud.getUser(username, password);
-			Admin a = ad.getAdmin(username, password);
-		
+			Admin a = null;
+			try {
+			 a = ad.getAdminById(u.getId());
+			}
+			catch(NullPointerException e){
+				System.out.println("not admin");
+			}
 		
 		if(u==null && a==null) {
 			return ResponseEntity.status(401).build();

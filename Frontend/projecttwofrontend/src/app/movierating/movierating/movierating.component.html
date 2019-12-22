@@ -1,0 +1,19 @@
+
+
+
+<div class="loginbox">
+    <br>
+    <p><b>Rating for:{{movieout.title}}</b></p>
+    <img style="width: 200px; height: 250px;" *ngIf="movieout.imgUrl" [src]="movieout.imgUrl" alt="cover image for Movie">
+    <br>
+    User Id<br>
+    <input type="number" [(ngModel)]="user.id" disabled><br>
+    <!-- movie:<input type="number" [(ngModel)]="movierating.movie"><br> -->
+    Movie Id<br>
+    <input type="text" [(ngModel)]="movieout.id" disabled><br>
+    Rating Value<br>
+    <input type="number" [(ngModel)]="movierating.ratingvalue"><br>
+    <br>
+    <button class="btn btn-danger" (click)="addMovieRatingorUpdate()">Rate it</button>
+
+</div>

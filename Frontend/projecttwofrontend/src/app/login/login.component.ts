@@ -5,13 +5,12 @@ import { LoginService } from '../login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   public loggedUser: Currentuser;
   public username: string;
   public password: string;
-
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
@@ -19,24 +18,26 @@ export class LoginComponent implements OnInit {
       resp => {
         this.loggedUser = resp;
       }
-    );
+      );
   }
 
-  login(){
+  login() {
     this.loginService.login(this.username, this.password).subscribe(
-      resp =>{
+      resp => {
         this.loggedUser = resp;
+        console.log(this.loginService.isAdmin());
       }
     );
   }
 
-  logout(){
+  logout() {
     this.loginService.logout().subscribe(
       resp => {
         this.loggedUser = null;
+        this.username = null;
+        this.password = null;
       }
 
     );
   }
-
 }

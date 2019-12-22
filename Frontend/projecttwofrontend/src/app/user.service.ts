@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from './user';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
- 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   constructor( private http: HttpClient) { }
 
@@ -21,10 +21,15 @@ export class UserService {
   }
 
 
-
   public getUserById(id: number): Observable<User>{
-    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/login' + id;
-    return this.http.get(url,{withCredentials: true}).pipe(
+    const url = 'http://localhost:8080/DefinetlyNotRottenTomatos/login/' + id;
+    return this.http.get(url, {withCredentials: true}).pipe(
+      map(resp => resp as User)
+    );
+  }
+  public getUserByUsername(name: string): Observable<User> {
+    const url = 'http://localhost:8080/DefinitelyNotRottenTomatoes/friends/' + name;
+    return this.http.get(url, {withCredentials: true}).pipe(
       map(resp => resp as User)
     );
   }
@@ -36,7 +41,12 @@ export class UserService {
       map( resp => resp as User )
     );
   }
-
-
+  public editUser(user: User) {
+    const body = JSON.stringify(user);
+    return this.http.put('http://localhost:8080/DefinitelyNotRottenTomatoes/login/' + user.id,
+      body, {headers: this.headers, withCredentials: true} ).pipe(
+      map( resp => resp as User )
+    );
+  }
 
 }
