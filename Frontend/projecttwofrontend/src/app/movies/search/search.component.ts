@@ -24,11 +24,11 @@ export class SearchComponent implements OnInit {
         this.lastPage = resp;
       }
     );
+    this.searchTxt = null;
   }
 
   search(): void {
     this.route2.navigate(['movies/search', this.searchTxt]);
-    console.log('search called' + this.searchTxt);
     if (this.searchTxt) {
       console.log(this.searchTxt);
       this.searchService.getMovieSearch(this.searchTxt, 1).subscribe(
@@ -75,5 +75,8 @@ export class SearchComponent implements OnInit {
       }
     );
     this.jumpToPage = null;
+  }
+  goTop() {
+    window.scroll(0, 0);
   }
 }

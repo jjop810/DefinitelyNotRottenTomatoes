@@ -1,0 +1,36 @@
+input[type="text"], input[type="password"]{
+    border-radius: 5px;
+}
+.btndark{
+    border: none;
+    background-color: black;
+    color: #cecccc;
+    padding: 7px;
+    border-radius:3px;
+    margin-left: 5px;
+}
+.btnMargin{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#goBtn{
+    margin-right: 10px;
+}
+#jumpPage{
+    margin-right: 5px;
+}
+#centerGoTop{
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#goTopBtn{
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+#btnAndInput{
+    margin-bottom: 25px;
+    text-align: center;
+}

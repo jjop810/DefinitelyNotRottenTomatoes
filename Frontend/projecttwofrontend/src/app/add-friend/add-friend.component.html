@@ -1,15 +1,16 @@
-<div>
-   <h5>Username</h5>
+<div id="addFriend">
+   <h2>Username</h2>
    <input type="text" [(ngModel)]="inputTxt">
-   <button type="button" (click)="searchFriend()">Search Friend</button>
+   <button class="btndark" (click)="searchFriend()">Search Friend</button>
    <div *ngIf = "friends">
-    {{friends.username}}<button type="button" (click)="addFriend()">Add Friend</button>
+    <h3 class="inline">{{friends.username}}</h3><button class="btndark" (click)="addFriend()">Add Friend</button>
    </div>
    <br>
-   <h5>Friend List:</h5>
+   <h2>Friend List:</h2>
    <div *ngFor="let f of currUser.friends">
-    {{f.username}}
-    <button type="button" (click)="viewFriendWatchList(f.id,f.username)">View Watch List</button>
-    <button type="button" (click)="deleteFriend(f)">Delete</button>
+    <h5 class="inline">{{f.username}}</h5>
+    <button class="btndark" (click)="viewFriendWatchList(f.id,f.username)">View Watch List</button>
+    <button class="btndark" (click)="deleteFriend(f)">Delete</button>
+
    </div>
 </div>

@@ -51,9 +51,9 @@ export class WatchlistService {
     );
   }
 
-  getMovieSearch(searchTxt: string, pageNum: number): Observable<Movies[]> {
+  getMovieSearch(searchTxt: string, pageNum: number, userId: number): Observable<Movies[]> {
     if (searchTxt && pageNum && !isNaN(pageNum)) {
-      const body = searchTxt + '|' + pageNum;
+      const body = searchTxt + '|' + pageNum + '|' + userId;
       console.log(body);
       return this.http.get(this.appUrl + '/watchlist/' + body, {headers: this.headers, withCredentials: true}).pipe(
         map( resp => resp as Movies[])

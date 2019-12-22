@@ -78,12 +78,15 @@ export class WatchlistComponent implements OnInit {
     console.log('search called');
     if (this.searchTxt) {
       console.log(this.searchTxt);
-      this.watchlistService.getMovieSearch(this.searchTxt, 1).subscribe(
+      this.watchlistService.getMovieSearch(this.searchTxt, 1, this.loginService.getUser().id).subscribe(
         resp => {
           this.movies = resp;
         }
       );
     }
     this.searchTxt = null;
+  }
+  goTop() {
+    window.scroll(0, 0);
   }
 }

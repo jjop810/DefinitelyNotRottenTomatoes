@@ -1,42 +1,14 @@
 <H1 style="text-align: center;">{{friendUserName}}'s Watchlist</H1>
-<button (click)="previousPage()">Previous</button>
-Current Page: {{page}}
-<button (click)="nextPage()">Next</button>
-Jump to page: <input type="number" [(ngModel)]="jumpToPage"/>
-<button (click)="jumpPage()">Go</button>
-Search: <input type="text" [(ngModel)]="searchTxt"/>
-<button (click)="search()">Search</button>
-  <div class="container border" *ngIf="movies">
-    <div class="row"  *ngFor="let movies of movies">
-        <div class="col-sm border card">
-          <h4 class="border border-dark mx-auto">{{movies.title}}</h4>
-          <div class="row">
-            <img style="width: 200px; height: 250px;" *ngIf="movies.imgUrl" [src]="movies.imgUrl" alt="cover image for Movie">
-          </div>
-        </div>
-        <div class="col-sm">
-          <div class="row">
-            <div class="col">
-              <h5>Duration in minutes:</h5>
-            </div>
-            <div class="col">
-              <p>{{movies.movieLength}}</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h5>Rating:</h5>
-            </div>
-            <div class="col">
-              <p>{{movies.rating}}</p>
-            </div>
-          </div>
-          <br>
-          <h5>Genres:</h5>
-         <ul>
-      <li *ngFor="let m of movies.genres">{{m.genreName}}</li>
-      </ul>
-          </div>
-      </div>
-  
-</div>
+<div id="btnAndInput">
+  <button class="btn btn-secondary btnMargin" (click)="previousPage()">Previous</button>
+  Current Page: {{page}}
+  <button  class="btn btn-secondary btnMargin" (click)="nextPage()">Next</button>
+  Jump to page: <input type="number" id="jumpPage" [(ngModel)]="jumpToPage"/>
+  <button  class="btn btn-secondary" id="goBtn" (click)="jumpPage()">Go</button>
+  Search: <input type="text" [(ngModel)]="searchTxt"/>
+  <button class="btndark searchalign btnMargin" (click)="search()">Search</button>
+  </div>
+  <app-single-movie *ngFor="let m of movies" [movies]="m"></app-single-movie>
+  <div id="centerGoTop">
+      <button *ngIf="movies" id="goTopBtn" class="btndark" (click)="goTop()">Go To Top</button>
+  </div>
