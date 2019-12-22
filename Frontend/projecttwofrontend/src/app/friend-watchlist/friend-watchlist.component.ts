@@ -1,36 +1,41 @@
-import { OnInit, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Movies } from '../movies/shared/movies';
-import { LoginService } from '../login.service';
 import { WatchlistService } from '../watchlist.service';
+import { LoginService } from '../login.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-watchlist',
-  templateUrl: './watchlist.component.html',
-  styleUrls: ['./watchlist.component.css']
+  selector: 'app-friend-watchlist',
+  templateUrl: './friend-watchlist.component.html',
+  styleUrls: ['./friend-watchlist.component.css']
 })
-export class WatchlistComponent implements OnInit {
+export class FriendWatchlistComponent implements OnInit {
+
   movies: Movies[];
   page = 1;
   lastPage: number;
   jumpToPage: number;
   searchTxt: string;
+  friendUserId: number;
+  friendUserName: string;
   constructor(
     private watchlistService: WatchlistService,
-    private loginService: LoginService
+    private route: ActivatedRoute
   ) { }
-  
   ngOnInit() {
-    this.watchlistService.getMovies(this.loginService.getUser(), this.page).subscribe(
+    // tslint:disable-next-line: no-string-literal
+    this.friendUserId = this.route.snapshot.params['userId'];
+     // tslint:disable-next-line: no-string-literal
+    this.friendUserName = this.route.snapshot.params['userName'];
+
+    this.watchlistService.getFriendMovies(this.friendUserId, this.friendUserName, this.page).subscribe(
       resp => {
         this.movies = resp;
-        //console.log('Get Watchlist');
       }
     );
     this.watchlistService.getLastPage().subscribe(
       resp => {
         this.lastPage = resp;
-        //console.log('Get page number');
-        //this.lastPage += 1;
       }
     );
   }
@@ -41,7 +46,7 @@ export class WatchlistComponent implements OnInit {
     if (this.page > this.lastPage) {
       this.page = 1;
     }
-    this.watchlistService.getMovies(this.loginService.getUser(), this.page).subscribe(
+    this.watchlistService.getFriendMovies(this.friendUserId, this.friendUserName, this.page).subscribe(
       resp => {
         this.movies = resp;
       }
@@ -52,7 +57,7 @@ export class WatchlistComponent implements OnInit {
     if (this.page < 1) {
       this.page = this.lastPage;
     }
-    this.watchlistService.getMovies(this.loginService.getUser(), this.page).subscribe(
+    this.watchlistService.getFriendMovies(this.friendUserId, this.friendUserName, this.page).subscribe(
       resp => {
         this.movies = resp;
       }
@@ -67,7 +72,7 @@ export class WatchlistComponent implements OnInit {
       this.page = this.jumpToPage;
     }
     this.page = this.jumpToPage;
-    this.watchlistService.getMovies(this.loginService.getUser(), this.jumpToPage).subscribe(
+    this.watchlistService.getFriendMovies(this.friendUserId, this.friendUserName, this.page).subscribe(
       resp => {
         this.movies = resp;
       }
@@ -86,4 +91,5 @@ export class WatchlistComponent implements OnInit {
     }
     this.searchTxt = null;
   }
+
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Movierating } from '../movierating';
 import { MrserviceService } from '../mrservice.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from 'src/app/movies/shared/movies.service';
 import { Movies } from 'src/app/movies/shared/movies';
 import { User } from 'src/app/user';
@@ -21,15 +21,16 @@ export class MovieratingComponent implements OnInit {
   @Input() user: User;
 
   // for auto-filling the rating value
-  mratings: Movierating[] = []
+  mratings: Movierating[] = [];
   movid: number;
   rvalue: number;
 
 
 
-  
+
   // tslint:disable-next-line: max-line-length
-  constructor(private movieService: MoviesService , private mrService: MrserviceService, private loginService: LoginService, private route: ActivatedRoute) { }
+  constructor(private movieService: MoviesService , private mrService: MrserviceService, private loginService: LoginService, 
+              private route: ActivatedRoute , private routeTo: Router) { }
 
   ngOnInit() {
     this.movierating = new Movierating();
@@ -61,7 +62,7 @@ export class MovieratingComponent implements OnInit {
       resp => {this.created.emit(true)}
     );
 
-    console.log('ratings added!!');
+    this.routeTo.navigateByUrl('home');
 
   }
 

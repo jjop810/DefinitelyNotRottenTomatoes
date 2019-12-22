@@ -95,7 +95,6 @@ public class MovieRatingHibernate implements MovieRatingDAO{
 		q.setParameter("movie", m);
 
 		MovieRating movieRating= q.uniqueResult();
-
 		return movieRating;
 	}
 	

@@ -19,7 +19,8 @@ export class SingleMovieComponent implements OnInit {
   num: number;
   watchlist: Watchlist;
   constructor(
-    private moviesService: MoviesService,private loginService: LoginService, private route: Router, private watchlistService: WatchlistService, private mrService: MrserviceService
+    private moviesService: MoviesService, private loginService: LoginService, 
+    private route: Router, private watchlistService: WatchlistService, private mrService: MrserviceService
   ) {}
 
 
@@ -27,18 +28,21 @@ export class SingleMovieComponent implements OnInit {
     this.num = 0;
     this.mrService.getMovieRatingByMovieId(this.movies.id).subscribe(
       resp => {this.mra = resp;
-               for (let i = 0 ; i < this.mra.length; i++) {
+               for (let i = 0; i < this.mra.length; i++) {
           this.num += this.mra[i].ratingvalue;
         }
-          if(this.num>0){
-               this.num = this.num / this.mra.length;}
-              
-               this.movies.rating = this.num;
-
+               this.num = this.num / this.mra.length;
+               if (!(this.num / this.mra.length)) {
+               this.num = 0;
+               }
+               this.movies.rating = this.toFixed(this.num, 2);
       }
     );
-
   }
+toFixed(num, fixed) {
+    const re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+    return num.toString().match(re)[0];
+}
   addWatchlist() {
     console.log('Adding to watchlist');
     this.watchlist = {
@@ -49,6 +53,7 @@ export class SingleMovieComponent implements OnInit {
       title: this.movies.title };
     const userId = this.loginService.getUser();
     // tslint:disable-next-line: radix
+    console.log(this.watchlist);
     this.watchlistService.addWatchlist(this.watchlist).subscribe();
   }
   editMovie() {
