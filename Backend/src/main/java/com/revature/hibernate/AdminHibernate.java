@@ -1,5 +1,8 @@
 package com.revature.hibernate;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,7 @@ public class AdminHibernate implements AdminDAO {
 			a = q.uniqueResult();
 
 		}
+		setFriendsFriends(a.getFriends());
 		s.close();
 		return a;
 	}
@@ -44,8 +48,28 @@ public class AdminHibernate implements AdminDAO {
 		q.setParameter("username", u);
 		q.setParameter("password", p);
 		Admin admin = q.uniqueResult();
+		setFriendsFriends(admin.getFriends());
 		s.close();
 		return admin;
+	}
+	
+	@Override
+	public Admin getAdminById(Integer userId) {
+		Session s = hu.getSession();
+		String query = "from Admin a where a.id=:userid";
+		Query<Admin> q = s.createQuery(query, Admin.class);
+		q.setParameter("userid", userId);
+		Admin admin = q.uniqueResult();
+		setFriendsFriends(admin.getFriends());
+		s.close();
+		return admin;
+	}
+	
+	public void setFriendsFriends(Collection<User> users) {
+		users.forEach((friend) -> {
+			friend.getId();
+			friend.setFriends(new ArrayList<User>());
+		});
 	}
 
 }

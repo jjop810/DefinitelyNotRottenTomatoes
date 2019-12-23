@@ -1,0 +1,19 @@
+.info{
+    padding: 15px;
+    margin:auto;
+    background-color: rgb(233, 233, 233);
+}
+.infobox{
+    padding-top:30px
+}
+
+#btnDiv{
+    margin-bottom: 20px;
+    margin-left:  5px;
+}
+#img{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}

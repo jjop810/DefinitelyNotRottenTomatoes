@@ -1,13 +1,20 @@
 
+<br>
 <div class="box-form">
                 <h3>Create an account</h3>
 <div *ngIf="user" class="loginbox">
-        Username<br> <input type="text" [(ngModel)]="user.username"> <br><br>
-        Password<br> <input type="password" [(ngModel)]="user.password"> <br><br>
-        Email<br> <input type="text" [(ngModel)]="user.email"> <br><br>
-        <button type="button" (click)="addUser()">Create User</button>
+        <div *ngIf="successMessage" class="alert alert-success" role="alert">
+                {{successMessage}}
+              </div>
+        <label>Username</label>
+        <input type="text" [(ngModel)]="user.username"> <br><br>
+        <label>Password</label> <input type="password" [(ngModel)]="user.password"> <br><br>
+        <label>Email</label><input type="text" [(ngModel)]="user.email"> <br><br>
+        <button  type="button" (click)="addUser()" class="btn btn-primary">Create User</button>
+        <button type="button" (click)="backHome()" class="btn btn-secondary back">Back</button>
 
 </div>
 
 </div>
-
+<div class="box-form">
+       

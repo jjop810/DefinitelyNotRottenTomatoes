@@ -2,12 +2,12 @@
 <div class="box-form">
 <ng-container *ngIf="!loggedUser; else display">
     
-        Username: <input type="text" [(ngModel)]="username">
+        Username: <input type="text"  [(ngModel)]="username">
     
-        Password: <input type="password" [(ngModel)]="password" (keydown.enter)="login()">
+        Password: <input type="password"  [(ngModel)]="password" (keydown.enter)="login()">
     
-    
-        <button (click)= "login()">Login</button>
+
+        <button class="btn btn-secondary" (click)= "login()">Login</button>
     
    
 
@@ -16,15 +16,15 @@
 <ng-template #display>
     
             <div *ngIf="loggedUser.admin; else normaluser">
-                <span>WELCOME {{loggedUser.admin.tittle}}!</span>
+                <span>WELCOME {{loggedUser.admin.tittle}}<span>!</span></span>
+                <button class="btn btn-danger logoutbtn" (click)="logout()" routerLink="/home">Logout</button>
             </div>
-        
-            <button (click)="logout()">Logout</button>
     
 </ng-template>
 <ng-template #normaluser>
     <div>
         <span>Welcome user : {{loggedUser.user.username}}!</span>
+        <button class="btn btn-danger logoutbtn" (click)="logout()" routerLink="/home">Logout</button>
     </div>
 
 </ng-template>

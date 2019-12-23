@@ -1,0 +1,13 @@
+#addFriend{
+    text-align: center;
+}
+
+.btndark{
+    border: none;
+    background-color: black;
+    color: #cecccc;
+    padding: 5px;
+    border-radius:3px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}

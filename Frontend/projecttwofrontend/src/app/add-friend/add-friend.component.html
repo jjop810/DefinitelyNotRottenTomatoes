@@ -1,0 +1,16 @@
+<div id="addFriend">
+   <h2>Username</h2>
+   <input type="text" [(ngModel)]="inputTxt">
+   <button class="btndark" (click)="searchFriend()">Search Friend</button>
+   <div *ngIf = "friends">
+    <h5 style="display: inline">{{friends.username}}</h5><button class="btndark" (click)="addFriend()">Add Friend</button>
+   </div>
+   <br>
+   <h2>Friend List:</h2>
+   <div *ngFor="let f of currUser.friends">
+    <h5 style="display: inline">{{f.username}}</h5>
+    <button class="btndark" (click)="viewFriendWatchList(f.id,f.username)">View Watch List</button>
+    <button class="btndark" (click)="deleteFriend(f)">Delete</button>
+
+   </div>
+</div>

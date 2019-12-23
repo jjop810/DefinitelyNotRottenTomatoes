@@ -1,5 +1,6 @@
+
 <div class="jumbotron" style="margin-bottom:0px;">
-    <h1>Movies and Shows</h1>
+    <h1>Definitely Not Rotten Tomatoes</h1>
     <p>Search, Review, Rate...</p>
 </div>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
@@ -15,25 +16,25 @@
     <!-- things getting collapsed -->
     <div class="collapse navbar-collapse" id="collapse_target">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a *ngIf="route.url!=='/movies'" class="nav-link" routerLink="/movies" >Movies</a>
+         <li class="nav-item">
+            <a *ngIf="route.url!=='/search'" class="nav-link" routerLink="movies/search/:searchTxt" >Search Movies</a>
         </li>
-        <li class="nav-item">
-            <a *ngIf="route.url!=='/shows'" class="nav-link" routerLink="/shows" >Shows</a>
+        <li *ngIf="isUser()">
+            <a class="nav-link" routerLink="myrating">My Ratings</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="" >Search Movies</a>
+
+         <li *ngIf="isUser()">
+            <a class="nav-link" routerLink="myreview">My Reviews</a>
+        </li>
+        <li *ngIf="isUser()" class="nav-item">
+                <a *ngIf="route.url!=='/watchlist'" class="nav-link" routerLink="/watchlist">Watchlist</a>
         </li>
         <li *ngIf="isAdmin()" class="nav-item">
             <a *ngIf="route.url!=='movies/add'" class="nav-link" routerLink="movies/add" >Add Movies</a>
         </li>
-        <li *ngIf="isAdmin()" class="nav-item">
-            <a *ngIf="route.url!=='/addshows'" class="nav-link" routerLink="/addshows" >Add Shows</a>
+        <li *ngIf="isAdmin() || isUser()" class="nav-item">
+            <a *ngIf="route.url!=='/addfriend'" class="nav-link" routerLink="/addfriend" >View Friends</a>
         </li>
-        <li *ngIf="isAdmin()&& isUser()" class="nav-item">
-            <a *ngIf="route.url!=='/addfriend'" class="nav-link" routerLink="/addfriend" >Add Friend</a>
-        </li>
-        
         <li *ngIf="!isAdmin()&& !isUser()" class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#droplogin" href="#" >Sign Up
                 <span class="carat"></span>
@@ -49,6 +50,4 @@
 </div>
 
 </nav>
-
-
-    
+<br>

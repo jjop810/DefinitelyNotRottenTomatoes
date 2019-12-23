@@ -15,10 +15,15 @@ export class SearchService {
   getMovieSearch(searchTxt: string, pageNum: number): Observable<Movies[]> {
     if (searchTxt && pageNum && !isNaN(pageNum)) {
       const body = searchTxt + '|' + pageNum;
-      console.log(body);
       return this.http.get(this.appUrl + body, {headers: this.headers, withCredentials: true}).pipe(
         map( resp => resp as Movies[])
         );
       }
-      }
+  }
+
+  getLastPage(): Observable<number> {
+    return this.http.get(this.appUrl, {withCredentials: true} ).pipe(
+      map( resp => resp as number)
+    );
+  }
 }

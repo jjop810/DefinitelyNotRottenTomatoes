@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UrlService {
-  private static readonly MONOLITH_URL = 'http://localhost:8080/DefinetlyNotRottenTomatos';
+  private static readonly MONOLITH_URL = 'http://localhost:8080/DefinitelyNotRottenTomatoes';
   constructor() { }
   public getUrl(): string {
     return UrlService.MONOLITH_URL;

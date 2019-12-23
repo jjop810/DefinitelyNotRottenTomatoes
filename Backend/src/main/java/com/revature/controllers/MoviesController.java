@@ -38,20 +38,6 @@ public class MoviesController {
 	}
 	
 	
-	/*
-	@GetMapping(value="{title}")
-	public ResponseEntity<Movies> getMovie(@PathVariable String title) {
-<<<<<<< HEAD
-		Movies r = md.getMovie(title);
-=======
-		log.trace("getMovie called from controller.  (1 movie) with this title: "+ title);
-		Movies r = rd.getMovie(title);
->>>>>>> 41a0b7fd3a175689cb2d4c5f5f6ecb6142992ccf
-		if(r==null)
-			return ResponseEntity.notFound().build();
-		return ResponseEntity.ok(r);
-	}*/
-	
 	@PostMapping
 	public ResponseEntity<Movies> addMovie(@RequestBody Movies r) {
 		md.addMovie(r);

@@ -26,10 +26,12 @@ public class SerachController {
 		System.out.println(parseTxt);
 		String delims = "[|]";
 		String[] tokens = parseTxt.split(delims);
-		for(int i = 0; i < tokens.length; i++) {
-			System.out.println(tokens[i]);
-		}
 		
 		return ResponseEntity.ok(sd.getMovieSerarch(tokens[0], Integer.parseInt(tokens[1])));
+	}
+	
+	@GetMapping
+	public ResponseEntity<Integer> getLastPage() {
+		return ResponseEntity.ok(sd.getLastPage());
 	}
 }

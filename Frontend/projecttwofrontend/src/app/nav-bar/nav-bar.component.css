@@ -1,0 +1,13 @@
+.jumbotron{
+    background-image: url(../../assets/Banner-movies.jpg);
+
+}
+h1,p{
+    color: whitesmoke;
+
+}
+
+.checked {
+    color: orange;
+    
+}

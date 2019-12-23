@@ -1,0 +1,20 @@
+<!-- <div *ngFor="let item of ratings" [rating]="item">
+    <p>this is id{{item.id}}</p>
+
+</div> -->
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Title</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <!-- <app-rating *ngFor="let item of ratings" [rating]="item"></app-rating> -->
+    </tbody>
+</table>
+<!-- <h3 style="text-align: center;">Ratings</h3> -->
+<app-rating *ngFor="let item of ratings" [rating]="item"></app-rating>
