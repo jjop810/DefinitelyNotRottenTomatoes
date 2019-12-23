@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Id;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -22,7 +21,6 @@ import com.revature.beans.User;
 import com.revature.data.MovieRatingDAO;
 import com.revature.utils.HibernateUtil;
 
-import oracle.net.aso.s;
 
 
 
