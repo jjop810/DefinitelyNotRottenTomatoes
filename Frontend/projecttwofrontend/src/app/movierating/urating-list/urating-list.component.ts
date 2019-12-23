@@ -14,7 +14,6 @@ export class UratingListComponent implements OnInit {
   ratings: Movierating[];
   rating: Movierating;
   user: User;
-  //@Input() rating: Movierating;
   constructor(private mrService: MrserviceService, private LService: LoginService) { }
 
   ngOnInit() {

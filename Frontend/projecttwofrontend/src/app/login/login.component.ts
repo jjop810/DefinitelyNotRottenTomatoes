@@ -18,13 +18,14 @@ export class LoginComponent implements OnInit {
       resp => {
         this.loggedUser = resp;
       }
-    );
+      );
   }
 
-  login(){
+  login() {
     this.loginService.login(this.username, this.password).subscribe(
-      resp =>{
+      resp => {
         this.loggedUser = resp;
+        console.log(this.loginService.isAdmin());
       }
     );
   }

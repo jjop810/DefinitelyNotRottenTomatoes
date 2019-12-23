@@ -32,13 +32,17 @@ export class SingleMovieComponent implements OnInit {
           this.num += this.mra[i].ratingvalue;
         }
                this.num = this.num / this.mra.length;
-               this.movies.rating = this.num;
-
+               if (!(this.num / this.mra.length)) {
+               this.num = 0;
+               }
+               this.movies.rating = this.toFixed(this.num, 2);
       }
     );
-
-    console.log(this.movies);
   }
+toFixed(num, fixed) {
+    const re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+    return num.toString().match(re)[0];
+}
   addWatchlist() {
     console.log('Adding to watchlist');
     this.watchlist = {
@@ -49,25 +53,24 @@ export class SingleMovieComponent implements OnInit {
       title: this.movies.title };
     const userId = this.loginService.getUser();
     // tslint:disable-next-line: radix
-    console.log(this.watchlist);
     this.watchlistService.addWatchlist(this.watchlist).subscribe();
   }
   editMovie() {
     this.route.navigate(['movies/edit', this.movies.id]);
   }
-  rateMovie(){
+  rateMovie() {
     this.route.navigate(['movies/rating', this.movies.id]);
   }
-  reviewMovie(){
+  reviewMovie() {
     this.route.navigate(['movies/review', this.movies.id]);
   }
-  viewReviews(){
+  viewReviews() {
     this.route.navigate(['movies/review/view', this.movies.id]);
   }
-  isUser(): boolean{
+  isUser(): boolean {
     return this.loginService.isUser();
   }
-  isAdmin(): boolean{
+  isAdmin(): boolean {
     return this.loginService.isAdmin();
   }
 }

@@ -22,6 +22,7 @@ import { AddShowsComponent } from './shows/add-shows/add-shows.component';
 import { EditMoviesComponent } from './movies/edit-movies/edit-movies.component';
 import { EditShowsComponent } from './shows/edit-shows/edit-shows.component';
 import { GenreComponent } from './all-shared/genre/genre.component';
+import { SearchComponent } from './movies/search/search.component';
 import { MovieratingComponent } from './movierating/movierating/movierating.component';
 import { UratingListComponent } from './movierating/urating-list/urating-list.component';
 import { RatingComponent } from './movierating/rating/rating.component';
@@ -35,6 +36,7 @@ import { GuestReviewsComponent } from './all-shared/review-shared/guest-reviews/
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { AddFriendComponent } from './add-friend/add-friend.component';
 import { FriendService } from './friend.service';
+import { FriendWatchlistComponent } from './friend-watchlist/friend-watchlist.component';
 
 //#endregion
 
@@ -56,6 +58,7 @@ import { FriendService } from './friend.service';
     EditMoviesComponent,
     EditShowsComponent,
     GenreComponent,
+    SearchComponent,
     MovieratingComponent,
     UratingListComponent,
     RatingComponent,
@@ -66,7 +69,8 @@ import { FriendService } from './friend.service';
     ShowGuestReviewComponent,
     GuestReviewsComponent,
     WatchlistComponent,
-    AddFriendComponent
+    AddFriendComponent,
+    FriendWatchlistComponent
   ],
   imports: [
     BrowserModule,

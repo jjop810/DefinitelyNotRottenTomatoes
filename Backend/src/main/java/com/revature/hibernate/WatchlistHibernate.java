@@ -111,10 +111,10 @@ public class WatchlistHibernate implements WatchlistDAO{
 	}
 
 	@Override
-	public Set<Movies> getMovieSerarch(String title, Integer page) {
+	public Set<Movies> getMovieSerarch(String title, Integer page, Integer userId) {
 		Session s = hu.getSession();
 		int pageSize = 200;	
-		String query = "from Watchlist where upper(title) like '%"+title.toUpperCase()+"%'";
+		String query = "from Watchlist where userid = "+ userId +" and upper(title) like '%"+title.toUpperCase()+"%'";
 		Query<Watchlist> q = s.createQuery(query, Watchlist.class);		
 		q.setMaxResults(pageSize);
 		List<Watchlist> wl = q.list();

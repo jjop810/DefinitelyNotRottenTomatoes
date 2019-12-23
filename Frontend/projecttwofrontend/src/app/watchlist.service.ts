@@ -37,15 +37,23 @@ export class WatchlistService {
     );
   }
 
+  getFriendMovies(userId: number, userName: string, page: number) {
+    const body = userId + ',' + userName + ',' + page;
+    console.log('Getting watchlist from: ' + this.appUrl + '/getwatchlist/' + body);
+    return this.http.get(this.appUrl + '/getwatchlist/' + body, { withCredentials: true } ).pipe(
+      map( resp => resp as Movies[])
+    );
+  }
+
   getLastPage(): Observable<number> {
     return this.http.get(this.appUrl + '/getwatchlist', {withCredentials: true} ).pipe(
       map( resp => resp as number)
     );
   }
 
-  getMovieSearch(searchTxt: string, pageNum: number): Observable<Movies[]> {
+  getMovieSearch(searchTxt: string, pageNum: number, userId: number): Observable<Movies[]> {
     if (searchTxt && pageNum && !isNaN(pageNum)) {
-      const body = searchTxt + '|' + pageNum;
+      const body = searchTxt + '|' + pageNum + '|' + userId;
       console.log(body);
       return this.http.get(this.appUrl + '/watchlist/' + body, {headers: this.headers, withCredentials: true}).pipe(
         map( resp => resp as Movies[])

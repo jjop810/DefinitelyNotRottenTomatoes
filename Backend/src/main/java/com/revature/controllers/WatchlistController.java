@@ -39,6 +39,6 @@ public class WatchlistController {
 			System.out.println(tokens[i]);
 		}
 		
-		return ResponseEntity.ok(wd.getMovieSerarch(tokens[0], Integer.parseInt(tokens[1])));
+		return ResponseEntity.ok(wd.getMovieSerarch(tokens[0], Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2])));
 	}
 }
